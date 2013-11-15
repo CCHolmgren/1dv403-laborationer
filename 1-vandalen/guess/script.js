@@ -10,7 +10,7 @@ window.onload = function(){
 					"Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + numberOfGuesses + " gissningar för att hitta det."
 					,"Det hemliga talet är högre!"
 					,"Det hemliga talet är lägre!"
-					,"Talet är utanför intervallet 0 - 100"
+					,"Talet är utanför intervallet 1 - 100"
 					];
 
 		console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
@@ -18,21 +18,21 @@ window.onload = function(){
 		numberOfGuesses+=1;
 		// Plats för förändring.
 		var answer = [];
-		if(number == secret)
+		if(parseInt(number) == secret)
 		{
 			answer = [true, prompts[0]];
 		}
-		else if(number > secret)
+		else if(parseInt(number) > 100 || parseInt(number) < 1)
+		{
+			answer = [false, prompts[3]];
+		}
+		else if(parseInt(number) > secret)
 		{
 			answer = [false, prompts[2]];
 		}
-		else if(number < secret)
+		else if(parseInt(number) < secret)
 		{
 			answer = [false, prompts[1]];
-		}
-		else if(number > 100 || number < 1)
-		{
-			answer = [false, prompts[3]];
 		}
 		return answer;
 		// Returnera exempelvis: 

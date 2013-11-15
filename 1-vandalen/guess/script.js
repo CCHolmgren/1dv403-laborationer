@@ -16,7 +16,8 @@ window.onload = function () {
 
         if (number === "")
             return [false, "Du måste skriva något i textrutan först!"];
-
+        if(isNaN(number))
+            return [false, "Du måste skriva ett tal i rutan, inte '" + number + "'!"];
         console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
         console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 

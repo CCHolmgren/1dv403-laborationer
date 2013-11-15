@@ -17,6 +17,9 @@ window.onload = function(){
 				console.log(element.toUpperCase());
 			}
 		}
+		if(str === "")
+			throw {"message": "Du måste skriva något i textrutan innan det kan konverteras!"};
+
 		var result = str.split('');
 		var resultstring = "";
 		result.forEach(upperToLowerLowerToUpper)

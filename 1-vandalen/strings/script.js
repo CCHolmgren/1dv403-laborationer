@@ -4,20 +4,28 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		var converted;
-		for(key in str.split(''))
-		{
-			converted += key.charCodeAt()
+		function logArrayElements(element, index, array) {
+    		console.log("a[" + index + "] = " + element);
+    		if(element == element.toUpperCase())
+    		{
+    			resultstring += element.toLowerCase();
+    			console.log(element.toLowerCase());
+    		}
+    		else if(element == element.toLowerCase())
+			{		
+    			resultstring += element.toUpperCase();
+				console.log(element.toUpperCase());
+			}
 		}
+
+		var result = str.split('');
+		var resultstring = "";
+		result.forEach(logArrayElements)
+		
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
-		return str.split('').forEach(function(entry){
-			console.log(alph)
-			console.log(parseInt(entry));
-			console.log(parseInt(entry)+32);
-			return toString(parseInt(entry)+32);
-		});
+		return resultstring;
 
 
 

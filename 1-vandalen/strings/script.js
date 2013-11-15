@@ -4,7 +4,7 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		function logArrayElements(element, index, array) {
+		function upperToLowerLowerToUpper(element, index, array) {
     		console.log("a[" + index + "] = " + element);
     		if(element == element.toUpperCase())
     		{
@@ -17,19 +17,15 @@ window.onload = function(){
 				console.log(element.toUpperCase());
 			}
 		}
-
 		var result = str.split('');
 		var resultstring = "";
-		result.forEach(logArrayElements)
-		
+		result.forEach(upperToLowerLowerToUpper)
+		resultstring = resultstring.replace(/[aA]/g, "#");
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren.
 		return resultstring;
-
-
-
-//		throw {"message":"NEJ!"};
+		// throw {"message":"NEJ!"};
 	};
 	// ------------------------------------------------------------------------------
 

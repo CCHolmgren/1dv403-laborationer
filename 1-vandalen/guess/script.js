@@ -6,6 +6,7 @@ window.onload = function () {
         numberOfGuesses = 1;
     // I denna funktion ska du skriva koden för att hantera "spelet"
     var guess = function (number) {
+    	//The different prompts
         var prompts = [
             "Grattis du vann! Det hemliga talet var " + secret +
             " och du behövde " + numberOfGuesses +
@@ -22,13 +23,13 @@ window.onload = function () {
         console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 
         var answer = [];
-        if (parseInt(number) === secret) {
+        if (parseInt(number) === secret) { //If number is secret
             answer = [true, prompts[0]];
-        } else if (parseInt(number) > 100 || parseInt(number) < 1) {
+        } else if (parseInt(number) > 100 || parseInt(number) < 1) { //If number is outside of [1,100]
             answer = [false, prompts[3]];
-        } else if (parseInt(number) > secret) {
+        } else if (parseInt(number) > secret) { //If number is larger than secret
             answer = [false, prompts[2]];
-        } else if (parseInt(number) < secret) {
+        } else if (parseInt(number) < secret) { //If number is smaller than secret
             answer = [false, prompts[1]];
         }
         numberOfGuesses += 1;

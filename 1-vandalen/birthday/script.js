@@ -4,7 +4,12 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
+		//Matches things on the format [0-9]*4-[0-9][1-9]-[0-9][1-9]
+		//Which is what we assume the input should be like
+		var re = /\d{4,4}-\d{2,2}-\d{2,2}/;
+		if(!date.match(re))
+			throw {'message':'Du måste fylla i ett giltigt datum på formatet YYYY-MM-DD!'};
+
 		var today = Date.now(),
 			millisecondsToDays = 24*60*60*1000,
 			birthday = date.split('-'); //Split into the specific parts, assuming YYYY-MM-DD format

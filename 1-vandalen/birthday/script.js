@@ -5,14 +5,21 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-
-			// Din kod här.
-
-
-
-
-	};
+		var today = Date.now(),
+			millisecondsToDays = 24*60*60*1000,
+			birthday = date.split('-'); //Split into the specific parts, assuming YYYY-MM-DD format
+		//Remove the first object since we don't care what year they were born
+		birthday.splice(0,1); 
+		 //Assume the birth day is this year
+		var nextBirthday = new Date(new Date().getFullYear(), birthday[0]-1, birthday[1]);
+		//If it's not, add one to the year
+		if(nextBirthday < new Date())
+			nextBirthday = new Date(new Date().getFullYear()+1, birthday[0]-1, birthday[1]);
+		//Math.round will round up or down,
+		//Math abs will turn the negative number we get from the subtraction(could probably just switch them though)
+		//Then convert the milliseconds to days via the divison of milliseconds in days
+		return Math.round(Math.abs((today - nextBirthday)/millisecondsToDays));
+		};
 	// ------------------------------------------------------------------------------
 
 

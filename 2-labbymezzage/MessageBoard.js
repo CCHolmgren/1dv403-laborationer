@@ -11,9 +11,14 @@ var MessageBoard = {
     remaining: function () {
         var count = 0;
         this.messages.forEach(function (message) {
-            count += 1;
+            count += message.done? 0: 1;
         });
         return count;
+    },
+    updateCount:function(){
+    	var div = document.getElementById("counter");
+    	div.innerHTML = "";
+    	div.appendChild(document.createTextNode(this.remaining()));
     },
 
     renderMessages: function () {
@@ -48,11 +53,13 @@ var MessageBoard = {
 
         p.appendChild(text);
         messageArea.appendChild(p);
+        this.updateCount();
     },
 
     removeMessageDOM: function (e) {
     	console.log(e)
     	e.target.remove();
+    	MessageBoard.updateCount();
     },
 
     removeMessage: function(IDindex){
@@ -68,7 +75,8 @@ var MessageBoard = {
         //         IDindex = index;
         //     }
         // });
-        this.messages.splice(IDindex, 1);
+        this.messages[IDindex].done = true;
+        this.updateCount();
     }
 }
 Element.prototype.remove = function() {

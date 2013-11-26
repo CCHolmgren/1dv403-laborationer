@@ -5,15 +5,12 @@ var MessageBoard = {
         var mess = new Message(e, new Date());
         this.messages.push(mess);
     },
-
-    archive: function (messageObject) {},
-
-    remaining: function () {
-        var count = 0;
-        this.messages.forEach(function (message) {
-            count += message.done? 0: 1;
-        });
-        return count;
+    remaining:function(){
+    	var count = 0;
+    	this.messages.map(function(message){
+    		if(!message.removed) count += 1;
+    	});
+    	return count;
     },
     updateCount:function(){
     	var div = document.getElementById("counter");
@@ -44,25 +41,36 @@ var MessageBoard = {
         });
 
         p.setAttribute("data-id", this.messages[IDindex].id);
-        p.addEventListener("click", function () {
-        	MessageBoard.removeMessage(IDindex);
-        });
+        //p.addEventListener("click", function () {
+        //	MessageBoard.removeMessage(IDindex);
+        //});
 		p.addEventListener("click",this.removeMessageDOM);
 
         var text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
         p.appendChild(text);
         messageArea.appendChild(p);
-        this.updateCount();
+        MessageBoard.updateCount();
     },
 
     removeMessageDOM: function (e) {
     	console.log(e)
     	e.target.remove();
+    	var indexID;
+    	var id = e.target.dataset.id;
+    	var ids = MessageBoard.messages.map(function(message){
+    		return message.id;
+    	}).forEach(function(element,index,array){
+    		if(element == id) indexID = index;
+    	});
+    	console.log("Messages " +MessageBoard.messages);
+    	console.log("Indexid " + indexID);
+    	MessageBoard.messages.splice(indexID,1);
     	MessageBoard.updateCount();
+
     },
 
-    removeMessage: function(IDindex){
+    removeMessage: function(){
      //    document.querySelector('p[data-id="'+messageID+'"]').remove();
      //    document.querySelector('p[data-id="'+IDindex+'"]').remove();
 
@@ -75,7 +83,8 @@ var MessageBoard = {
         //         IDindex = index;
         //     }
         // });
-        this.messages[IDindex].done = true;
+		this.messages[IDindex].removed=true;
+        this.messages.splice(IDindex,1);
         this.updateCount();
     }
 }

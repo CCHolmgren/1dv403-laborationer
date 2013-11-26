@@ -9,16 +9,19 @@ window.onload = function(){
 
 	button.addEventListener("click", function(e){
 		e.preventDefault();
-		MessageBoard.add(textarea.value);
-		textarea.value = "";
-		MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1]);
+		addMessage();
 	});
 	textarea.addEventListener("keydown", function(e){
 		if(e.keyCode == 13 && !e.shiftKey){
-			MessageBoard.add(textarea.value);
-			textarea.value = "";
-			MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1]);
 			e.preventDefault();
+			addMessage();
 		}
 	});
+}
+
+function addMessage(){
+	var textarea = document.querySelector("#inputarea");
+	MessageBoard.add(textarea.value);
+	textarea.value = "";
+	MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1]);
 }

@@ -1,6 +1,8 @@
 function Message(message, date){
 	var message;
 	var date;
+	this.id = Math.floor(Math.random() * Math.pow(2, 64) - 1 +1);
+
 	this.getText = function(){
 		return message;
 	}
@@ -19,7 +21,6 @@ function Message(message, date){
 
 	this.setText(message);
 	this.setDate(date);
-
 }
 
 Message.prototype.toString = function() {
@@ -31,5 +32,4 @@ Message.prototype.getHTMLText = function () {
 }
 
 Message.prototype.getDateText = function() {
-
 }

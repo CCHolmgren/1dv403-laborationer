@@ -5,8 +5,18 @@ window.onload = function(){
 	alert(MessageBoard.messages[0].getText());
 
 	var button = document.querySelector("#sendbutton");
+	var textarea = document.querySelector("#inputarea");
+
 	button.addEventListener("click", function(e){
 		e.preventDefault();
-		MessageBoard.init(document.querySelector("#inputarea").value);
+		MessageBoard.init(textarea.value);
+		textarea.value = "";
+	});
+	textarea.addEventListener("keydown", function(e){
+		if(e.keyCode == 13 && !e.shiftKey){
+			MessageBoard.init(textarea.value);
+			textarea.value = "";
+			e.preventDefault();
+		}
 	});
 }

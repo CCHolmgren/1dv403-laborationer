@@ -1,7 +1,7 @@
 var MessageBoard = {
 	messages: [],
 
-	init:function(e)
+	add:function(e)
 	{
 		var mess = new Message(e, new Date());
 		this.messages.push(mess);
@@ -14,5 +14,13 @@ var MessageBoard = {
 			count += 1;
 		});
 		return count;
+	},
+	renderMessage: function(messageID){
+		var messageArea = document.getElementById("thebestdiv");
+		var p = document.createElement("p");
+		var text = document.createTextNode(messageID.getHTMLText());
+		p.appendChild(text);
+		messageArea.appendChild(p);
+
 	}
 }

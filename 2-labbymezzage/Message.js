@@ -1,7 +1,7 @@
 function Message(message, date){
 	var message;
 	var date;
-	this.id = Math.floor(Math.random() * Math.pow(2, 64) - 1 +1);
+	this.id = Math.floor(Math.random() * Math.pow(2, 64));
 
 	this.getText = function(){
 		return message;

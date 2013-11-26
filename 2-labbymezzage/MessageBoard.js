@@ -26,24 +26,23 @@ var MessageBoard = {
     },
 
     renderMessage: function (messageID) {
+        var messageArea = document.getElementById("thebestdiv");
+        var p = document.createElement("p");
         var IDindex = 0;
-        var ids = MessageBoard.messages.map(function (message) {
+        var ids = this.messages.map(function (message) {
             return message.id;
         });
         ids.forEach(function (element, index, array) {
-            console.log("Element: "+element);
-            console.log("MessageID: "+messageID);
             if (element == messageID) {
                 IDindex = index;
             }
         });
-        var messageArea = document.getElementById("thebestdiv");
-        var p = document.createElement("p");
 
-        p.setAttribute("uniqueID", this.messages[IDindex].id);
+        p.setAttribute("data-id", this.messages[IDindex].id);
         p.addEventListener("click", function () {
-            MessageBoard.removeMessage(p.getAttribute("uniqueID"))
+        	MessageBoard.removeMessage(IDindex);
         });
+		p.addEventListener("click",this.removeMessageDOM);
 
         var text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
@@ -51,19 +50,34 @@ var MessageBoard = {
         messageArea.appendChild(p);
     },
 
-    removeMessage: function (messageID) {
-    	var IDindex = 0;
-        var ids = MessageBoard.messages.map(function (message) {
-            return message.id;
-        });
-        ids.forEach(function (element, index, array) {
-            console.log("Element: "+element);
-            console.log("MessageID: "+messageID);
-            if (element == messageID) {
-                IDindex = index;
-            }
-        });
+    removeMessageDOM: function (e) {
+    	console.log(e)
+    	e.target.remove();
+    },
+
+    removeMessage: function(IDindex){
+     //    document.querySelector('p[data-id="'+messageID+'"]').remove();
+     //    document.querySelector('p[data-id="'+IDindex+'"]').remove();
+
+        // var IDindex = 0;
+        // var ids = MessageBoard.messages.map(function (message) {
+        //     return message.id;
+        // });
+        // ids.forEach(function (element, index, array) {
+        //     if (element == messageID) {
+        //         IDindex = index;
+        //     }
+        // });
         this.messages.splice(IDindex, 1);
-        this.renderMessages();
+    }
+}
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = 0, len = this.length; i < len; i++) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
     }
 }

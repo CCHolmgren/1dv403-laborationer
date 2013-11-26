@@ -7,5 +7,12 @@ var MessageBoard = {
 		this.messages.push(mess);
 	},
 	archive:function(messageObject){
+	},
+	remaining: function(){
+		var count = 0;
+		this.messages.forEach(function(message){
+			count += 1;
+		});
+		return count;
 	}
 }

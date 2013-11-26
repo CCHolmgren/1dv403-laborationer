@@ -21,5 +21,5 @@ function addMessage(){
 	var textarea = document.querySelector("#inputarea");
 	MessageBoard.add(textarea.value);
 	textarea.value = "";
-	MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1]);
+	MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1].id);
 }

@@ -1,9 +1,6 @@
 "use strict";
 
 window.onload = function(){
-	MessageBoard.add("Textmeddelande");
-	alert(MessageBoard.messages[0].getText());
-
 	var button = document.querySelector("#sendbutton");
 	var textarea = document.querySelector("#inputarea");
 
@@ -11,6 +8,7 @@ window.onload = function(){
 		e.preventDefault();
 		addMessage();
 	});
+
 	textarea.addEventListener("keydown", function(e){
 		if(e.keyCode == 13 && !e.shiftKey){
 			e.preventDefault();

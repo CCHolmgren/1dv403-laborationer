@@ -28,20 +28,23 @@ var MessageBoard = {
 	},
 
 	renderMessage: function(messageID){
-		console.log(messageID);
-		var index = this.messages.forEach(function(obj, index){
-			if(this.messages.id == messageID)
-				return index;
+		var IDindex = 0;
+		var ids = this.messages.map(function(message){
+			return message.id;
+		});
+		ids.forEach(function(element,index,array){
+			if(element.id == messageID)
+				IDindex = index;
 		});
 		var messageArea = document.getElementById("thebestdiv");
 		var p = document.createElement("p");
 
-		p.setAttribute("uniqueID", this.messages[index].id);
+		p.setAttribute("uniqueID", this.messages[IDindex].id);
 		p.addEventListener("click", function(){
 			MessageBoard.removeMessage(p.getAttribute("uniqueID"))
 		});
 
-		var text = document.createTextNode(this.messages[index].getHTMLText());
+		var text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
 		p.appendChild(text);
 		messageArea.appendChild(p);

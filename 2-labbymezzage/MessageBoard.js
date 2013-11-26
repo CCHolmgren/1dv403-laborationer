@@ -52,7 +52,18 @@ var MessageBoard = {
     },
 
     removeMessage: function (messageID) {
-        this.messages.splice(this.messages.indexOf(messageID), 1);
+    	var IDindex = 0;
+        var ids = MessageBoard.messages.map(function (message) {
+            return message.id;
+        });
+        ids.forEach(function (element, index, array) {
+            console.log("Element: "+element);
+            console.log("MessageID: "+messageID);
+            if (element == messageID) {
+                IDindex = index;
+            }
+        });
+        this.messages.splice(IDindex, 1);
         this.renderMessages();
     }
 }

@@ -1,19 +1,25 @@
 function Message(message, date){
+	var message;
+	var date;
 	this.getText = function(){
 		return message;
 	}
 
 	this.setText = function(_text){
-		message = text;
+		message = _text;
 	}
 
 	this.getDate = function() {
-
+		return date;
 	}
 
 	this.setDate = function(_date) {
-
+		date = _date;
 	}
+
+	this.setText(message);
+	this.setDate(date);
+
 }
 
 Message.prototype.toString = function() {

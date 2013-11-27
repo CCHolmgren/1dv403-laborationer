@@ -15,7 +15,7 @@ var MessageBoard = {
     updateCount:function(){
     	var div = document.getElementById("counter");
     	div.innerHTML = "";
-    	div.appendChild(document.createTextNode(this.remaining()));
+    	div.appendChild(document.createTextNode("Antal meddelanden: " + this.remaining()));
     },
 
     renderMessages: function () {

@@ -28,8 +28,9 @@ Message.prototype.toString = function() {
 }
 
 Message.prototype.getHTMLText = function () {
-	return this.toString().replace('\\n', "<br />");
+	return this.getText().replace('\\n', "<br />");
 }
 
 Message.prototype.getDateText = function() {
+	return this.getDate();
 }

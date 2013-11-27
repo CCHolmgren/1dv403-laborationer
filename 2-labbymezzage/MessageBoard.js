@@ -28,43 +28,54 @@ var MessageBoard = {
     },
 
     renderMessage: function (messageID) {
-        var messageArea = document.getElementById("thebestdiv");
-        var p = document.createElement("p");
-        var IDindex = 0;
-        var ids = this.messages.map(function (message) {
+        var messageArea = document.getElementById("thebestdiv"),
+        p = document.createElement("p"),
+        dateP = document.createElement("p"),
+        div = document.createElement("div"),
+        IDindex = 0,
+        ids = this.messages.map(function (message) {
             return message.id;
-        });
-        ids.forEach(function (element, index, array) {
+        }).forEach(function (element, index, array) {
             if (element == messageID) {
                 IDindex = index;
             }
+        }),
+        text = document.createTextNode(this.messages[IDindex].getHTMLText()),
+        date = document.createTextNode(this.messages[IDindex].getDate());
+        p.addEventListener("click", function(e){
+        	e.target.parentNode.remove();
         });
-
-        p.setAttribute("data-id", this.messages[IDindex].id);
+        dateP.addEventListener("click", function(e){
+        	e.target.parentNode.remove();
+        });
+        div.setAttribute("data-id", this.messages[IDindex].id);
         //p.addEventListener("click", function () {
         //	MessageBoard.removeMessage(IDindex);
         //});
-		p.addEventListener("click",this.removeMessageDOM);
+		div.addEventListener("click",this.removeMessageDOM);
 
-        var text = document.createTextNode(this.messages[IDindex].getHTMLText());
-
+        dateP.appendChild(date);
         p.appendChild(text);
-        messageArea.appendChild(p);
+        div.appendChild(p);
+        div.appendChild(dateP);
+        messageArea.appendChild(div);
         MessageBoard.updateCount();
     },
 
     removeMessageDOM: function (e) {
     	console.log(e)
     	e.target.remove();
-    	var indexID;
-    	var id = e.target.dataset.id;
-    	var ids = MessageBoard.messages.map(function(message){
-    		return message.id;
-    	}).forEach(function(element,index,array){
-    		if(element == id) indexID = index;
-    	});
+    	var indexID,
+    		id = e.target.dataset.id,
+    		ids = MessageBoard.messages.map(function(message){
+    			return message.id;
+    		}).forEach(function(element,index,array){
+    			if(element == id) indexID = index;
+    		});
+
     	console.log("Messages " +MessageBoard.messages);
     	console.log("Indexid " + indexID);
+
     	MessageBoard.messages.splice(indexID,1);
     	MessageBoard.updateCount();
 

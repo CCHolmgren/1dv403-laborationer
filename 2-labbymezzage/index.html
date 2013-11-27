@@ -7,19 +7,47 @@
 	<script src="Message.js"></script>
 	<script src="MessageBoard.js"></script>
 	<style>
-		div {
-			border:1px solid black;
-		}
+	#sendbutton{
+		clear:both;
+	}
+	#thebestdiv {
+		width: 100%;
+	}
+	.message {
+		background-color:#ddd;
+		border:1px solid #2dd;
+		padding-top:5px;
+		overflow: auto;
+	}
+	.message p:first-child {
+		float:left;
+		width: 100%;
+	}
+	.datetext {
+		font-size:12px;
+		clear:both;
+		float:right;
+	}
+	main {
+		width:450px;
+		margin:0 auto;
+	}
+	textarea {
+		float:left;
+		width:98%;
+	}
 	</style>
 </head>
 <body>
-	<div>
-		<div id="thebestdiv">
-			Textrutan som allt huserar, bortsett från textarea
+	<main>
+		<div>
+			<div id="thebestdiv">
+				Textrutan som allt huserar, bortsett från textarea
+			</div>
+			<div id="counter">0</div>
+			<textarea name="" id="inputarea" cols="30" rows="10"></textarea>
+			<button id="sendbutton">Knapp</button>
 		</div>
-		<div id="counter">0</div>
-		<textarea name="" id="inputarea" cols="30" rows="10"></textarea>
-		<button id="sendbutton">Knapp</button>
-	</div>
+	</main>
 </body>
 </html>

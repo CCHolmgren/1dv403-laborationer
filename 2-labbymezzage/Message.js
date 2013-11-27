@@ -32,5 +32,15 @@ Message.prototype.getHTMLText = function () {
 }
 
 Message.prototype.getDateText = function() {
-	return this.getDate();
+	var date = this.getDate();
+	var hour = date.getHours();
+	var min = date.getMinutes();
+	var sec = date.getSeconds();
+	min = min + "";
+
+	if (min.length == 1)
+	   {
+	   min = "0" + min;
+	   }
+	   return hour + ":" + min + ":" + sec;
 }

@@ -7,9 +7,9 @@
 	<script src="Message.js"></script>
 	<script src="MessageBoard.js"></script>
 	<style>
-	#sendbutton{
+	/*button:nth-child(2){
 		clear:both;
-	}
+	}*/
 	#thebestdiv {
 		width: 100%;
 	}
@@ -19,9 +19,13 @@
 		padding-top:5px;
 		overflow: auto;
 	}
+	.message p {
+		margin:5px 5px;
+	}
 	.message p:first-child {
 		float:left;
-		width: 100%;
+		width: 95%;
+		overflow-wrap:break-word;
 	}
 	.datetext {
 		font-size:12px;
@@ -42,7 +46,6 @@
 	<main>
 		<div>
 			<div id="thebestdiv">
-				Textrutan som allt huserar, bortsett från textarea
 			</div>
 			<div id="counter">0</div>
 			<textarea name="" id="inputarea" cols="30" rows="10"></textarea>

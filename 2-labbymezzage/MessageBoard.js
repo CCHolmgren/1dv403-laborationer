@@ -71,7 +71,8 @@ var MessageBoard = {
 		time.appendChild(date);
         dateP.appendChild(time);
         dateP.className += " datetext";
-        p.appendChild(text);
+        //p.appendChild(text);
+        p.innerHTML = this.messages[IDindex].getHTMLText();
         div.appendChild(p);
         div.appendChild(removeButton);
         div.appendChild(timebutton);

@@ -74,22 +74,23 @@ var MessageBoard = {
     },
 
     removeMessageDOM: function (e) {
-    	console.log(e)
-    	e.target.parentNode.remove();
-    	var indexID,
-    		id = e.target.dataset.id,
-    		ids = MessageBoard.messages.map(function(message){
-    			return message.id;
-    		}).forEach(function(element,index,array){
-    			if(element == id) indexID = index;
-    		});
+    	if(window.confirm("Are you sure you want to remove this message?")){
+	    	console.log(e)
+	    	e.target.parentNode.remove();
+	    	var indexID,
+	    		id = e.target.dataset.id,
+	    		ids = MessageBoard.messages.map(function(message){
+	    			return message.id;
+	    		}).forEach(function(element,index,array){
+	    			if(element == id) indexID = index;
+	    		});
 
-    	console.log("Messages " +MessageBoard.messages);
-    	console.log("Indexid " + indexID);
+	    	console.log("Messages " +MessageBoard.messages);
+	    	console.log("Indexid " + indexID);
 
-    	MessageBoard.messages.splice(indexID,1);
-    	MessageBoard.updateCount();
-
+	    	MessageBoard.messages.splice(indexID,1);
+	    	MessageBoard.updateCount();
+		}
     },
 
     removeMessage: function(){

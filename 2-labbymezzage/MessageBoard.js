@@ -32,6 +32,7 @@ var MessageBoard = {
         	p = document.createElement("p"),
         	dateP = document.createElement("p"),
         	div = document.createElement("div"),
+        	time = document.createElement("time"),
         	removeButton = document.createElement("button"),
         	IDindex = 0,
         	ids = this.messages.map(function (message) {
@@ -60,7 +61,9 @@ var MessageBoard = {
         //});
 		//div.addEventListener("click",this.removeMessageDOM);
 		div.className += " message";
-        dateP.appendChild(date);
+
+		time.appendChild(date);
+        dateP.appendChild(time);
         dateP.className += " datetext";
         p.appendChild(text);
         div.appendChild(p);

@@ -34,6 +34,8 @@ var MessageBoard = {
         	div = document.createElement("div"),
         	time = document.createElement("time"),
         	removeButton = document.createElement("button"),
+        	timebutton = document.createElement("button"),
+        	that = this,
         	IDindex = 0,
         	ids = this.messages.map(function (message) {
             	return message.id;
@@ -45,7 +47,11 @@ var MessageBoard = {
         	text = document.createTextNode(this.messages[IDindex].getHTMLText()),
         	date = document.createTextNode(this.messages[IDindex].getDateText());
 
-
+        timebutton.innerHTML = "Tid";
+        timebutton.style.float="right";
+        timebutton.addEventListener("click", function(){
+        	alert(that.messages[IDindex].getDate());
+        });
         removeButton.innerHTML = "Hej";
         removeButton.style.float = "right";
         removeButton.addEventListener("click", this.removeMessageDOM);
@@ -68,6 +74,7 @@ var MessageBoard = {
         p.appendChild(text);
         div.appendChild(p);
         div.appendChild(removeButton);
+        div.appendChild(timebutton);
         div.appendChild(dateP);
         messageArea.appendChild(div);
         MessageBoard.updateCount();

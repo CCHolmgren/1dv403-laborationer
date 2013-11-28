@@ -23,13 +23,17 @@ window.onload = function () {
         console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 
         var answer = [];
-        if (parseInt(number) === secret) { //If number is secret
+        if (parseInt(number) === secret) { 
+        //If number is secret
             answer = [true, prompts[0]];
-        } else if (parseInt(number) > 100 || parseInt(number) < 1) { //If number is outside of [1,100]
+        } else if (parseInt(number) > 100 || parseInt(number) < 1) { 
+        //If number is outside of [1,100]
             answer = [false, prompts[3]];
-        } else if (parseInt(number) > secret) { //If number is larger than secret
+        } else if (parseInt(number) > secret) { 
+        //If number is larger than secret
             answer = [false, prompts[2]];
-        } else if (parseInt(number) < secret) { //If number is smaller than secret
+        } else if (parseInt(number) < secret) { 
+        //If number is smaller than secret
             answer = [false, prompts[1]];
         }
         numberOfGuesses += 1;

@@ -12,9 +12,9 @@ window.onload = function () {
             //This function converts the letters to uppercase and lowercase
         function upperToLowerLowerToUpper(element, index, array) {
             if (element == element.toUpperCase()) {
-                resultstring += element.toLowerCase();
+                resultingstring += element.toLowerCase();
             } else if (element == element.toLowerCase()) {
-                resultstring += element.toUpperCase();
+                resultingstring += element.toUpperCase();
             }
         }
         //Split the input so we can forEach the items later
@@ -22,9 +22,9 @@ window.onload = function () {
         var resultingstring = "";
 
         splitString.forEach(upperToLowerLowerToUpper)
-        resultstring = resultstring.replace(/[aA]/g, "#");
+        resultingstring = resultingstring.replace(/[aA]/g, "#");
 
-        return resultstring;
+        return resultingstring;
     };
     // ------------------------------------------------------------------------------
 

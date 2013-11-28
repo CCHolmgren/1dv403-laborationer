@@ -1,3 +1,5 @@
+"use strict";
+
 function Message(message, date){
 	var message;
 	var date;

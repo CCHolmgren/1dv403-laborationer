@@ -4,6 +4,7 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
+		console.log(date);
 		//Matches things on the format [0-9]*4-[0-9][1-9]-[0-9][1-9]
 		//Which is what we assume the input should be like
 		var re = /\d{4,4}-\d{2,2}-\d{2,2}/;
@@ -17,9 +18,13 @@ window.onload = function(){
 		birthday.splice(0,1); 
 		 //Assume the birth day is this year
 		var nextBirthday = new Date(new Date().getFullYear(), birthday[0]-1, birthday[1]);
+		 console.log("Nextbirthday: " + nextBirthday);
 		//If it's not, add one to the year
-		if(nextBirthday < new Date())
+		console.log("Todays date: " + new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));
+		console.log("Comparison: " + (nextBirthday < new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())));
+		if(nextBirthday < new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()))
 			nextBirthday = new Date(new Date().getFullYear()+1, birthday[0]-1, birthday[1]);
+		console.log("nextBirthday: " + nextBirthday);
 		//Math.round will round up or down,
 		//Math abs will turn the negative number we get from the subtraction(could probably just switch them though)
 		//Then convert the milliseconds to days via the divison of milliseconds in days

@@ -5,11 +5,12 @@ window.onload = function () {
     // I denna funktion ska du skriva koden för att hantera "spelet"
     var convertString = function (str) {
         if (str === "")
-        	//If the input is empty, we can't convert it, so create the object and throw it
+        	//If the input is empty, we can't convert it, so create the error object and throw it
             throw {
                 "message": "Du måste skriva något i textrutan innan det kan konverteras!"
             };
-            //This function converts the letters to uppercase and lowercase
+
+        //This function converts the letters to uppercase and lowercase
         function upperToLowerLowerToUpper(element, index, array) {
             if (element == element.toUpperCase()) {
                 resultingstring += element.toLowerCase();
@@ -17,9 +18,10 @@ window.onload = function () {
                 resultingstring += element.toUpperCase();
             }
         }
+
         //Split the input so we can forEach the items later
-        var splitString = str.split('');
-        var resultingstring = "";
+        var splitString = str.split(''),
+            resultingstring = "";
 
         splitString.forEach(upperToLowerLowerToUpper)
         resultingstring = resultingstring.replace(/[aA]/g, "#");

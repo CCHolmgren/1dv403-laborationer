@@ -54,7 +54,7 @@ var MessageBoard = {
         timebutton.addEventListener("click", function(){
         	alert(that.messages[IDindex].getDate());
         });
-        removeButton.innerHTML = "Hej";
+        removeButton.innerHTML = "Ta bort";
         removeButton.style.float = "right";
         removeButton.addEventListener("click", this.removeMessageDOM);
         //p.addEventListener("click", function(e){

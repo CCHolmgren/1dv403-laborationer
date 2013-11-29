@@ -41,19 +41,19 @@ var MessageBoard = {
         	IDindex = 0,
         	ids = this.messages.map(function (message) {
             	return message.id;
-        	}).forEach(function (element, index, array) {
-            	if (element == messageID) {
-                	IDindex = index;
-            	}
         	}),
         	text = document.createTextNode(this.messages[IDindex].getHTMLText()),
         	date = document.createTextNode(this.messages[IDindex].getDateText());
 
+        ids.forEach(function (element, index, array) {
+                if (element == messageID) {
+                    IDindex = index;
+                }
+            });
         timebutton.innerHTML = "Tid";
         timebutton.style.float="right";
-        timebutton.addEventListener("click", function(){
-            alert(IDindex);
-        	alert(MessageBoard.messages[IDindex].getDate());
+        timebutton.addEventListener("click", function(e){
+            alert(e.target.parentNode.dataset.time);
         });
         removeButton.innerHTML = "Ta bort";
         removeButton.style.float = "right";
@@ -65,6 +65,7 @@ var MessageBoard = {
         //	e.target.parentNode.remove();
         //});
         div.setAttribute("data-id", this.messages[IDindex].id);
+        div.setAttribute("data-time",this.messages[IDindex].getDate());
         //p.addEventListener("click", function () {
         //	MessageBoard.removeMessage(IDindex);
         //});
@@ -89,15 +90,15 @@ var MessageBoard = {
 	    	console.log(e)
 	    	e.target.parentNode.remove();
 	    	var indexID,
-	    		id = e.target.dataset.id,
-	    		ids = MessageBoard.messages.map(function(message){
-	    			return message.id;
-	    		}).forEach(function(element,index,array){
-	    			if(element == id) indexID = index;
-	    		});
+                id = e.target.dataset.id,
+                ids = MessageBoard.messages.map(function(message){
+                    return message.id;
+                }).forEach(function(element,index,array){
+                    if(element == id) indexID = index;
+                });
 
-	    	console.log("Messages " +MessageBoard.messages);
-	    	console.log("Indexid " + indexID);
+	    	// console.log("Messages " +MessageBoard.messages);
+	    	// console.log("Indexid " + indexID);
 
 	    	MessageBoard.messages.splice(indexID,1);
 	    	MessageBoard.updateCount();

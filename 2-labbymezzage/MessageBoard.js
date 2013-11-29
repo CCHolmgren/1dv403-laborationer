@@ -70,11 +70,11 @@ var MessageBoard = {
         //	MessageBoard.removeMessage(IDindex);
         //});
 		//div.addEventListener("click",this.removeMessageDOM);
-		div.className += " message";
+		div.className = "message";
 
 		time.appendChild(date);
         dateP.appendChild(time);
-        dateP.className += " datetext";
+        dateP.className = "datetext";
         //p.appendChild(text);
         p.innerHTML = this.messages[IDindex].getHTMLText();
         div.appendChild(p);

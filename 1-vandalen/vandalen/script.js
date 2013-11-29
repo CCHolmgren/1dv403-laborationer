@@ -12,7 +12,7 @@ var makePerson = function (persArr) {
         });
 
     names.sort(function (a, b) {
-        return a.localeCompare(b);
+        return a.localeCompare(b, 'sv');
     });
     result.minAge = ages[0];
     result.maxAge = ages[ages.length - 1];

@@ -14,7 +14,7 @@ window.onload = function () {
             "Det hemliga talet är lägre!",
             "Talet är utanför intervallet 1 - 100"
         ];
-
+        console.log(prompts);
         if (number === "")
             return [false, "Du måste skriva något i textrutan först!"];
         if(isNaN(number))

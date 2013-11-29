@@ -24,7 +24,7 @@ window.onload = function () {
             resultingstring = "";
 
         splitString.forEach(upperToLowerLowerToUpper)
-        resultingstring = resultingstring.replace(/[aA]/g, "#");
+        resultingstring = resultingstring.replace(/a/gi, "#");
 
         return resultingstring;
     };

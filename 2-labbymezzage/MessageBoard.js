@@ -17,7 +17,7 @@ var MessageBoard = {
     updateCount:function(){
     	var div = document.getElementById("counter");
     	div.innerHTML = "";
-    	div.appendChild(document.createTextNode("Antal meddelanden: " + this.remaining()));
+    	div.appendChild(document.createTextNode(this.remaining()));
     },
 
     renderMessages: function () {
@@ -52,7 +52,8 @@ var MessageBoard = {
         timebutton.innerHTML = "Tid";
         timebutton.style.float="right";
         timebutton.addEventListener("click", function(){
-        	alert(that.messages[IDindex].getDate());
+            alert(IDindex);
+        	alert(MessageBoard.messages[IDindex].getDate());
         });
         removeButton.innerHTML = "Ta bort";
         removeButton.style.float = "right";

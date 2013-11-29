@@ -53,10 +53,12 @@
 		clear:both;
 		float:right;
 	}
-
+	.count {
+		float:right;
+	}
 	#counter {
 		margin-right:5px;
-		float:right;
+		/*float:right;*/
 	}
 
 	#sendbutton {
@@ -74,7 +76,7 @@
 		<div>
 			<div id="thebestdiv">
 			</div>
-			<div id="counter">Antal meddelanden: 0</div>
+			<div class="count">Antal meddelanden: <span id="counter">0</span></div>
 			<textarea name="" id="inputarea" cols="30" rows="10"></textarea>
 			<button id="sendbutton">Spara</button>
 		</div>

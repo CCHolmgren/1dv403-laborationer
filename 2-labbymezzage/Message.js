@@ -48,5 +48,4 @@ Message.prototype.getDateText = function() {
 	}
 
 	return hour + ":" + min + ":" + sec;
-
 }

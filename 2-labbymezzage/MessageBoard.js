@@ -96,10 +96,7 @@ var MessageBoard = {
                 }).forEach(function(element,index,array){
                     if(element == id) indexID = index;
                 });
-
-	    	// console.log("Messages " +MessageBoard.messages);
-	    	// console.log("Indexid " + indexID);
-
+                
 	    	MessageBoard.messages.splice(indexID,1);
 	    	MessageBoard.updateCount();
 		}
@@ -123,6 +120,7 @@ var MessageBoard = {
         this.updateCount();
     }
 }
+
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }

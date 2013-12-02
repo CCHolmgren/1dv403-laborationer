@@ -50,11 +50,14 @@ var MessageBoard = {
                     IDindex = index;
                 }
             });
+
         timebutton.innerHTML = "Tid";
         timebutton.style.float="right";
+
         timebutton.addEventListener("click", function(e){
             alert(e.target.parentNode.dataset.time);
         });
+        
         removeButton.innerHTML = "Ta bort";
         removeButton.style.float = "right";
         removeButton.addEventListener("click", this.removeMessageDOM);
@@ -96,7 +99,7 @@ var MessageBoard = {
                 }).forEach(function(element,index,array){
                     if(element == id) indexID = index;
                 });
-                
+
 	    	MessageBoard.messages.splice(indexID,1);
 	    	MessageBoard.updateCount();
 		}

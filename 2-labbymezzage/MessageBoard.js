@@ -43,14 +43,17 @@ var MessageBoard = {
         	ids = this.messages.map(function (message) {
             	return message.id;
         	}),
-        	text = document.createTextNode(this.messages[IDindex].getHTMLText()),
-        	date = document.createTextNode(this.messages[IDindex].getDateText());
+        	text = document.createTextNode(this.messages[IDindex].getHTMLText());
+
 
         ids.forEach(function (element, index, array) {
                 if (element == messageID) {
                     IDindex = index;
                 }
             });
+        
+        var date = document.createTextNode(this.messages[IDindex].getDateText());
+
 
         timebutton.innerHTML = "Tid";
         timebutton.style.float="right";
@@ -122,7 +125,7 @@ var MessageBoard = {
 		this.messages[IDindex].removed=true;
         this.messages.splice(IDindex,1);
         this.updateCount();
-    }
+    },
 }
 
 Element.prototype.remove = function() {

@@ -39,6 +39,7 @@ Message.prototype.getDateText = function() {
 	var min = date.getMinutes();
 	var sec = date.getSeconds();
 	min = min + "";
+	sec += "";
 
 	if (min.length == 1){
 	   min = "0" + min;

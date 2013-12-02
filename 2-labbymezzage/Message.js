@@ -38,7 +38,7 @@ Message.prototype.getDateText = function() {
 	var hour = date.getHours();
 	var min = date.getMinutes();
 	var sec = date.getSeconds();
-	min = min + "";
+	min += "";
 	sec += "";
 
 	if (min.length == 1){

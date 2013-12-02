@@ -21,10 +21,11 @@ var MessageBoard = {
     },
 
     renderMessages: function () {
+        throw new Error("This function is not working as it should, so you should not be using it at all.");
         document.getElementById("thebestdiv").innerHTML = "";
 
-        this.messages.forEach(function (message) {
-            console.log(message);
+        MessageBoard.messages.forEach(function (message) {
+            console.log(message.getText());
             MessageBoard.renderMessage(message.id);
         });
     },
@@ -57,7 +58,7 @@ var MessageBoard = {
         timebutton.addEventListener("click", function(e){
             alert(e.target.parentNode.dataset.time);
         });
-        
+
         removeButton.innerHTML = "Ta bort";
         removeButton.style.float = "right";
         removeButton.addEventListener("click", this.removeMessageDOM);

@@ -30,9 +30,11 @@ main {
 #thebestdiv {
 	width: 100%;
 }
+
 .overflowfix {
 	overflow:auto;
 }
+
 .message {
 	margin-top:2px;
 	border:1px solid rgba(50,0,0,0.3);
@@ -55,16 +57,16 @@ main {
 	clear:both;
 	float:right;
 }
-.count {
-	float:right;
-}
+
 #counter {
 	margin-right:5px;
 	/*float:right;*/
 }
+
 .right {
 	float:right;
 }
+
 #sendbutton {
 	float:right;
 }

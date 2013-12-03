@@ -1,0 +1,74 @@
+body {
+	height:100%;
+	min-height:700px;
+	background-color: rgba(100,25,25,0.5);
+	background-repeat: no-repeat;
+}
+
+header {
+	border-radius: 8px 8px;
+	padding:5px 10px;
+	overflow: overlay;
+	background-color: #fff;
+	width:75%;
+	max-width:500px;
+	margin:5px auto;
+	text-align: center;
+	font-size: 4.5em;
+}
+
+main {
+	border-radius: 8px 8px;
+	padding:5px 10px;
+	overflow: overlay;
+	background-color: #fff;
+	width:75%;
+	max-width:500px;
+	margin:0 auto;
+}
+
+#thebestdiv {
+	width: 100%;
+}
+.inherit {
+	overflow:auto;
+}
+.message {
+	margin-top:2px;
+	border:1px solid rgba(50,0,0,0.3);
+	padding-top:5px;
+	overflow: auto;
+}
+
+.message p {
+	margin:5px 5px;
+}
+
+.message p:first-child {
+	float:left;
+	width: 95%;
+	overflow-wrap:break-word;
+}
+
+.datetext {
+	font-size:12px;
+	clear:both;
+	float:right;
+}
+.count {
+	float:right;
+}
+#counter {
+	margin-right:5px;
+	/*float:right;*/
+}
+
+#sendbutton {
+	float:right;
+}
+
+textarea {
+	float:left;
+	width:98%;
+	resize:vertical;
+}

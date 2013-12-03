@@ -30,7 +30,7 @@ main {
 #thebestdiv {
 	width: 100%;
 }
-.inherit {
+.overflowfix {
 	overflow:auto;
 }
 .message {
@@ -62,7 +62,9 @@ main {
 	margin-right:5px;
 	/*float:right;*/
 }
-
+.right {
+	float:right;
+}
 #sendbutton {
 	float:right;
 }

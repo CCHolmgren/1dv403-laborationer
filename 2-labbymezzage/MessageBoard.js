@@ -56,14 +56,14 @@ var MessageBoard = {
 
 
         timebutton.innerHTML = "Tid";
-        timebutton.setAttribute("style", "float:right;");
+        timebutton.className = "count";
 
         timebutton.addEventListener("click", function(e){
             alert(e.target.parentNode.dataset.time);
         });
 
         removeButton.innerHTML = "Ta bort";
-        removeButton.setAttribute("style", "float:right;");
+        removeButton.className = "count";
         removeButton.addEventListener("click", this.removeMessageDOM);
         //p.addEventListener("click", function(e){
         //	e.target.parentNode.remove();

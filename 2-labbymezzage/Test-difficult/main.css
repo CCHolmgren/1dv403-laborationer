@@ -11,7 +11,7 @@ body {
 header {
 	border-radius: 8px 8px;
 	padding:5px 10px;
-	overflow: overlay;
+	overflow: auto;
 	background-color: #fff;
 	width:75%;
 	max-width:500px;
@@ -24,7 +24,7 @@ header {
 main {
 	border-radius: 8px 8px;
 	padding:5px 10px;
-	overflow: overlay;
+	overflow: auto;
 	background-color: #fff;
 	width:75%;
 	margin:0 auto;
@@ -74,15 +74,7 @@ main {
 	float:right;
 }
 
-#counter {
-	margin-right:5px;
-}
-
 .right {
-	float:right;
-}
-
-#sendbutton {
 	float:right;
 }
 

@@ -19,16 +19,15 @@ var MessageBoard = {
     	div.innerHTML = "";
     	div.appendChild(document.createTextNode(this.remaining()));
     },
+    // renderMessages: function () {
+    //     throw new Error("This function is not working as it should, so you should not be using it at all.");
+    //     document.getElementById("thebestdiv").innerHTML = "";
 
-    renderMessages: function () {
-        throw new Error("This function is not working as it should, so you should not be using it at all.");
-        document.getElementById("thebestdiv").innerHTML = "";
-
-        MessageBoard.messages.forEach(function (message) {
-            console.log(message.getText());
-            MessageBoard.renderMessage(message.id);
-        });
-    },
+    //     MessageBoard.messages.forEach(function (message) {
+    //         console.log(message.getText());
+    //         MessageBoard.renderMessage(message.id);
+    //     });
+    // },
 
     renderMessage: function (messageID) {
         var messageArea = document.getElementById("thebestdiv"),
@@ -42,8 +41,8 @@ var MessageBoard = {
         	IDindex = 0,
         	ids = this.messages.map(function (message) {
             	return message.id;
-        	}),
-        	text = document.createTextNode(this.messages[IDindex].getHTMLText());
+        	});
+        	//text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
 
         ids.forEach(function (element, index, array) {
@@ -53,7 +52,6 @@ var MessageBoard = {
             });
         
         var date = document.createTextNode(this.messages[IDindex].getDateText());
-
 
         timebutton.innerHTML = "Tid";
         timebutton.className = "right";
@@ -65,24 +63,16 @@ var MessageBoard = {
         removeButton.innerHTML = "Ta bort";
         removeButton.className = "right";
         removeButton.addEventListener("click", this.removeMessageDOM);
-        //p.addEventListener("click", function(e){
-        //	e.target.parentNode.remove();
-        //});
-        //dateP.addEventListener("click", function(e){
-        //	e.target.parentNode.remove();
-        //});
+
         div.setAttribute("data-id", this.messages[IDindex].id);
         div.setAttribute("data-time",this.messages[IDindex].getDate());
-        //p.addEventListener("click", function () {
-        //	MessageBoard.removeMessage(IDindex);
-        //});
-		//div.addEventListener("click",this.removeMessageDOM);
+
 		div.className = "message";
 
 		time.appendChild(date);
         dateP.appendChild(time);
         dateP.className = "datetext";
-        //p.appendChild(text);
+
         p.innerHTML = this.messages[IDindex].getHTMLText();
         div.appendChild(p);
         div.appendChild(removeButton);

@@ -30,7 +30,7 @@ Message.prototype.toString = function() {
 }
 
 Message.prototype.getHTMLText = function () {
-	return this.getText().replace(/[\n\r]/g, "<br />");
+	return this.getText().escapelHTML().replace(/[\n\r]/g, "<br />");
 }
 
 Message.prototype.getDateText = function() {
@@ -49,4 +49,14 @@ Message.prototype.getDateText = function() {
 	}
 
 	return hour + ":" + min + ":" + sec;
+}
+
+String.prototype.escapelHTML = function(){
+    return String(this)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;")
+        .replace(/\//g, "&#x2F;")
 }

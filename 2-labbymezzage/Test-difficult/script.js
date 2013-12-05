@@ -3,7 +3,7 @@
 window.onload = function(){
 	new MessageBoard("div1");
 	new MessageBoard("div2");
-
+	new MessageBoard("div3");
 	// var button = document.querySelector("#div1 button");
 	// console.log(button);
 	// var textarea = document.querySelector("#div1 textarea");

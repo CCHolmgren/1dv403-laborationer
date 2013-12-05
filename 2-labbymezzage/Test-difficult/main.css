@@ -40,7 +40,10 @@ main {
 	float:left;
 }
 #div2 {
-	float:right;
+	float:left;
+}
+#div3 {
+	float:left;
 }
 .overflowfix {
 	width:30%;

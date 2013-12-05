@@ -1,10 +1,14 @@
 "use strict";
 
 function MessageBoard(div) {
+    console.log("Div: "+div);
     var bestdiv = document.createElement("div");
     var messages = [];
     var selectedDiv = document.getElementById(div);
-    selectedDiv.insertBefore(bestdiv,selectedDiv.firstChild);
+    console.log("selectedDiv: "+selectedDiv);
+    console.log("getElementById: "+document.getElementById(div));
+    console.log("Selecting div3: "+document.getElementById("div3"));
+    selectedDiv.appendChild(bestdiv);
 
     console.log(selectedDiv);
 

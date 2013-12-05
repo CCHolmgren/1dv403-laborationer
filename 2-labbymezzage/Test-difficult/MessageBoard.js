@@ -39,7 +39,8 @@ function MessageBoard(div) {
     this.add = function (text) {
         messages.push(new Message(textarea.value, new Date()));
         this.renderMessage(messages[messages.length - 1].id);
-    }
+    };
+    
     this.renderMessage = function (messageID) {
         var p = document.createElement("p"),
             dateP = document.createElement("p"),
@@ -51,7 +52,6 @@ function MessageBoard(div) {
             ids = messages.map(function (message) {
                 return message.id;
             });
-        //text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
 
         ids.forEach(function (element, index, array) {
@@ -86,10 +86,11 @@ function MessageBoard(div) {
         div.appendChild(timebutton);
         div.appendChild(dateP);
         bestdiv.appendChild(div);
-    }
+    };
+    
     this.removeMessageDOM = function (e) {
         if (window.confirm("Are you sure you want to remove this message?")) {
-            console.log(e)
+            console.log(e);
             e.target.parentNode.remove();
             var indexID,
                 id = e.target.dataset.id,
@@ -101,12 +102,12 @@ function MessageBoard(div) {
             messages.splice(indexID, 1);
             that.updateCount();
         }
-    }
+    };
 
     this.updateCount = function () {
         span.innerHTML = "";
         span.appendChild(document.createTextNode(this.remaining()));
-    }
+    };
 
     this.remaining = function () {
         var count = 0;
@@ -114,16 +115,17 @@ function MessageBoard(div) {
             if (!message.removed) count += 1;
         });
         return count;
-    }
+    };
 }
 
 Element.prototype.remove = function () {
     this.parentElement.removeChild(this);
-}
+};
+
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
     for (var i = 0, len = this.length; i < len; i++) {
         if (this[i] && this[i].parentElement) {
             this[i].parentElement.removeChild(this[i]);
         }
     }
-}
+};

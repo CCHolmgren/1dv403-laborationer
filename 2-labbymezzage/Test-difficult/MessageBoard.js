@@ -1,26 +1,14 @@
 "use strict";
 
 function MessageBoard(div) {
-    console.log("Div: "+div);
-    var bestdiv = document.createElement("div");
-    var messages = [];
-    var selectedDiv = document.getElementById(div);
-    console.log("selectedDiv: "+selectedDiv);
-    console.log("getElementById: "+document.getElementById(div));
-    console.log("Selecting div3: "+document.getElementById("div3"));
-    selectedDiv.appendChild(bestdiv);
-
-    console.log(selectedDiv);
-
-    var that = this;
-    var button = document.createElement("button");
-    var textarea = document.createElement("textarea");
-    var counter = document.createElement("div");
-    var span = document.createElement("span");
-
-    span.appendChild(document.createTextNode("0"));
-    counter.innerHTML = "Antal meddelanden: ";
-    counter.appendChild(span);
+    var bestdiv = document.createElement("div"),
+        messages = [],
+        selectedDiv = document.getElementById(div),
+        that = this,
+        button = document.createElement("button"),
+        textarea = document.createElement("textarea"),
+        counter = document.createElement("div"),
+        span = document.createElement("span");
 
     textarea.cols = 30;
     textarea.rows=6;
@@ -39,6 +27,11 @@ function MessageBoard(div) {
         textarea.value = "";
         that.updateCount();
     });
+    selectedDiv.appendChild(bestdiv);
+    span.appendChild(document.createTextNode("0"));
+    counter.innerHTML = "Antal meddelanden: ";
+    counter.appendChild(span);
+
     selectedDiv.appendChild(counter);
     selectedDiv.appendChild(textarea);
     selectedDiv.appendChild(button);

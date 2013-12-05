@@ -1,17 +1,26 @@
 "use strict";
 
 function MessageBoard(div) {
-    this.messages = [];
-    this.selectedDiv = document.getElementById(div);
-    console.log(this.selectedDiv);
-    return this;
-}
-
-MessageBoard.prototype.add = function(text){
-        this.messages.push(new Message(text, new Date()));
-        console.log(text);
-        console.log(this.messages);
+    var messages = [];
+    var selectedDiv = document.getElementById(div);
+    console.log(selectedDiv);
+    var that = this;
+    var button = document.createElement("button");
+    var textarea = document.createElement("textarea");
+    textarea.cols = 30;
+    textarea.rows=6;
+    button.innerHTML = "Skriv";
+    button.addEventListener("click", function(e){
+        e.preventDefault();
+        that.add();
+        textarea.value = "";
+    });
+    selectedDiv.appendChild(textarea);
+    selectedDiv.appendChild(button);
+    this.add = function(text){
+        messages.push(new Message(textarea.value, new Date()));
     }
+}
 // var MessageBoard = {
 //     messages: [],
 

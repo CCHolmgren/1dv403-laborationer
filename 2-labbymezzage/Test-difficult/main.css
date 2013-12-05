@@ -46,7 +46,7 @@ main {
 	float:left;
 }
 .overflowfix {
-	width:30%;
+	width:33.333%;
 	overflow:auto;
 }
 

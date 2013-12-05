@@ -38,7 +38,6 @@ function MessageBoard(div) {
 
     this.add = function(text){
         messages.push(new Message(textarea.value, new Date()));
-        console.log(messages);
         this.renderMessage(messages[messages.length-1].id);
     }
     this.renderMessage = function (messageID) {

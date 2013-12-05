@@ -11,9 +11,9 @@ function MessageBoard(div) {
         span = document.createElement("span");
 
     textarea.cols = 30;
-    textarea.rows=6;
-    textarea.addEventListener("keydown", function(e){
-        if(e.keyCode == 13 && !e.shiftKey){
+    textarea.rows = 6;
+    textarea.addEventListener("keydown", function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
             that.add();
             textarea.value = "";
@@ -21,7 +21,7 @@ function MessageBoard(div) {
         }
     });
     button.innerHTML = "Skriv";
-    button.addEventListener("click", function(e){
+    button.addEventListener("click", function (e) {
         e.preventDefault();
         that.add();
         textarea.value = "";
@@ -36,9 +36,9 @@ function MessageBoard(div) {
     selectedDiv.appendChild(textarea);
     selectedDiv.appendChild(button);
 
-    this.add = function(text){
+    this.add = function (text) {
         messages.push(new Message(textarea.value, new Date()));
-        this.renderMessage(messages[messages.length-1].id);
+        this.renderMessage(messages[messages.length - 1].id);
     }
     this.renderMessage = function (messageID) {
         var p = document.createElement("p"),
@@ -51,19 +51,19 @@ function MessageBoard(div) {
             ids = messages.map(function (message) {
                 return message.id;
             });
-            //text = document.createTextNode(this.messages[IDindex].getHTMLText());
+        //text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
 
         ids.forEach(function (element, index, array) {
-                if (element == messageID) {
-                    IDindex = index;
-                }
-            });
-            var date = document.createTextNode(messages[IDindex].getDateText());
+            if (element == messageID) {
+                IDindex = index;
+            }
+        });
+        var date = document.createTextNode(messages[IDindex].getDateText());
 
         timebutton.innerHTML = "Tid";
         timebutton.className = "right";
-        timebutton.addEventListener("click", function(e){
+        timebutton.addEventListener("click", function (e) {
             alert(e.target.parentNode.dataset.time);
         });
 
@@ -72,7 +72,7 @@ function MessageBoard(div) {
         removeButton.addEventListener("click", this.removeMessageDOM);
 
         div.setAttribute("data-id", messages[IDindex].id);
-        div.setAttribute("data-time",messages[IDindex].getDate());
+        div.setAttribute("data-time", messages[IDindex].getDate());
 
         div.className = "message";
 
@@ -88,41 +88,41 @@ function MessageBoard(div) {
         bestdiv.appendChild(div);
     }
     this.removeMessageDOM = function (e) {
-        if(window.confirm("Are you sure you want to remove this message?")){
+        if (window.confirm("Are you sure you want to remove this message?")) {
             console.log(e)
             e.target.parentNode.remove();
             var indexID,
                 id = e.target.dataset.id,
-                ids = messages.map(function(message){
+                ids = messages.map(function (message) {
                     return message.id;
-                }).forEach(function(element,index,array){
-                    if(element == id) indexID = index;
+                }).forEach(function (element, index, array) {
+                    if (element == id) indexID = index;
                 });
-            messages.splice(indexID,1);
+            messages.splice(indexID, 1);
             that.updateCount();
         }
     }
-    
-    this.updateCount = function(){
+
+    this.updateCount = function () {
         span.innerHTML = "";
         span.appendChild(document.createTextNode(this.remaining()));
     }
 
-    this.remaining = function(){
+    this.remaining = function () {
         var count = 0;
-        messages.map(function(message){
-            if(!message.removed) count += 1;
+        messages.map(function (message) {
+            if (!message.removed) count += 1;
         });
         return count;
     }
 }
 
-Element.prototype.remove = function() {
+Element.prototype.remove = function () {
     this.parentElement.removeChild(this);
 }
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = 0, len = this.length; i < len; i++) {
-        if(this[i] && this[i].parentElement) {
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = 0, len = this.length; i < len; i++) {
+        if (this[i] && this[i].parentElement) {
             this[i].parentElement.removeChild(this[i]);
         }
     }

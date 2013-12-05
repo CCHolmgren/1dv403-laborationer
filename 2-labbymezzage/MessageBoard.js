@@ -8,16 +8,16 @@ var MessageBoard = {
         this.messages.push(mess);
     },
     remaining:function(){
-    	var count = 0;
-    	this.messages.map(function(message){
-    		if(!message.removed) count += 1;
-    	});
-    	return count;
+        var count = 0;
+        this.messages.map(function(message){
+            if(!message.removed) count += 1;
+        });
+        return count;
     },
     updateCount:function(){
-    	var div = document.getElementById("counter");
-    	div.innerHTML = "";
-    	div.appendChild(document.createTextNode(this.remaining()));
+        var div = document.getElementById("counter");
+        div.innerHTML = "";
+        div.appendChild(document.createTextNode(this.remaining()));
     },
     // renderMessages: function () {
     //     throw new Error("This function is not working as it should, so you should not be using it at all.");
@@ -31,17 +31,17 @@ var MessageBoard = {
 
     renderMessage: function (messageID) {
         var messageArea = document.getElementById("thebestdiv"),
-        	p = document.createElement("p"),
-        	dateP = document.createElement("p"),
-        	div = document.createElement("div"),
-        	time = document.createElement("time"),
-        	removeButton = document.createElement("button"),
-        	timebutton = document.createElement("button"),
-        	that = this,
-        	IDindex = 0,
-        	ids = this.messages.map(function (message) {
-            	return message.id;
-        	});
+            p = document.createElement("p"),
+            dateP = document.createElement("p"),
+            div = document.createElement("div"),
+            time = document.createElement("time"),
+            removeButton = document.createElement("button"),
+            timebutton = document.createElement("button"),
+            that = this,
+            IDindex = 0,
+            ids = this.messages.map(function (message) {
+                return message.id;
+            });
         	//text = document.createTextNode(this.messages[IDindex].getHTMLText());
 
 
@@ -84,7 +84,7 @@ var MessageBoard = {
 
     removeMessageDOM: function (e) {
     	if(window.confirm("Are you sure you want to remove this message?")){
-	    	console.log(e)
+	    	console.log(e);
 	    	e.target.parentNode.remove();
 	    	var indexID,
                 id = e.target.dataset.id,
@@ -98,33 +98,15 @@ var MessageBoard = {
 	    	MessageBoard.updateCount();
 		}
     },
-
-    removeMessage: function(){
-     //    document.querySelector('p[data-id="'+messageID+'"]').remove();
-     //    document.querySelector('p[data-id="'+IDindex+'"]').remove();
-
-        // var IDindex = 0;
-        // var ids = MessageBoard.messages.map(function (message) {
-        //     return message.id;
-        // });
-        // ids.forEach(function (element, index, array) {
-        //     if (element == messageID) {
-        //         IDindex = index;
-        //     }
-        // });
-		this.messages[IDindex].removed=true;
-        this.messages.splice(IDindex,1);
-        this.updateCount();
-    },
-}
+};
 
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
-}
+};
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     for(var i = 0, len = this.length; i < len; i++) {
         if(this[i] && this[i].parentElement) {
             this[i].parentElement.removeChild(this[i]);
         }
     }
-}
+};

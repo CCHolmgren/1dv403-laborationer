@@ -59,12 +59,10 @@ function MessageBoard(div) {
                     IDindex = index;
                 }
             });
-        
-        var date = document.createTextNode(messages[IDindex].getDateText());
+            var date = document.createTextNode(messages[IDindex].getDateText());
 
         timebutton.innerHTML = "Tid";
         timebutton.className = "right";
-
         timebutton.addEventListener("click", function(e){
             alert(e.target.parentNode.dataset.time);
         });

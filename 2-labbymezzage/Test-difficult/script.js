@@ -1,25 +1,33 @@
 "use strict";
 
 window.onload = function(){
-	var button = document.querySelector("#sendbutton");
-	var textarea = document.querySelector("#inputarea");
+	function addMessage(){
+		messageBoard.add(textarea.value);
+	}
+
+	var button = document.querySelector("#div1 button");
+	console.log(button);
+	var textarea = document.querySelector("#div1 textarea");
+	console.log(textarea);
+	var messageBoard = new MessageBoard("div1");
 
 	button.addEventListener("click", function(e){
 		e.preventDefault();
 		addMessage();
+		textarea.value = "";
 	});
 
 	textarea.addEventListener("keydown", function(e){
 		if(e.keyCode == 13 && !e.shiftKey){
 			e.preventDefault();
 			addMessage();
+		textarea.value = "";
 		}
 	});
 }
 
-function addMessage(){
-	var textarea = document.querySelector("#inputarea");
-	MessageBoard.add(textarea.value);
-	textarea.value = "";
-	MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1].id);
-}
+
+
+	// messageBoard.add(textarea.value);
+	// textarea.value = "";
+	// MessageBoard.renderMessage(MessageBoard.messages[MessageBoard.messages.length-1].id);

@@ -3,12 +3,22 @@
 function MessageBoard(div) {
     var messages = [];
     var selectedDiv = document.getElementById(div);
+
     console.log(selectedDiv);
+
     var that = this;
     var button = document.createElement("button");
     var textarea = document.createElement("textarea");
+
     textarea.cols = 30;
     textarea.rows=6;
+    textarea.addEventListener("keydown", function(e){
+        if(e.keyCode == 13 && !e.shiftKey){
+            e.preventDefault();
+            that.add();
+        textarea.value = "";
+        }
+    });
     button.innerHTML = "Skriv";
     button.addEventListener("click", function(e){
         e.preventDefault();
@@ -17,6 +27,7 @@ function MessageBoard(div) {
     });
     selectedDiv.appendChild(textarea);
     selectedDiv.appendChild(button);
+
     this.add = function(text){
         messages.push(new Message(textarea.value, new Date()));
     }

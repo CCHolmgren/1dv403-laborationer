@@ -43,6 +43,7 @@ main {
 	float:right;
 }
 .overflowfix {
+	width:30%;
 	overflow:auto;
 }
 

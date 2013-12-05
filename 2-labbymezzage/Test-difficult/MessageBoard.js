@@ -1,14 +1,21 @@
 "use strict";
 
 function MessageBoard(div) {
+    var bestdiv = document.createElement("div");
     var messages = [];
     var selectedDiv = document.getElementById(div);
+    selectedDiv.insertBefore(bestdiv,selectedDiv.firstChild);
 
     console.log(selectedDiv);
 
     var that = this;
     var button = document.createElement("button");
     var textarea = document.createElement("textarea");
+    var counter = document.createElement("div");
+    var span = document.createElement("span");
+    span.innerHTML = "0";
+    counter.innerHTML = "Antal meddelanden: ";
+    counter.appendChild(span);
 
     textarea.cols = 30;
     textarea.rows=6;
@@ -25,11 +32,88 @@ function MessageBoard(div) {
         that.add();
         textarea.value = "";
     });
+    selectedDiv.appendChild(counter);
     selectedDiv.appendChild(textarea);
     selectedDiv.appendChild(button);
 
     this.add = function(text){
         messages.push(new Message(textarea.value, new Date()));
+        console.log(messages);
+        this.renderMessage(messages[messages.length-1].id);
+    }
+    this.renderMessage = function (messageID) {
+        var p = document.createElement("p"),
+            dateP = document.createElement("p"),
+            div = document.createElement("div"),
+            time = document.createElement("time"),
+            removeButton = document.createElement("button"),
+            timebutton = document.createElement("button"),
+            IDindex = 0,
+            ids = messages.map(function (message) {
+                return message.id;
+            });
+            //text = document.createTextNode(this.messages[IDindex].getHTMLText());
+
+
+        ids.forEach(function (element, index, array) {
+                if (element == messageID) {
+                    IDindex = index;
+                }
+            });
+        
+        var date = document.createTextNode(messages[IDindex].getDateText());
+
+        timebutton.innerHTML = "Tid";
+        timebutton.className = "right";
+
+        timebutton.addEventListener("click", function(e){
+            alert(e.target.parentNode.dataset.time);
+        });
+
+        removeButton.innerHTML = "Ta bort";
+        removeButton.className = "right";
+        removeButton.addEventListener("click", this.removeMessageDOM);
+
+        div.setAttribute("data-id", messages[IDindex].id);
+        div.setAttribute("data-time",messages[IDindex].getDate());
+
+        div.className = "message";
+
+        time.appendChild(date);
+        dateP.appendChild(time);
+        dateP.className = "datetext";
+
+        p.innerHTML = messages[IDindex].getHTMLText();
+        div.appendChild(p);
+        div.appendChild(removeButton);
+        div.appendChild(timebutton);
+        div.appendChild(dateP);
+        bestdiv.appendChild(div);
+    }
+    this.removeMessageDOM = function (e) {
+        if(window.confirm("Are you sure you want to remove this message?")){
+            console.log(e)
+            e.target.parentNode.remove();
+            var indexID,
+                id = e.target.dataset.id,
+                ids = messages.map(function(message){
+                    return message.id;
+                }).forEach(function(element,index,array){
+                    if(element == id) indexID = index;
+                });
+            messages.splice(indexID,1);
+            that.updateCount();
+        }
+    }
+    this.updateCount = function(){
+        counter.appendChild(document.createTextNode(this.remaining()));
+    }
+    this.remaining = function(){
+        var count = 0;
+        messages.map(function(message){
+            if(!message.removed) count += 1;
+        });
+        return count;
     }
 }
 // var MessageBoard = {

@@ -16,7 +16,13 @@ window.onload = function(){
 	// 	textarea.value = "";
 	// });
 
-	//
+	// textarea.addEventListener("keydown", function(e){
+	// 	if(e.keyCode == 13 && !e.shiftKey){
+	// 		e.preventDefault();
+	// 		addMessage();
+	// 	textarea.value = "";
+	// 	}
+	// });
 }
 
 

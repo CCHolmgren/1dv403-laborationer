@@ -7,19 +7,19 @@ function Message(message, date){
 
 	this.getText = function(){
 		return message;
-	}
+	};
 
 	this.setText = function(_text){
 		message = _text;
-	}
+	};
 
 	this.getDate = function() {
 		return date;
-	}
+	};
 
 	this.setDate = function(_date) {
 		date = _date;
-	}
+	};
 
 	this.setText(message);
 	this.setDate(date);
@@ -27,11 +27,11 @@ function Message(message, date){
 
 Message.prototype.toString = function() {
 	return this.getText() + " (" + this.getDate()+")";
-}
+};
 
 Message.prototype.getHTMLText = function () {
 	return this.getText().escapelHTML().replace(/[\n\r]/g, "<br />");
-}
+};
 
 Message.prototype.getDateText = function() {
 	var date = this.getDate();
@@ -42,14 +42,14 @@ Message.prototype.getDateText = function() {
 	sec += "";
 
 	if (min.length == 1){
-	   min = "0" + min;
+        min = "0" + min;
 	}
 	if(sec.length == 1){
 		sec = "0"+sec;
 	}
 
 	return hour + ":" + min + ":" + sec;
-}
+};
 
 String.prototype.escapelHTML = function(){
     return String(this)
@@ -58,5 +58,5 @@ String.prototype.escapelHTML = function(){
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;")
-        .replace(/\//g, "&#x2F;")
-}
+        .replace(/\//g, "&#x2F;");
+};

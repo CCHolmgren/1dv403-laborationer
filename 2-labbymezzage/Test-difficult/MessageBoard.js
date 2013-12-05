@@ -13,7 +13,8 @@ function MessageBoard(div) {
     var textarea = document.createElement("textarea");
     var counter = document.createElement("div");
     var span = document.createElement("span");
-    span.innerHTML = "0";
+
+    span.appendChild(document.createTextNode("0"));
     counter.innerHTML = "Antal meddelanden: ";
     counter.appendChild(span);
 
@@ -23,7 +24,8 @@ function MessageBoard(div) {
         if(e.keyCode == 13 && !e.shiftKey){
             e.preventDefault();
             that.add();
-        textarea.value = "";
+            textarea.value = "";
+            that.updateCount();
         }
     });
     button.innerHTML = "Skriv";
@@ -31,6 +33,7 @@ function MessageBoard(div) {
         e.preventDefault();
         that.add();
         textarea.value = "";
+        that.updateCount();
     });
     selectedDiv.appendChild(counter);
     selectedDiv.appendChild(textarea);
@@ -106,7 +109,8 @@ function MessageBoard(div) {
         }
     }
     this.updateCount = function(){
-        counter.appendChild(document.createTextNode(this.remaining()));
+        span.innerHTML = "";
+        span.appendChild(document.createTextNode(this.remaining()));
     }
     this.remaining = function(){
         var count = 0;

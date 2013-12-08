@@ -20,6 +20,7 @@ function MessageBoard(div) {
             that.updateCount();
         }
     });
+    
     button.innerHTML = "Skriv";
     button.addEventListener("click", function (e) {
         e.preventDefault();
@@ -27,6 +28,7 @@ function MessageBoard(div) {
         textarea.value = "";
         that.updateCount();
     });
+    
     selectedDiv.appendChild(bestdiv);
     span.appendChild(document.createTextNode("0"));
     counter.innerHTML = "Antal meddelanden: ";
@@ -59,6 +61,7 @@ function MessageBoard(div) {
                 IDindex = index;
             }
         });
+        
         var date = document.createTextNode(messages[IDindex].getDateText());
 
         timebutton.innerHTML = "Tid";

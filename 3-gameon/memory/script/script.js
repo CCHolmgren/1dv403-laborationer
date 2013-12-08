@@ -1,5 +1,6 @@
 "use strict";
 
 window.onload = function(){
-    Memory.init();
+    var mem = new Memory();
+    mem.print();
 };

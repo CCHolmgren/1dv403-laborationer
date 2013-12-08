@@ -8,6 +8,9 @@ function Memory(){
         this.memory = RandomGenerator.getPictureArray(this.rows, this.cols);
     };
     this.print = function(){
-        console.log(this.memory);
+        var div = document.createElement("div");
+        var text = document.createTextNode(this.memory);
+        div.appendChild(text);
+        document.write("yes");
     };
 }

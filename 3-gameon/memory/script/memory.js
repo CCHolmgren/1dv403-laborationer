@@ -1,10 +1,10 @@
 "use strict";
 
-function Memory(div, rows, cols) {
+function Memory(div, inputRows, inputCols) {
     var memory = [];
-    var rows = rows;
-    var cols = cols;
-    var div = div;
+    var rows = inputRows;
+    var cols = inputCols;
+    var selecteddiv = document.getElementById(div);
     this.init = function () {
         memory = RandomGenerator.getPictureArray(rows, cols);
     };
@@ -49,7 +49,7 @@ function Memory(div, rows, cols) {
             });
             image.setAttribute("src", "pics/" + 0 + ".png");
             div.appendChild(a);
-            document.getElementById("bestdiv").appendChild(div);
+            selecteddiv.appendChild(div);
         });
     };
     this.turnImg = function (e) {

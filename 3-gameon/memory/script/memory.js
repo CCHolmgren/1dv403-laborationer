@@ -21,7 +21,9 @@ function Memory() {
             a.setAttribute("href", "#");
             a.setAttribute("data-src", "pics/"+element+".png");
             a.addEventListener("click", function(e){
-                lastClickedImage = e.target;
+                if(imagesFlipped == 0){
+                    lastClickedImage = e.target;
+                }
                 if(imagesFlipped < 2){
                     e.target.parentNode.childNodes[0].setAttribute("src", e.target.parentNode.dataset.src);
                     imagesFlipped += 1;

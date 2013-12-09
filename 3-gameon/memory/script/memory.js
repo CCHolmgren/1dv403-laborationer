@@ -1,9 +1,11 @@
 "use strict";
 
-function Memory() {
+function Memory(div, rows, cols) {
     this.memory = [];
-    this.rows = 4;
-    this.cols = 4;
+    this.rows = rows;
+    this.cols = cols;
+    this.div = document.getElementById("div");
+    
     this.init = function () {
         this.memory = RandomGenerator.getPictureArray(this.rows, this.cols);
     };
@@ -50,8 +52,5 @@ function Memory() {
             div.appendChild(a);
             document.getElementById("bestdiv").appendChild(div);
         });
-    };
-    this.turnImg = function (e) {
-        
     };
 }

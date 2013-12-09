@@ -11,38 +11,46 @@ function Memory() {
         var imagesFlipped = 0;
         var clickedImage = "";
         var lastClickedImage;
-        this.memory.forEach(function(element){
+        this.memory.forEach(function (element) {
             var div = document.createElement("div");
             var a = document.createElement("a");
             var image = document.createElement("img");
             var that = this;
-            
+
             a.appendChild(image);
             a.setAttribute("href", "#");
-            a.setAttribute("data-src", "pics/"+element+".png");
-            a.addEventListener("click", function(e){
-                if(imagesFlipped == 0){
+            image.setAttribute("data-src", "pics/" + element + ".png");
+            a.addEventListener("click", function (e) {
+                var images = document.querySelectorAll("a img");
+                if (imagesFlipped === 0) {
                     lastClickedImage = e.target;
-                }
-                if(imagesFlipped < 2){
-                    e.target.parentNode.childNodes[0].setAttribute("src", e.target.parentNode.dataset.src);
                     imagesFlipped += 1;
                 }
-                if(imagesFlipped==2)
-                {
+                if (imagesFlipped < 2) {
+                    e.target.setAttribute("src", e.target.dataset.src);
+                    if (lastClickedImage != e.target) {
+                        imagesFlipped += 1;
+                    }
+                }
+                if (imagesFlipped == 2) {
+                    if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
+                        alert("DU vann!");
+                    }
                     imagesFlipped = 0;
-                    setTimeout(function(){
+                    setTimeout(function () {
                         lastClickedImage.setAttribute("src", "pics/0.png");
                         e.target.setAttribute("src", "pics/0.png");
-                    },1000);
+                        images.forEach(function(element){
+                            element.setAttribute("src", "pics/0.png");
+                        });
+                    }, 1000);
                 }
             });
-            
-            image.setAttribute("src", "pics/"+0+".png");
+
+            image.setAttribute("src", "pics/" + 0 + ".png");
             div.appendChild(a);
             document.getElementById("bestdiv").appendChild(div);
         });
     };
-    this.turnImg = function(e){
-    };
+    this.turnImg = function (e) {};
 }

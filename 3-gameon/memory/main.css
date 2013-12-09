@@ -4,7 +4,18 @@ a {
 }
 
 #bestdiv {
-    width:25%;
+    width:50%;
     margin:0 auto;
     overflow:auto;
+}
+
+.images {
+    overflow:auto;
+    margin:0 auto;
+}
+.images img {
+    margin:5px;
+}
+#win {
+    margin:0 auto;
 }

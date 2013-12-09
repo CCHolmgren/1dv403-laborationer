@@ -17,15 +17,16 @@ function Memory(div, inputRows, inputCols) {
         var stopFlipping = false;
         var guesses = 0;
         var won = false;
+        var index = 0;
         for (var i = 0; i < rows; i++) {
             var div = document.createElement("div");
-
+            
             for (var j = 0; j < cols; j++) {
                 var a = document.createElement("a");
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + memory[i*j] + ".png");
+                image.setAttribute("data-src", "pics/" + memory[index++]%8 + ".png");
                 image.setAttribute("src", "pics/0.png");
 
                 a.appendChild(image);
@@ -68,6 +69,7 @@ function Memory(div, inputRows, inputCols) {
                     }
                 });
                 div.appendChild(a);
+                div.className = "images";
             }
             selecteddiv.appendChild(div);
         }

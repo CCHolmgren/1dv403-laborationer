@@ -1,0 +1,11 @@
+
+a {
+    float:left;
+    margin-left:5px;
+}
+
+#bestdiv {
+    width:25%;
+    margin:0 auto;
+    overflow:auto;
+}

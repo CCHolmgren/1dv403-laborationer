@@ -1,19 +1,18 @@
 "use strict";
 
 function Memory(div, rows, cols) {
-    this.memory = [];
-    this.rows = rows;
-    this.cols = cols;
-    this.div = document.getElementById("div");
-    
+    var memory = [];
+    var rows = rows;
+    var cols = cols;
+    var div = div;
     this.init = function () {
-        this.memory = RandomGenerator.getPictureArray(this.rows, this.cols);
+        memory = RandomGenerator.getPictureArray(rows, cols);
     };
     this.start = function () {
         var imagesFlipped = 0;
         var clickedImage = "";
         var lastClickedImage;
-        this.memory.forEach(function (element) {
+        memory.forEach(function (element) {
             var div = document.createElement("div");
             var a = document.createElement("a");
             var image = document.createElement("img");
@@ -52,5 +51,8 @@ function Memory(div, rows, cols) {
             div.appendChild(a);
             document.getElementById("bestdiv").appendChild(div);
         });
+    };
+    this.turnImg = function (e) {
+        
     };
 }

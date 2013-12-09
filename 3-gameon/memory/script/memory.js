@@ -21,7 +21,6 @@ function Memory() {
             a.setAttribute("href", "#");
             image.setAttribute("data-src", "pics/" + element + ".png");
             a.addEventListener("click", function (e) {
-                var images = document.querySelectorAll("a img");
                 if (imagesFlipped === 0) {
                     lastClickedImage = e.target;
                     imagesFlipped += 1;
@@ -38,11 +37,12 @@ function Memory() {
                     }
                     imagesFlipped = 0;
                     setTimeout(function () {
+                        var images = document.querySelectorAll("a img");
                         lastClickedImage.setAttribute("src", "pics/0.png");
                         e.target.setAttribute("src", "pics/0.png");
-                        images.forEach(function(element){
-                            element.setAttribute("src", "pics/0.png");
-                        });
+                        for(var image in images){
+                            image.setAttribute("src", "pics/0.png");
+                        }
                     }, 1000);
                 }
             });
@@ -52,5 +52,7 @@ function Memory() {
             document.getElementById("bestdiv").appendChild(div);
         });
     };
-    this.turnImg = function (e) {};
+    this.turnImg = function (e) {
+        
+    };
 }

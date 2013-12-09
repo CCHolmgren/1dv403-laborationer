@@ -13,6 +13,7 @@ function Memory(div, inputRows, inputCols) {
         var clickedImage = "";
         var lastClickedImage;
         var stopFlipping = false;
+        var guesses = 0;
         memory.forEach(function (element) {
             var div = document.createElement("div");
             var a = document.createElement("a");
@@ -28,17 +29,21 @@ function Memory(div, inputRows, inputCols) {
                 if (imagesFlipped === 0 && !stopFlipping) {
                     lastClickedImage = e.target;
                     imagesFlipped += 1;
+                    guesses += 1;
                 }
                 if (imagesFlipped < 2 && !stopFlipping) {
                     e.target.setAttribute("src", e.target.dataset.src);
                     if (lastClickedImage != e.target) {
                         imagesFlipped += 1;
+                        guesses += 1;
                     }
                 }
                 if (imagesFlipped == 2 && !stopFlipping) {
                     stopFlipping = true;
                     if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
-                        alert("DU vann!");
+                        var win = document.getElementById("win");
+                        var text = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
+                        win.appendChild(text);
                     }
                     setTimeout(function () {
                         lastClickedImage.setAttribute("src", "pics/0.png");

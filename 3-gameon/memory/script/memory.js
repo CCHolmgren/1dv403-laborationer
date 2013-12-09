@@ -40,13 +40,12 @@ function Memory() {
                         var images = document.querySelectorAll("a img");
                         lastClickedImage.setAttribute("src", "pics/0.png");
                         e.target.setAttribute("src", "pics/0.png");
-                        for(var image in images){
-                            image.setAttribute("src", "pics/0.png");
+                        for(var i = 0; i < images.length; i++){
+                            images[i].setAttribute("src", "pics/0.png");
                         }
                     }, 1000);
                 }
             });
-
             image.setAttribute("src", "pics/" + 0 + ".png");
             div.appendChild(a);
             document.getElementById("bestdiv").appendChild(div);

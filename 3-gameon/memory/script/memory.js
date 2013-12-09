@@ -21,7 +21,7 @@ function Memory(div, inputRows, inputCols) {
 
             image.setAttribute("data-src", "pics/" + element + ".png");
             image.setAttribute("src", "pics/" + 0 + ".png");
-            
+
             a.appendChild(image);
             a.setAttribute("href", "#");
             a.addEventListener("click", function (e) {
@@ -48,7 +48,7 @@ function Memory(div, inputRows, inputCols) {
                     }, 1000);
                 }
             });
-            
+
             div.appendChild(a);
             selecteddiv.appendChild(div);
         });

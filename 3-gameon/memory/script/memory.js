@@ -12,6 +12,7 @@ function Memory(div, inputRows, inputCols) {
         var imagesFlipped = 0;
         var clickedImage = "";
         var lastClickedImage;
+        var stopFlipping = false;
         memory.forEach(function (element) {
             var div = document.createElement("div");
             var a = document.createElement("a");
@@ -26,24 +27,26 @@ function Memory(div, inputRows, inputCols) {
                     lastClickedImage = e.target;
                     imagesFlipped += 1;
                 }
-                if (imagesFlipped < 2) {
+                if (imagesFlipped < 2 && !stopFlipping) {
                     e.target.setAttribute("src", e.target.dataset.src);
                     if (lastClickedImage != e.target) {
                         imagesFlipped += 1;
                     }
                 }
                 if (imagesFlipped == 2) {
+                    stopFlipping = true;
                     if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
                         alert("DU vann!");
                     }
-                    imagesFlipped = 0;
                     setTimeout(function () {
                         var images = document.querySelectorAll("a img");
-                        lastClickedImage.setAttribute("src", "pics/0.png");
-                        e.target.setAttribute("src", "pics/0.png");
+                        /*lastClickedImage.setAttribute("src", "pics/0.png");
+                        e.target.setAttribute("src", "pics/0.png");*/
                         for(var i = 0; i < images.length; i++){
                             images[i].setAttribute("src", "pics/0.png");
                         }
+                        stopFlipping = false;
+                        imagesFlipped = 0;
                     }, 1000);
                 }
             });
@@ -51,8 +54,5 @@ function Memory(div, inputRows, inputCols) {
             div.appendChild(a);
             selecteddiv.appendChild(div);
         });
-    };
-    this.turnImg = function (e) {
-        
     };
 }

@@ -2,5 +2,6 @@
 
 window.onload = function(){
     var mem = new Memory();
+    mem.init();
     mem.print();
 };

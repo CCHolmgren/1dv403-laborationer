@@ -21,14 +21,14 @@ function Memory() {
             a.setAttribute("href", "#");
             a.setAttribute("data-src", "pics/"+element+".png");
             a.addEventListener("click", function(e){
-                lastClickedImage = e.target.parentNode;
-                if(clickedImage == e.target.parentNode.dataset.src){
-                    alert("Du vann!");
-                }
+                lastClickedImage = e.target;
                 if(imagesFlipped < 2){
                     e.target.parentNode.childNodes[0].setAttribute("src", e.target.parentNode.dataset.src);
-                    clickedImage = e.target.parentNode.dataset.src;
-                    imagesFlipped+=1;
+                    imagesFlipped += 1;
+                }
+                if(imagesFlipped==2)
+                {
+                    imagesFlipped = 0;
                     setTimeout(function(){
                         lastClickedImage.setAttribute("src", "pics/0.png");
                         e.target.setAttribute("src", "pics/0.png");

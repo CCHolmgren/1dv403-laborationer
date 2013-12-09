@@ -19,11 +19,13 @@ function Memory(div, inputRows, inputCols) {
             var image = document.createElement("img");
             var that = this;
 
+            image.setAttribute("data-src", "pics/" + element + ".png");
+            image.setAttribute("src", "pics/" + 0 + ".png");
+            
             a.appendChild(image);
             a.setAttribute("href", "#");
-            image.setAttribute("data-src", "pics/" + element + ".png");
             a.addEventListener("click", function (e) {
-                if (imagesFlipped === 0) {
+                if (imagesFlipped === 0 && !stopFlipping) {
                     lastClickedImage = e.target;
                     imagesFlipped += 1;
                 }
@@ -33,24 +35,20 @@ function Memory(div, inputRows, inputCols) {
                         imagesFlipped += 1;
                     }
                 }
-                if (imagesFlipped == 2) {
+                if (imagesFlipped == 2 && !stopFlipping) {
                     stopFlipping = true;
                     if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
                         alert("DU vann!");
                     }
                     setTimeout(function () {
-                        var images = document.querySelectorAll("a img");
-                        /*lastClickedImage.setAttribute("src", "pics/0.png");
-                        e.target.setAttribute("src", "pics/0.png");*/
-                        for(var i = 0; i < images.length; i++){
-                            images[i].setAttribute("src", "pics/0.png");
-                        }
+                        lastClickedImage.setAttribute("src", "pics/0.png");
+                        e.target.setAttribute("src", "pics/0.png");
                         stopFlipping = false;
                         imagesFlipped = 0;
                     }, 1000);
                 }
             });
-            image.setAttribute("src", "pics/" + 0 + ".png");
+            
             div.appendChild(a);
             selecteddiv.appendChild(div);
         });

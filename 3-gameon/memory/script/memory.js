@@ -7,7 +7,8 @@ function Memory(div, winDiv, inputRows, inputCols) {
     var numOfImages = 8;
     var winnerDiv = document.getElementById(winDiv);
     var selecteddiv = document.getElementById(div);
-
+    
+    //Init the memory array, which could be done in the start function, really.
     this.init = function () {
         memory = RandomGenerator.getPictureArray(rows, cols);
     };
@@ -21,6 +22,7 @@ function Memory(div, winDiv, inputRows, inputCols) {
         var won = false;
         var index = 0;
 
+        //Since we want rows we got to do it this way with nested for loops
         for (var i = 0; i < rows; i++) {
             var div = document.createElement("div");
 
@@ -28,13 +30,21 @@ function Memory(div, winDiv, inputRows, inputCols) {
                 var a = document.createElement("a");
                 var image = document.createElement("img");
                 var that = this;
-
+                
+                //We use the data-src to hold the src to the image until the image is clicked
                 image.setAttribute("data-src", "pics/" + ((memory[index] % numOfImages) + 1) + ".png");
+                //pics/0.png is the default image
                 image.setAttribute("src", "pics/0.png");
+                //This is to avoid w3c validator to complain
+                image.setAttribute("alt", "");
 
                 a.appendChild(image);
+                //For anchors to be clickable they got to have a href
                 a.setAttribute("href", "#");
+                //Define a onclick event which will handle everything mostly
                 a.addEventListener("click", function (e) {
+                    //Ugly solution, but we do not want to be able to click after
+                    //the game is won
                     if (!won) {
                         if (imagesFlipped === 0 && !stopFlipping) {
                             lastClickedImage = e.target;
@@ -43,24 +53,34 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         }
                         if (imagesFlipped < 2 && !stopFlipping) {
                             e.target.setAttribute("src", e.target.dataset.src);
+                            //If the users hasn't clicked on the same image twice
                             if (lastClickedImage != e.target) {
                                 imagesFlipped += 1;
                                 guesses += 1;
                             }
                         }
                         if (imagesFlipped == 2 && !stopFlipping) {
+                            //stopFlipping is here so that you can't flip while you have already clicked two images
                             stopFlipping = true;
-
+                            
+                            //if lastClickedImage isn't the same
+                            //as the one we clicked now
+                            //and they got the same src
+                            //could be checking for the dataset.src but they are
+                            //already flipped so that isn't necessary
                             if (lastClickedImage !== e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
                                 var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
                                 winnerDiv.appendChild(winnerText);
                                 won = true;
-
+                                
+                                //select all images from the div that the game is in
                                 var images = selecteddiv.querySelectorAll("a img");
+                                //and flip them all over.
                                 for (var i = 0; i < images.length; i++) {
                                     images[i].setAttribute("src", images[i].dataset.src);
                                 }
                             }
+                            //If the game isn't won yet, flip the images after 1 second
                             if (!won) {
                                 setTimeout(function () {
                                     lastClickedImage.setAttribute("src", "pics/0.png");
@@ -72,8 +92,9 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         }
                     }
                 });
+                
                 div.appendChild(a);
-                div.className = "images " + i;
+                div.className = "images";
                 index += 1;
             }
             selecteddiv.appendChild(div);

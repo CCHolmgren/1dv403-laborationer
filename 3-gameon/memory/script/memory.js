@@ -26,7 +26,7 @@ function Memory(div, inputRows, inputCols) {
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + memory[index]%8 + ".png");
+                image.setAttribute("data-src", "pics/" + (memory[index]%8+1) + ".png");
                 console.log(index%8);
                 image.setAttribute("src", "pics/0.png");
 

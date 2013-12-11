@@ -20,16 +20,16 @@ function Memory(div, winDiv, inputRows, inputCols) {
         var guesses = 0;
         var won = false;
         var index = 0;
+
         for (var i = 0; i < rows; i++) {
             var div = document.createElement("div");
-            
+
             for (var j = 0; j < cols; j++) {
                 var a = document.createElement("a");
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + ((memory[index]%numOfImages)+1) + ".png");
-                console.log(index%8);
+                image.setAttribute("data-src", "pics/" + ((memory[index] % numOfImages) + 1) + ".png");
                 image.setAttribute("src", "pics/0.png");
 
                 a.appendChild(image);
@@ -50,12 +50,12 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         }
                         if (imagesFlipped == 2 && !stopFlipping) {
                             stopFlipping = true;
-                            
+
                             if (lastClickedImage !== e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
                                 var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
                                 winnerDiv.appendChild(winnerText);
                                 won = true;
-                                
+
                                 var images = selecteddiv.querySelectorAll("a img");
                                 for (var i = 0; i < images.length; i++) {
                                     images[i].setAttribute("src", images[i].dataset.src);
@@ -74,11 +74,11 @@ function Memory(div, winDiv, inputRows, inputCols) {
                 });
                 div.appendChild(a);
                 div.className = "images " + i;
-                index+=1;
+                index += 1;
             }
             selecteddiv.appendChild(div);
         }
-        
+
         /*memory.forEach(function (element) {
             var div = document.createElement("div");
             var a = document.createElement("a");

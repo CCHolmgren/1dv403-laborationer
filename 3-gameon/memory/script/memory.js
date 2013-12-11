@@ -4,6 +4,7 @@ function Memory(div, inputRows, inputCols) {
     var memory = [];
     var rows = inputRows;
     var cols = inputCols;
+    var numOfImages = 8;
     var selecteddiv = document.getElementById(div);
 
     this.init = function () {
@@ -26,7 +27,7 @@ function Memory(div, inputRows, inputCols) {
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + ((memory[index]%8)+1) + ".png");
+                image.setAttribute("data-src", "pics/" + ((memory[index]%numOfImages)+1) + ".png");
                 console.log(index%8);
                 image.setAttribute("src", "pics/0.png");
 

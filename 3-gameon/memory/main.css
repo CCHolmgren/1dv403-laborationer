@@ -1,6 +1,5 @@
 a {
     float:left;
-    margin-left:5px;
 }
 
 #bestdiv {
@@ -14,7 +13,7 @@ a {
     margin:0 auto;
 }
 .images img {
-    margin:5px;
+    padding:5px;
 }
 #win {
     margin:0 auto;

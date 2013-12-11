@@ -26,7 +26,8 @@ function Memory(div, inputRows, inputCols) {
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + memory[index++]%8 + ".png");
+                image.setAttribute("data-src", "pics/" + memory[i*j] + ".png");
+                console.log(index+i+j);
                 image.setAttribute("src", "pics/0.png");
 
                 a.appendChild(image);
@@ -47,8 +48,8 @@ function Memory(div, inputRows, inputCols) {
                         }
                         if (imagesFlipped == 2 && !stopFlipping) {
                             stopFlipping = true;
-                            if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
-                                var win = document.getElementById("win");
+                            if (lastClickedImage !== e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
+                                var winDiv = document.getElementById("win");
                                 var text = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
                                 win.appendChild(text);
                                 won = true;

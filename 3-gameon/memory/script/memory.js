@@ -26,8 +26,8 @@ function Memory(div, inputRows, inputCols) {
                 var image = document.createElement("img");
                 var that = this;
 
-                image.setAttribute("data-src", "pics/" + memory[i*j] + ".png");
-                console.log(index+i+j);
+                image.setAttribute("data-src", "pics/" + memory[index] + ".png");
+                console.log(index%8);
                 image.setAttribute("src", "pics/0.png");
 
                 a.appendChild(image);
@@ -70,7 +70,8 @@ function Memory(div, inputRows, inputCols) {
                     }
                 });
                 div.appendChild(a);
-                div.className = "images";
+                div.className = "images " + i;
+                index+=1;
             }
             selecteddiv.appendChild(div);
         }

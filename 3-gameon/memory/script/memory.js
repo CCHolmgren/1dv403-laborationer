@@ -49,12 +49,14 @@ function Memory(div, inputRows, inputCols) {
                         }
                         if (imagesFlipped == 2 && !stopFlipping) {
                             stopFlipping = true;
+                            
                             if (lastClickedImage !== e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
                                 var winDiv = document.getElementById("win");
                                 var text = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
-                                win.appendChild(text);
+                                winDiv.appendChild(text);
                                 won = true;
-                                var images = document.querySelectorAll("a img");
+                                
+                                var images = selecteddiv.querySelectorAll("a img");
                                 for (var i = 0; i < images.length; i++) {
                                     images[i].setAttribute("src", images[i].dataset.src);
                                 }

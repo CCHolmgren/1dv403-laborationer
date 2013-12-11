@@ -2,10 +2,10 @@ a {
     float:left;
 }
 
-#bestdiv {
-    width:50%;
-    margin:0 auto;
+.gamediv {
+    width:auto;
     overflow:auto;
+    border:1px solid black;
 }
 
 .images {
@@ -16,5 +16,5 @@ a {
     padding:5px;
 }
 #win {
-    margin:0 auto;
+    width:50%;
 }

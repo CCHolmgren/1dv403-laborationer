@@ -1,10 +1,11 @@
 "use strict";
 
-function Memory(div, inputRows, inputCols) {
+function Memory(div, winDiv, inputRows, inputCols) {
     var memory = [];
     var rows = inputRows;
     var cols = inputCols;
     var numOfImages = 8;
+    var winnerDiv = document.getElementById(winDiv);
     var selecteddiv = document.getElementById(div);
 
     this.init = function () {
@@ -51,9 +52,8 @@ function Memory(div, inputRows, inputCols) {
                             stopFlipping = true;
                             
                             if (lastClickedImage !== e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
-                                var winDiv = document.getElementById("win");
-                                var text = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
-                                winDiv.appendChild(text);
+                                var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
+                                winnerDiv.appendChild(winnerText);
                                 won = true;
                                 
                                 var images = selecteddiv.querySelectorAll("a img");

@@ -1,12 +1,12 @@
 "use strict";
 
 function Memory(div, winDiv, inputRows, inputCols) {
-    var memory = [];
-    var rows = inputRows;
-    var cols = inputCols;
-    var numOfImages = 8;
-    var winnerDiv = document.getElementById(winDiv);
-    var selecteddiv = document.getElementById(div);
+    var memory = [],
+        rows = inputRows,
+        cols = inputCols,
+        numOfImages = 8,
+        winnerDiv = document.getElementById(winDiv),
+        selecteddiv = document.getElementById(div);
 
     //Init the memory array, which could be done in the start function, really.
     this.init = function () {

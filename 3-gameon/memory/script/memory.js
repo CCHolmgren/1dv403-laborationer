@@ -20,59 +20,60 @@ function Memory(div, winDiv, inputRows, inputCols) {
             stopFlipping = false,
             guesses = 0,
             won = false,
-            index = 0;
-        var clickHandler = function (e) {
-            console.log(e.currentTarget);
-            console.log(e.target);
-            //Ugly solution, but we do not want to be able to click after
-            //the game is won
-            if (!won) {
-                if (imagesFlipped === 0 && !stopFlipping) {
-                    lastClickedImage = e.currentTarget.childNodes[0]
-                    imagesFlipped += 1;
-                    guesses += 1;
-                }
-                if (imagesFlipped < 2 && !stopFlipping) {
-                    e.currentTarget.childNodes[0].setAttribute("src", e.currentTarget.childNodes[0].dataset.src);
-                    //If the users hasn't clicked on the same image twice
-                    if (lastClickedImage != e.currentTarget.childNodes[0]) {
+            index = 0,
+            clickHandler = function (e) {
+                console.log(e.currentTarget);
+                console.log(e.target);
+                //Ugly solution, but we do not want to be able to click after
+                //the game is won
+                if (!won) {
+                    if (imagesFlipped === 0 && !stopFlipping) {
+                        lastClickedImage = e.currentTarget.childNodes[0];
                         imagesFlipped += 1;
                         guesses += 1;
                     }
-                }
-                if (imagesFlipped == 2 && !stopFlipping) {
-                    //stopFlipping is here so that you can't flip while you have already clicked two images
-                    stopFlipping = true;
-
-                    //if lastClickedImage isn't the same
-                    //as the one we clicked now
-                    //and they got the same src
-                    //could be checking for the dataset.src but they are
-                    //already flipped so that isn't necessary
-                    if (lastClickedImage !== e.currentTarget.childNodes[0] && lastClickedImage.getAttribute("src") == e.currentTarget.childNodes[0].getAttribute("src")) {
-                        var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
-                        winnerDiv.appendChild(winnerText);
-                        won = true;
-
-                        //select all images from the div that the game is in
-                        var images = selecteddiv.querySelectorAll("a img");
-                        //and flip them all over.
-                        for (var i = 0; i < images.length; i++) {
-                            images[i].setAttribute("src", images[i].dataset.src);
+                    if (imagesFlipped < 2 && !stopFlipping) {
+                        e.currentTarget.childNodes[0].setAttribute("src", e.currentTarget.childNodes[0].dataset.src);
+                        //If the users hasn't clicked on the same image twice
+                        if (lastClickedImage !== e.currentTarget.childNodes[0]) {
+                            imagesFlipped += 1;
+                            guesses += 1;
                         }
                     }
-                    //If the game isn't won yet, flip the images after 1 second
-                    if (!won) {
-                        setTimeout(function () {
-                            lastClickedImage.setAttribute("src", "pics/0.png");
-                            e.target.setAttribute("src", "pics/0.png");
-                            stopFlipping = false;
-                            imagesFlipped = 0;
-                        }, 1000);
+                    if (imagesFlipped === 2 && !stopFlipping) {
+                        //stopFlipping is here so that you can't flip while you have already clicked two images
+                        stopFlipping = true;
+
+                        //if lastClickedImage isn't the same
+                        //as the one we clicked now
+                        //and they got the same src
+                        //could be checking for the dataset.src but they are
+                        //already flipped so that isn't necessary
+                        if (lastClickedImage !== e.currentTarget.childNodes[0] && lastClickedImage.getAttribute("src") === e.currentTarget.childNodes[0].getAttribute("src")) {
+                            var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
+                            var images = selecteddiv.querySelectorAll("a img");
+
+                            winnerDiv.appendChild(winnerText);
+                            won = true;
+
+                            //select all images from the div that the game is in
+                            //and flip them all over.
+                            for (var i = 0; i < images.length; i++) {
+                                images[i].setAttribute("src", images[i].dataset.src);
+                            }
+                        }
+                        //If the game isn't won yet, flip the images after 1 second
+                        if (!won) {
+                            setTimeout(function () {
+                                lastClickedImage.setAttribute("src", "pics/0.png");
+                                e.target.setAttribute("src", "pics/0.png");
+                                stopFlipping = false;
+                                imagesFlipped = 0;
+                            }, 1000);
+                        }
                     }
                 }
-            }
-        };
+            };
         var keyHandler = function (e) {
             var keyevent = e;
             //Ugly solution, but we do not want to be able to click after
@@ -86,12 +87,12 @@ function Memory(div, winDiv, inputRows, inputCols) {
                 if (imagesFlipped < 2 && !stopFlipping) {
                     e.currentTarget.childNodes[0].setAttribute("src", e.currentTarget.childNodes[0].dataset.src);
                     //If the users hasn't clicked on the same image twice
-                    if (lastClickedImage != e.currentTarget.childNodes[0]) {
+                    if (lastClickedImage !== e.currentTarget.childNodes[0]) {
                         imagesFlipped += 1;
                         guesses += 1;
                     }
                 }
-                if (imagesFlipped == 2 && !stopFlipping) {
+                if (imagesFlipped === 2 && !stopFlipping) {
                     //stopFlipping is here so that you can't flip while you have already clicked two images
                     stopFlipping = true;
 
@@ -100,7 +101,7 @@ function Memory(div, winDiv, inputRows, inputCols) {
                     //and they got the same src
                     //could be checking for the dataset.src but they are
                     //already flipped so that isn't necessary
-                    if (lastClickedImage !== e.currentTarget.childNodes[0] && lastClickedImage.getAttribute("src") == e.currentTarget.childNodes[0].getAttribute("src")) {
+                    if (lastClickedImage !== e.currentTarget.childNodes[0] && lastClickedImage.getAttribute("src") === e.currentTarget.childNodes[0].getAttribute("src")) {
                         var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
                         winnerDiv.appendChild(winnerText);
                         won = true;

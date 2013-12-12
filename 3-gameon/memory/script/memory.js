@@ -14,13 +14,13 @@ function Memory(div, winDiv, inputRows, inputCols) {
     };
 
     this.start = function () {
-        var imagesFlipped = 0;
-        var clickedImage = "";
-        var lastClickedImage;
-        var stopFlipping = false;
-        var guesses = 0;
-        var won = false;
-        var index = 0;
+        var imagesFlipped = 0,
+            clickedImage = "",
+            lastClickedImage,
+            stopFlipping = false,
+            guesses = 0,
+            won = false,
+            index = 0;
         var clickHandler = function (e) {
             console.log(e.currentTarget);
             console.log(e.target);

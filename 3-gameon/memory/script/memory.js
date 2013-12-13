@@ -25,21 +25,21 @@ function Memory(div, winDiv, inputRows, inputCols) {
             clickHandler = function (e) {
                 //Ugly solution, but we do not want to be able to click after
                 //the game is won
-                if (!won) {
-                    if (imagesFlipped === 0 && !stopFlipping) {
+                if (!won && !stopFlipping) {
+                    if (imagesFlipped === 0 && turnedImages.indexOf(e.currentTarget.childNodes[0]) === -1) {
                         lastClickedImage = e.currentTarget.childNodes[0];
                         imagesFlipped += 1;
                         guesses += 1;
                     }
-                    if (imagesFlipped < 2 && !stopFlipping) {
+                    if (imagesFlipped < 2) {
                         e.currentTarget.childNodes[0].setAttribute("src", e.currentTarget.childNodes[0].dataset.src);
                         //If the users hasn't clicked on the same image twice
-                        if (lastClickedImage !== e.currentTarget.childNodes[0]) {
+                        if (lastClickedImage !== e.currentTarget.childNodes[0] && turnedImages.indexOf(e.currentTarget.childNodes[0]) === -1) {
                             imagesFlipped += 1;
                             guesses += 1;
                         }
                     }
-                    if (imagesFlipped === 2 && !stopFlipping) {
+                    if (imagesFlipped === 2) {
                         //stopFlipping is here so that you can't flip while you have already clicked two images
                         stopFlipping = true;
                         imagesFlipped = 0;
@@ -70,6 +70,8 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         }
                     }
                 }
+                console.log(guesses);
+                console.log(imagesFlipped);
             };
         var keyHandler = function (e) {
             //Ugly solution, but we do not want to be able to click after

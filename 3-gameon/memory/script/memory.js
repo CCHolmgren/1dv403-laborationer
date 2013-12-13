@@ -23,8 +23,6 @@ function Memory(div, winDiv, inputRows, inputCols) {
             index = 0,
             turnedImages = [],
             clickHandler = function (e) {
-                console.log(e.currentTarget);
-                console.log(e.target);
                 //Ugly solution, but we do not want to be able to click after
                 //the game is won
                 if (!won) {
@@ -74,9 +72,6 @@ function Memory(div, winDiv, inputRows, inputCols) {
                 }
             };
         var keyHandler = function (e) {
-            console.log(e.currentTarget);
-            console.log(e.target);
-            var keyevent = e;
             //Ugly solution, but we do not want to be able to click after
             //the game is won
             if (!won) {
@@ -106,6 +101,7 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         turnedImages.push(lastClickedImage);
                         turnedImages.push(e.currentTarget.childNodes[0]);
                         stopFlipping = false;
+
                         if (turnedImages.length === rows * cols) {
                             var winnerText = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
 

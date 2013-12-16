@@ -115,7 +115,7 @@ function Modal() {
 
         var msg = document.createElement("div");
         msg.className = "msg";
-
+        
         for (var i = 0; i < inputobj.categories.length; i++) {
             var category = document.createTextNode(inputobj.categories[i]);
             var p = document.createElement("p");

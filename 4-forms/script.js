@@ -43,7 +43,7 @@ function Validator() {
         return e.value != String.empty;
     };
     this.validateSwePostCode = function (e) {
-        var re = /((SE)? ?((\d{3})\d{2})?(\d{3}-\d{2})?(\d{3} \d{2})?)+/;
+        var re = /^(((SE |SE)?\d{5})|((SE |SE)?\d{3}(?: )\d{2})|((SE |SE)?\d{3}(?:-)\d{2}))$/;
         return re.test(e.value);
     };
     this.validateEmail = function(e){

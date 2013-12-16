@@ -77,7 +77,7 @@ function Validator() {
                 modalInformation.values.push(inputs[i].value);
             }
             console.log("values: " + modalInformation.values[i]);
-            modalInformation.categories.push(labels[i].innerHTML);
+            modalInformation.categories.push(labels[i].firstChild);
             console.log("categories: " + modalInformation.categories[i]);
         }
         console.log(modalInformation);
@@ -117,10 +117,13 @@ function Modal() {
         msg.className = "msg";
         
         for (var i = 0; i < inputobj.categories.length; i++) {
-            var category = document.createTextNode(inputobj.categories[i]);
+            var div = document.createElement("div");
+            console.log(inputobj.categories);
+            var category = document.createTextNode(inputobj.categories[i].data);
             var p = document.createElement("p");
             p.appendChild(category);
-            msg.appendChild(p);
+            div.appendChild(p);
+            msg.appendChild(div);
         }
         this.square.appendChild(msg);
 

@@ -64,8 +64,14 @@ function Validator() {
     }
     this.button.addEventListener("click", function (e) {
         e.preventDefault();
-        var modal = new Modal();
-        modal.Open({});
+        var modal = new Modal(),
+            labels = document.querySelectorAll("label"),
+            modalInformation = {};
+        modalInformation.categories = [];
+        modalInformation.values = [];
+        for(var i = 0; i < labels.length; i++){
+            modalInformation.categories.push(labels[i].value);
+        }
     });
     this.validateNonEmpty = function (e) {
         console.log(e.value);

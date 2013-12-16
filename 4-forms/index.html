@@ -11,7 +11,7 @@
 
 <body>
     <main>
-        <form method="post" action=" http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php">
+        <form method="post" id="main-form" action=" http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php">
             <div class="form-group" data-class="form-group">
                 <label class="control-label" for="Surname">Förnamn</label>
                 <input type="text" class="form-control non-empty" name="Surname">
@@ -41,7 +41,7 @@
                     <option value="dar">där</option>
                 </select>
             </div>
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <button class="btn btn-primary" id="submit">Submit</button>
         </form>
     </main>
 </body>

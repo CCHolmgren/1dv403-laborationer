@@ -1,13 +1,71 @@
 
 main {
-    width:50%;
-    margin:0 auto;
+
+    width: 50%;
+
+    margin: 0 auto;
+
 }
 
 .form-control {
-    width:100%;
+
+    width: 100%;
+
 }
 
-.has-error .help-block{
-    display:block;
+.has-error .help-block {
+
+    display: block;
+
+}
+
+div.overdiv {
+
+    filter: alpha(opacity=75);
+
+    -moz-opacity: .75;
+
+    opacity: .75;
+
+    background-color: #c0c0c0;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+div.square {
+
+    position: absolute;
+
+    top: 200px;
+
+    left: 200px;
+
+    background-color: Menu;
+    border-radius: 5px;
+
+    border: #f9f9f9;
+
+    height: 200px;
+
+    width: 300px;
+
+}
+
+div.square div.msg {
+
+    color: #3e6bc2;
+
+    font-size: 15px;
+
+    padding: 15px;
+
 }

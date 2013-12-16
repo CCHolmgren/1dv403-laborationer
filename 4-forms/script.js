@@ -65,13 +65,23 @@ function Validator() {
     this.button.addEventListener("click", function (e) {
         e.preventDefault();
         var modal = new Modal(),
-            labels = document.querySelectorAll("label"),
+            labels = document.getElementsByClassName("use-label"),
+            inputs = document.getElementsByClassName("use-input"),
             modalInformation = {};
         modalInformation.categories = [];
         modalInformation.values = [];
-        for(var i = 0; i < labels.length; i++){
-            modalInformation.categories.push(labels[i].value);
+        for (var i = 0; i < labels.length; i++) {
+            if (inputs[i].nodeName === "SELECT") {
+                modalInformation.values.push(inputs[i].options[inputs[i].selectedIndex].value);
+            } else {
+                modalInformation.values.push(inputs[i].value);
+            }
+            console.log("values: " + modalInformation.values[i]);
+            modalInformation.categories.push(labels[i].innerHTML);
+            console.log("categories: " + modalInformation.categories[i]);
         }
+        console.log(modalInformation);
+        modal.Open(modalInformation);
     });
     this.validateNonEmpty = function (e) {
         console.log(e.value);
@@ -95,32 +105,39 @@ function Modal() {
     this.square = null;
     this.greyOut = null;
 
-    this.Open = function (textobj) {
+    this.Open = function (inputobj) {
         this.greyOut = document.createElement("div");
         this.greyOut.className = "overdiv";
 
         this.square = document.createElement("div");
         this.square.className = "square";
         this.square.Code = this;
-        
+
         var msg = document.createElement("div");
         msg.className = "msg";
-        
+
+        for (var i = 0; i < inputobj.categories.length; i++) {
+            var category = document.createTextNode(inputobj.categories[i]);
+            var p = document.createElement("p");
+            p.appendChild(category);
+            msg.appendChild(p);
+        }
         this.square.appendChild(msg);
+
         var closebtn = document.createElement("button");
         closebtn.onclick = function () {
             this.parentNode.Code.Close();
         };
         closebtn.innerHTML = "Avbryt";
         closebtn.className = "btn btn-default";
-        
+
         var continuebtn = document.createElement("button");
-        continuebtn.onclick = function() {
+        continuebtn.onclick = function () {
             document.getElementById("main-form").submit();
         };
         continuebtn.innerHTML = "Fortsätt med köpet";
         continuebtn.className = "btn btn-primary";
-        
+
         this.square.appendChild(closebtn);
         this.square.appendChild(continuebtn);
 

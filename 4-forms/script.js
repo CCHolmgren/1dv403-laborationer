@@ -1,1 +1,3 @@
-var Validator = {};
+function Validator(){
+    
+}

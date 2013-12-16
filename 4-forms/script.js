@@ -31,9 +31,14 @@ function Validator() {
     for(i = 0; i < this.email.length; i++){
         this.email[i].addEventListener("change", function(e){
             console.log(e);
-        })
+            if(that.validateEmail(e.target)){
+                e.target.parentNode.className += " has-success";
+            }
+            else{
+                e.target.parentNode.className += " has-error";
+            }
+        });
     }
-    console.log(this.elements);
     this.validateNonEmpty = function (e) {
         return e.value != String.empty;
     };
@@ -44,5 +49,5 @@ function Validator() {
     this.validateEmail = function(e){
         var re = /.*@.*/;
         return re.test(e.value);
-    }
+    };
 }

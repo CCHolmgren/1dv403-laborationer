@@ -128,14 +128,14 @@ function Modal() {
         closebtn.onclick = function () {
             this.parentNode.Code.Close();
         };
-        closebtn.innerHTML = "Avbryt";
+        closebtn.appendChild(document.createTextNode("Avbryt"));
         closebtn.className = "btn btn-default";
 
         var continuebtn = document.createElement("button");
         continuebtn.onclick = function () {
             document.getElementById("main-form").submit();
         };
-        continuebtn.innerHTML = "Fortsätt med köpet";
+        continuebtn.appendChild(document.createTextNode("Fortsätt med köpet"));
         continuebtn.className = "btn btn-primary";
 
         this.square.appendChild(closebtn);

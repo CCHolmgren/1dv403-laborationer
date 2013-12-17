@@ -122,9 +122,12 @@ function Modal() {
                 categorySpan = document.createElement("span"),
                 valueText = document.createTextNode(inputobj.values[j]),
                 valueSpan = document.createElement("span");
+            
             categorySpan.appendChild(categoryText);
-            categorySpan.className = "col-sm-2 control-label";
+            categorySpan.className = "col-sm-2 control-label bold";
+            
             valueSpan.appendChild(valueText);
+            
             div.appendChild(categorySpan);
             div.appendChild(valueSpan);
             msg.appendChild(div);

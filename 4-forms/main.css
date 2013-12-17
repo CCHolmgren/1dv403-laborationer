@@ -12,7 +12,9 @@ main {
     width: 100%;
 
 }
-
+.help-block {
+    display:none;
+}
 .has-error .help-block {
 
     display: block;

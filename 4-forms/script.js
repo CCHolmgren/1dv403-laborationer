@@ -37,24 +37,26 @@ function Validator() {
                     e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
                     e.target.value = that[func](e.target);
                 } else {
-                    e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
                 }
             } else {
                 if (that[func](e.target)) {
                     e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
                 } else {
-                    e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
                 }
             }
         };
     };
 
     for (var i = 0; i < this.nonempty.length; i++) {
+        this.nonempty[i].parentNode.dataset.class = this.nonempty[i].parentNode.className;
         this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));
         this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));
     }
     
     for (i = 0; i < this.postcode.length; i++) {
+        this.postcode[i].parentNode.dataset.class = this.postcode[i].parentNode.className;
         this.postcode[i].addEventListener("change", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             e.target.value = that.validPostCode(e.target);
@@ -66,6 +68,7 @@ function Validator() {
     }
     
     for (i = 0; i < this.email.length; i++) {
+        this.email[i].parentNode.dataset.class = this.email[i].parentNode.className;
         this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));
     }
     

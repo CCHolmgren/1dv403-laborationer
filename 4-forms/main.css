@@ -69,3 +69,9 @@ div.square div.msg {
     padding: 15px;
 
 }
+
+.right-bottom-corner {
+    margin-top: 85%;
+    margin-right:10px;
+    float:right;
+}

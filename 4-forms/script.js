@@ -136,17 +136,17 @@ function Modal() {
             this.parentNode.Code.Close();
         };
         closebtn.appendChild(document.createTextNode("Avbryt"));
-        closebtn.className = "btn btn-default";
+        closebtn.className = "btn btn-default right-bottom-corner";
 
         var continuebtn = document.createElement("button");
         continuebtn.onclick = function () {
             document.getElementById("main-form").submit();
         };
         continuebtn.appendChild(document.createTextNode("Fortsätt med köpet"));
-        continuebtn.className = "btn btn-primary";
+        continuebtn.className = "btn btn-warning right-bottom-corner";
 
-        this.square.appendChild(closebtn);
         this.square.appendChild(continuebtn);
+        this.square.appendChild(closebtn);
 
         document.body.appendChild(this.greyOut);
         document.body.appendChild(this.square);

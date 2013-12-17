@@ -32,54 +32,39 @@ function Validator() {
             targetParent.className = targetParent.dataset.class + " has-error";
         }
     };
-    this.inputValidationHandler = function (func) {
+    this.inputValidationHandler = function (func, usereturn) {
+        if(usereturn === "undefined"){
+            usereturn = true;
+        }
         return function (e) {
-            if (that[func](e.target)){
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-                e.target.value = that[func](e.target);
-            }else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+            console.log(e);
+            if (usereturn) {
+                if (that[func](e.target)) {
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";e.target.value = that[func](e.target);    
+                } else {
+                    e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+                }
+                
+            } else {
+                if (that[func](e.target)) {
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";    
+                } else {
+                    e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+                }
             }
-        }();
+        };
     };
     var that = this;
     for (var i = 0; i < this.nonempty.length; i++) {
-        this.nonempty[i].addEventListener("change", function (e) {
-            console.log(e);
-            if (that.validateNonEmpty(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
-            }
-
-        });
-    }
-    for (i = 0; i < this.nonempty.length; i++) {
-        this.nonempty[i].addEventListener("blur", function (e) {
-            console.log(e);
-            if (that.validateNonEmpty(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
-            }
-
-        });
+        this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));
+        this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("change", this.inputValidationHandler(this.validPostCode));
-    }
-    for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("blur", that.postCodeHandler);
+        this.postcode[i].addEventListener("change", this.inputValidationHandler("validPostCode", true));
+        this.postcode[i].addEventListener("blur", this.inputValidationHandler("validPostCode", true));
     }
     for (i = 0; i < this.email.length; i++) {
-        this.email[i].addEventListener("change", function (e) {
-            console.log(e);
-            if (that.validateEmail(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-            }
-        });
+        this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));
     }
     this.button.addEventListener("click", function (e) {
         e.preventDefault();

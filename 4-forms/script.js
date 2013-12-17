@@ -116,13 +116,16 @@ function Modal() {
         var msg = document.createElement("div");
         msg.className = "msg";
         
-        for (var i = 0; i < inputobj.categories.length; i++) {
-            var div = document.createElement("div");
-            console.log(inputobj.categories);
-            var category = document.createTextNode(inputobj.categories[i].data);
-            var p = document.createElement("p");
-            p.appendChild(category);
-            div.appendChild(p);
+        for (var i = 0, j = 0; i < inputobj.categories.length, j < inputobj.values.length; i++, j++) {
+            var div = document.createElement("div"),
+                categoryText = document.createTextNode(inputobj.categories[i].data),
+                categorySpan = document.createElement("span"),
+                valueText = document.createTextNode(inputobj.values[j]),
+                valueSpan = document.createElement("span");
+            categorySpan.appendChild(categoryText);
+            valueSpan.appendChild(valueText);
+            div.appendChild(categorySpan);
+            div.appendChild(valueSpan);
             msg.appendChild(div);
         }
         this.square.appendChild(msg);

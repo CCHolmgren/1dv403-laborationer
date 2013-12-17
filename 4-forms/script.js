@@ -6,7 +6,7 @@ function Validator() {
     this.nonempty = document.getElementsByClassName("non-empty");
     this.postcode = document.getElementsByClassName("postcode");
     this.email = document.getElementsByClassName("validemail");
-    this.button = document.getElementById("submit");
+    this.button = document.getElementById("modal");
     this.form = document.getElementById("main-form");
 
     var that = this;
@@ -33,24 +33,10 @@ function Validator() {
         });
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("change", function (e) {
-            console.log(e);
-            if (that.validateSwePostCode(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
-            }
-        });
+        this.postcode[i].addEventListener("change", this.postCodeHandler);
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("blur", function (e) {
-            if (that.validateSwePostCode(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-                e.target.value = that.validPostCode(e.target);
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
-            }
-        });
+        this.postcode[i].addEventListener("blur", this.postCodeHandler);
     }
     for (i = 0; i < this.email.length; i++) {
         this.email[i].addEventListener("change", function (e) {
@@ -98,6 +84,14 @@ function Validator() {
         var re = /.+@.+/;
         return re.test(e.value);
     };
+    this.postCodeHandler = function (e) {
+            if (that.validateSwePostCode(e.target)) {
+                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
+                e.target.value = that.validPostCode(e.target);
+            } else {
+                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
+            }
+        }
 }
 
 function Modal() {
@@ -116,11 +110,11 @@ function Modal() {
         var msg = document.createElement("div");
         msg.className = "msg";
         
-        for (var i = 0, j = 0; i < inputobj.categories.length, j < inputobj.values.length; i++, j++) {
+        for (var i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
             var div = document.createElement("div"),
                 categoryText = document.createTextNode(inputobj.categories[i].data),
                 categorySpan = document.createElement("span"),
-                valueText = document.createTextNode(inputobj.values[j]),
+                valueText = document.createTextNode(inputobj.values[i]),
                 valueSpan = document.createElement("span");
             
             categorySpan.appendChild(categoryText);

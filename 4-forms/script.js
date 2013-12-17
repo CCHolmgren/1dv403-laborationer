@@ -8,7 +8,40 @@ function Validator() {
     this.email = document.getElementsByClassName("validemail");
     this.button = document.getElementById("modal");
     this.form = document.getElementById("main-form");
-
+    this.validateNonEmpty = function (e) {
+        console.log(e.value);
+        return e.value !== "";
+    };
+    this.validateSwePostCode = function (e) {
+        var re = /^(((SE |SE)?\d{5})|((SE |SE)?\d{3}(?: )\d{2})|((SE |SE)?\d{3}(?:-)\d{2}))$/;
+        return re.test(e.value);
+    };
+    this.validPostCode = function (e) {
+        return e.value.replace("SE", "").replace("-", "").replace(" ", "");
+    };
+    this.validateEmail = function (e) {
+        var re = /.+@.+/;
+        return re.test(e.value);
+    };
+    this.postCodeHandler = function (e) {
+        var targetParent = e.target.parentNode;
+        if (that.validateSwePostCode(e.target)) {
+            targetParent.className = targetParent.dataset.class + " has-success";
+            e.target.value = that.validPostCode(e.target);
+        } else {
+            targetParent.className = targetParent.dataset.class + " has-error";
+        }
+    };
+    this.inputValidationHandler = function (func) {
+        return function (e) {
+            if (that[func](e.target)){
+                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
+                e.target.value = that[func](e.target);
+            }else {
+                e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
+            }
+        }();
+    };
     var that = this;
     for (var i = 0; i < this.nonempty.length; i++) {
         this.nonempty[i].addEventListener("change", function (e) {
@@ -33,10 +66,10 @@ function Validator() {
         });
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("change", this.postCodeHandler);
+        this.postcode[i].addEventListener("change", this.inputValidationHandler(this.validPostCode));
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("blur", this.postCodeHandler);
+        this.postcode[i].addEventListener("blur", that.postCodeHandler);
     }
     for (i = 0; i < this.email.length; i++) {
         this.email[i].addEventListener("change", function (e) {
@@ -69,29 +102,6 @@ function Validator() {
         console.log(modalInformation);
         modal.Open(modalInformation);
     });
-    this.validateNonEmpty = function (e) {
-        console.log(e.value);
-        return e.value !== "";
-    };
-    this.validateSwePostCode = function (e) {
-        var re = /^(((SE |SE)?\d{5})|((SE |SE)?\d{3}(?: )\d{2})|((SE |SE)?\d{3}(?:-)\d{2}))$/;
-        return re.test(e.value);
-    };
-    this.validPostCode = function (e) {
-        return e.value.replace("SE", "").replace("-", "").replace(" ", "");
-    };
-    this.validateEmail = function (e) {
-        var re = /.+@.+/;
-        return re.test(e.value);
-    };
-    this.postCodeHandler = function (e) {
-            if (that.validateSwePostCode(e.target)) {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
-                e.target.value = that.validPostCode(e.target);
-            } else {
-                e.target.parentNode.className = e.target.parentNode.dataset.class + " has-error";
-            }
-        }
 }
 
 function Modal() {
@@ -109,19 +119,19 @@ function Modal() {
 
         var msg = document.createElement("div");
         msg.className = "msg";
-        
+
         for (var i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
             var div = document.createElement("div"),
                 categoryText = document.createTextNode(inputobj.categories[i].data),
                 categorySpan = document.createElement("span"),
                 valueText = document.createTextNode(inputobj.values[i]),
                 valueSpan = document.createElement("span");
-            
+
             categorySpan.appendChild(categoryText);
             categorySpan.className = "col-sm-2 control-label bold";
-            
+
             valueSpan.appendChild(valueText);
-            
+
             div.appendChild(categorySpan);
             div.appendChild(valueSpan);
             msg.appendChild(div);

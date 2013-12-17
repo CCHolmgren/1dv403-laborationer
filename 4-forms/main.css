@@ -45,18 +45,18 @@ div.square {
 
     position: absolute;
 
-    top: 200px;
+    top: 10%;
 
-    left: 200px;
+    left: 15%;
 
     background-color: Menu;
     border-radius: 5px;
 
     border: #f9f9f9;
 
-    height: 200px;
+    height: 70%;
 
-    width: 300px;
+    width: 70%;
 
 }
 

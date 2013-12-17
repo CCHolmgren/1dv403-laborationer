@@ -15,7 +15,8 @@ function Validator() {
         return e.value !== "";
     };
     this.validateSwePostCode = function (e) {
-        var re = /^(((SE |SE)?\d{5})|((SE |SE)?\d{3}(?: )\d{2})|((SE |SE)?\d{3}(?:-)\d{2}))$/;
+        /*var re = /^(((SE |SE)?\d{5})|((SE |SE)?\d{3}(?: )\d{2})|((SE |SE)?\d{3}(?:-)\d{2}))$/;*/
+        var re = /^(?:SE|SE )?(\d{5}|\d{3}(?: |-)\d{2})$/;
         return re.test(e.value);
     };
     this.validPostCode = function (e) {

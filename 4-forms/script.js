@@ -8,6 +8,8 @@ function Validator() {
     this.email = document.getElementsByClassName("validemail");
     this.button = document.getElementById("modal");
     this.form = document.getElementById("main-form");
+    var that = this;
+
     this.validateNonEmpty = function (e) {
         console.log(e.value);
         return e.value !== "";
@@ -23,55 +25,49 @@ function Validator() {
         var re = /.+@.+/;
         return re.test(e.value);
     };
-    this.postCodeHandler = function (e) {
-        var targetParent = e.target.parentNode;
-        if (that.validateSwePostCode(e.target)) {
-            targetParent.className = targetParent.dataset.class + " has-success";
-            e.target.value = that.validPostCode(e.target);
-        } else {
-            targetParent.className = targetParent.dataset.class + " has-error";
-        }
-    };
     this.inputValidationHandler = function (func, usereturn) {
-        if(usereturn === "undefined"){
+        if (usereturn === "undefined") {
             usereturn = true;
         }
         return function (e) {
             console.log(e);
             if (usereturn) {
                 if (that[func](e.target)) {
-                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";e.target.value = that[func](e.target);    
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
+                    e.target.value = that[func](e.target);
                 } else {
                     e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
                 }
-                
             } else {
                 if (that[func](e.target)) {
-                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";    
+                    e.target.parentNode.className = e.target.parentNode.dataset.class + " has-success";
                 } else {
                     e.target.parentNode.className = e.target.parentNode.dataset.class = " has-error";
                 }
             }
         };
     };
-    var that = this;
+
     for (var i = 0; i < this.nonempty.length; i++) {
         this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));
         this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));
     }
+    
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("change", function(e){
+        this.postcode[i].addEventListener("change", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             e.target.value = that.validPostCode(e.target);
         });
-        this.postcode[i].addEventListener("blur", function(e){
+        this.postcode[i].addEventListener("blur", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             e.target.value = that.validPostCode(e.target);
         });
     }
+    
     for (i = 0; i < this.email.length; i++) {
         this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));
     }
+    
     this.button.addEventListener("click", function (e) {
         e.preventDefault();
         var modal = new Modal(),

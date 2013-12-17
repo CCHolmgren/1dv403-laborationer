@@ -60,8 +60,14 @@ function Validator() {
         this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));
     }
     for (i = 0; i < this.postcode.length; i++) {
-        this.postcode[i].addEventListener("change", this.inputValidationHandler("validPostCode", true));
-        this.postcode[i].addEventListener("blur", this.inputValidationHandler("validPostCode", true));
+        this.postcode[i].addEventListener("change", function(e){
+            that.inputValidationHandler("validateSwePostCode", false)(e);
+            e.target.value = that.validPostCode(e.target);
+        });
+        this.postcode[i].addEventListener("blur", function(e){
+            that.inputValidationHandler("validateSwePostCode", false)(e);
+            e.target.value = that.validPostCode(e.target);
+        });
     }
     for (i = 0; i < this.email.length; i++) {
         this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));

@@ -47,15 +47,13 @@ function Modal() {
             msg.appendChild(div);
         }
         this.square.appendChild(msg);
-
-        closebtn = document.createElement("button");
         closebtn.onclick = function () {
-            this.parentNode.Code.Close();
+            this.parentNode.parentNode.Code.Close();
         };
+        
         closebtn.appendChild(document.createTextNode("Avbryt"));
         closebtn.className = "btn btn-default right-bottom-corner";
-
-        continuebtn = document.createElement("button");
+        
         continuebtn.onclick = function () {
             document.getElementById("main-form").submit();
         };

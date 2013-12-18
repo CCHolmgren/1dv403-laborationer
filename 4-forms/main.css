@@ -12,9 +12,13 @@ main {
     width: 100%;
 
 }
+
 .help-block {
-    display:none;
+
+    display: none;
+
 }
+
 .has-error .help-block {
 
     display: block;
@@ -44,20 +48,29 @@ div.overdiv {
 }
 
 div.square {
-    position:absolute;
+
+    box-shadow:         11px 11px 10px rgba(50, 50, 50, 0.37);
+    position: absolute;
+
     top: 10%;
+
     left: 25%;
-    margin:0 auto;
+
+    margin: 0 auto;
+
     background-color: #fff;
+
     border-radius: 5px;
 
     border: #f9f9f9;
 
-    height: 50%;
-    min-height:300px;
+    height: auto;
+
+    min-height: 300px;
 
     width: 50%;
-    min-width:250px;
+
+    min-width: 250px;
 
 }
 
@@ -68,24 +81,58 @@ div.square div.msg {
     font-size: 15px;
 
     padding: 15px;
-    width:100%;
-    height:70%;
+
+    width: 100%;
+
+    height: 70%;
 
 }
+
 .msg div {
-    overflow:auto;
-    margin-top:10px;
+
+    overflow: auto;
+
+    margin-top: 10px;
+
 }
 
 .right-bottom-corner {
-    margin-right:10px;
-    float:right;
+
+    margin-right: 10px;
+
+    float: right;
+
 }
 
 .bold {
-    font-weight:700;
+
+    font-weight: 700;
+
 }
+
 .hr {
-    width:95%;
+
+    width: 95%;
+
     color: #333;
+
+}
+
+.squareheader {
+
+    margin-left: 15px;
+
+}
+
+.buttonDiv {
+
+    padding:15px 0;
+    border-bottom-right-radius: 5px;
+
+    border-bottom-left-radius: 5px;
+
+    overflow: auto;
+
+    background-color: rgba(200, 200, 200, 0.2);
+
 }

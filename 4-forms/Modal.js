@@ -19,11 +19,15 @@ function Modal() {
             i,
             closebtn = document.createElement("button"),
             continuebtn = document.createElement("button"),
-            hr = document.createElement("hr");
+            hr = document.createElement("hr"),
+            buttonDiv = document.createElement("div");
+        buttonDiv.className = "buttonDiv";
         header.appendChild(document.createTextNode("Vänligen bekräfta ditt köp"));
+        header.className = "squareheader";
         hr.className = "hr";
         this.square.appendChild(header);
         this.square.appendChild(hr);
+        
         msg.className = "msg";
 
         for (i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
@@ -58,9 +62,10 @@ function Modal() {
         continuebtn.appendChild(document.createTextNode("Fortsätt med köpet"));
         continuebtn.className = "btn btn-warning right-bottom-corner";
 
-        this.square.appendChild(continuebtn);
-        this.square.appendChild(closebtn);
-
+        buttonDiv.appendChild(continuebtn);
+        buttonDiv.appendChild(closebtn);
+        
+        this.square.appendChild(buttonDiv);
         document.body.appendChild(this.greyOut);
         document.body.appendChild(this.square);
     };

@@ -14,10 +14,19 @@ function Modal() {
         this.square.className = "square";
         this.square.Code = this;
 
-        var msg = document.createElement("div");
+        var msg = document.createElement("div"),
+            header = document.createElement("h1"),
+            i,
+            closebtn = document.createElement("button"),
+            continuebtn = document.createElement("button"),
+            hr = document.createElement("hr");
+        header.appendChild(document.createTextNode("Vänligen bekräfta ditt köp"));
+        hr.className = "hr";
+        this.square.appendChild(header);
+        this.square.appendChild(hr);
         msg.className = "msg";
 
-        for (var i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
+        for (i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
             var div = document.createElement("div"),
                 categoryText = document.createTextNode(inputobj.categories[i].data),
                 categorySpan = document.createElement("span"),
@@ -35,14 +44,14 @@ function Modal() {
         }
         this.square.appendChild(msg);
 
-        var closebtn = document.createElement("button");
+        closebtn = document.createElement("button");
         closebtn.onclick = function () {
             this.parentNode.Code.Close();
         };
         closebtn.appendChild(document.createTextNode("Avbryt"));
         closebtn.className = "btn btn-default right-bottom-corner";
 
-        var continuebtn = document.createElement("button");
+        continuebtn = document.createElement("button");
         continuebtn.onclick = function () {
             document.getElementById("main-form").submit();
         };

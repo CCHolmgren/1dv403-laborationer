@@ -85,7 +85,7 @@ function Validator() {
     //This could be just blur and not change, but it doesn't really matter that much
     for (i = 0; i < this.nonempty.length; i++) {
         this.nonempty[i].parentNode.dataset.class = this.nonempty[i].parentNode.className;
-        this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));
+        /*this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));*/
         this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));
     }
     
@@ -95,11 +95,12 @@ function Validator() {
         //Save the className so that we can reset it if we need to
         this.postcode[i].parentNode.dataset.class = this.postcode[i].parentNode.className;
         //Since this is a special case, we pass an anonymous function that first calls validateSwePostCode and then pass e to it
-        this.postcode[i].addEventListener("change", function (e) {
+        /*this.postcode[i].addEventListener("change", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             //Then we set the value to what this function returns instead of what validateSwePostCode returns, since it returns true or false
             e.target.value = that.validPostCode(e.target);
         }); // jshint ignore:line
+        */
         this.postcode[i].addEventListener("blur", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             e.target.value = that.validPostCode(e.target);
@@ -110,7 +111,8 @@ function Validator() {
         //Save the className
         this.email[i].parentNode.dataset.class = this.email[i].parentNode.className;
         //and validate with validateEmail
-        this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));
+        /*this.email[i].addEventListener("change", this.inputValidationHandler("validateEmail", false));*/
+        this.email[i].addEventListener("blur", this.inputValidationHandler("validateEmail", false));
         //Here we could have another eventListerner for blur, but it shouldn't matter that much
     }
 

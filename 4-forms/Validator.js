@@ -1,5 +1,5 @@
 /* jshint strict: true */
-/* global document, console, window */
+/* global document, console, window, NodeList, Modal */
 
 function Validator() {
     "use strict";
@@ -98,11 +98,11 @@ function Validator() {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             //Then we set the value to what this function returns instead of what validateSwePostCode returns, since it returns true or false
             e.target.value = that.validPostCode(e.target);
-        });
+        }); // jshint ignore:line
         this.postcode[i].addEventListener("blur", function (e) {
             that.inputValidationHandler("validateSwePostCode", false)(e);
             e.target.value = that.validPostCode(e.target);
-        });
+        }); // jshint ignore:line
     }
     //Loop through the email inputs
     for (i = 0; i < this.email.length; i++) {

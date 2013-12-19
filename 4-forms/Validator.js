@@ -17,7 +17,8 @@ function Validator() {
     //Form: so we can submit it with the button
     this.form = document.getElementById("main-form");
     //So that the callbacks on the eventhadlers works
-    var that = this;
+    var that = this,
+        i;
 
     //Checks if the input isn't empty, with would be ""
     //Would return true if the input is undefined
@@ -82,7 +83,7 @@ function Validator() {
 
     //Loop through the nonempty list of objects, and add the eventHandlers
     //This could be just blur and not change, but it doesn't really matter that much
-    for (var i = 0; i < this.nonempty.length; i++) {
+    for (i = 0; i < this.nonempty.length; i++) {
         this.nonempty[i].parentNode.dataset.class = this.nonempty[i].parentNode.className;
         this.nonempty[i].addEventListener("change", this.inputValidationHandler("validateNonEmpty", false));
         this.nonempty[i].addEventListener("blur", this.inputValidationHandler("validateNonEmpty", false));

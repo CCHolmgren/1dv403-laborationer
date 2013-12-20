@@ -1,18 +1,25 @@
 /* jshint strict: true */
-/* global document, console, window */
+/* global document, console, window, NodeList */
 
 //Modal class/function
 //Copied and changed from internet, which means that it's not as I might have written it
-function Modal() {
+function Modal(_inputobj) {
     "use strict";
+    NodeList.prototype.forEach = Array.prototype.forEach;
+
     //This will represent the window with the information on
     this.square = null;
     //This is the grey box that hinders us from clicking on the form
     //Wonder if tabbing still works though..?
     this.greyOut = null;
-
+    this.inputobj = _inputobj;
     //Opens the modal with the information we have given it
-    this.Open = function (inputobj) {
+    this.Open = function () {
+        var that = this;
+        console.log(this.inputobj);
+        this.inputobj.elements.forEach(function (element) {
+            element.disabled = true;
+        });
         //The greyout is just a div that has transparency via the class
         this.greyOut = document.createElement("div");
         this.greyOut.className = "overdiv";
@@ -31,26 +38,26 @@ function Modal() {
             continuebtn = document.createElement("button"),
             hr = document.createElement("hr"),
             buttonDiv = document.createElement("div");
-        
+
         msg.className = "msg";
         buttonDiv.className = "buttonDiv";
         header.appendChild(document.createTextNode("Vänligen bekräfta ditt köp"));
         header.className = "squareheader";
         hr.className = "hr";
-        
+
         this.square.appendChild(header);
         this.square.appendChild(hr);
-        
+
 
         //Math.max(categories.length, values.length) just gives the longes
         //Might want to do it some other way
         //Maybe with a dubble iteration
         //However, the spec doesn't say that it should handle that type of case
-        for (i = 0; i < Math.max(inputobj.categories.length, inputobj.values.length); i++) {
+        for (i = 0; i < Math.max(this.inputobj.categories.length, this.inputobj.values.length); i++) {
             var div = document.createElement("div"),
-                categoryText = document.createTextNode(inputobj.categories[i].data),
+                categoryText = document.createTextNode(this.inputobj.categories[i].data),
                 categorySpan = document.createElement("span"),
-                valueText = document.createTextNode(inputobj.values[i]),
+                valueText = document.createTextNode(this.inputobj.values[i]),
                 valueSpan = document.createElement("span");
 
             categorySpan.appendChild(categoryText);
@@ -75,9 +82,12 @@ function Modal() {
 
         //To submit a form, just select it and call the submit function on it
         continuebtn.onclick = function () {
+            that.inputobj.elements.forEach(function(element){
+                element.disabled = false;
+            });
             document.getElementById("main-form").submit();
         };
-        
+
         continuebtn.appendChild(document.createTextNode("Fortsätt med köpet"));
         continuebtn.className = "btn btn-warning right-bottom-corner";
 
@@ -98,6 +108,9 @@ function Modal() {
             document.body.removeChild(this.greyOut);
             this.greyOut = null;
         }
+        this.inputobj.elements.forEach(function (element) {
+            element.disabled = false;
+        });
 
     };
 }

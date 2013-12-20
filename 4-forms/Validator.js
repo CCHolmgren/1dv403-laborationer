@@ -5,7 +5,8 @@ function Validator() {
     "use strict";
     //First we select all the items that might be necessary
     //All inputs are handy to have if we need to loop through all of the sometime
-    this.elements = document.querySelectorAll("input[type=text]");
+    this.elements = document.getElementsByClassName("use-input");
+    this.inputs = document.querySelectorAll("input[type='text']");
     //Validation: non-empty input
     this.nonempty = document.getElementsByClassName("non-empty");
     //Validation: swedish postcode
@@ -125,13 +126,13 @@ function Validator() {
         NodeList.prototype.every = Array.prototype.every;
         var i,
             //If all inputs are validated, which means they got the has-success className/classList entry
-            allValidated = that.elements.every(function(element){
+            allValidated = that.inputs.every(function(element){
                 console.log(element);
                 return element.parentNode.classList.contains("has-success");
             });
         //If they are, create the modal
         if (allValidated) {
-            var modal = new Modal(),
+            var modal,
                 labels = document.getElementsByClassName("use-label"),
                 inputs = document.getElementsByClassName("use-input"),
                 modalInformation = {};
@@ -152,9 +153,11 @@ function Validator() {
                 modalInformation.categories.push(labels[i].firstChild);
                 console.log("categories: " + modalInformation.categories[i]);
             }
+            modalInformation.elements = that.elements;
             console.log(modalInformation);
+            modal = new Modal(modalInformation);
             //And then we open the modal with the information that we scraped
-            modal.Open(modalInformation);
+            modal.Open();
         }
     });
 }

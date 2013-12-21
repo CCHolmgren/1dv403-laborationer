@@ -15,6 +15,7 @@ window.JAWM.Window = function(){
     this.render = function(){
         var div = document.createElement("div");
         div.classList.add("floatingWindow");
-        document.getElementById("main").appendChild(div);
+        div.setAttribute("id", "dragme");
+        document.body.appendChild(div);
     };
 };

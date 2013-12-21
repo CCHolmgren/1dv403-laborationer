@@ -1,13 +1,23 @@
+body{
+    background-color: #123;
+    margin: 0;
+}
 main {
-    height: 100%;
+    margin:0;
+    height: 1000px;
     width: 100%;
 }
-#bottombar {
+.bottombar {
     position:absolute;
     bottom: 0;
     left: 0;
+    height: 75px;
+    border-top: 10px solid rgb(0,0,0);
+    border-top: 10px solid rgba(0, 0, 0, 0.25);
+    width: 100%;
 }
 .icon {
+    margin-top: 5px;
     height: 50px;
     width: 50px;
 }

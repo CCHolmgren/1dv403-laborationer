@@ -1,14 +1,15 @@
 /* global window, console, document */
 window.onload = function () {
     "use strict";
-    var testWindow = new window.JAWM.Window();
-    testWindow.setSize(100, 100);
-    testWindow.printSize();
-    testWindow.render();
+    //var testWindow = new window.JAWM.Window();
+    //testWindow.setSize(100, 100);
+    //testWindow.printSize();
+    //testWindow.render();
 
     function drag_start(event) {
         var style = window.getComputedStyle(event.target, null);
         console.log("style: ", style);
+        console.log(style.getPropertyValue("left"));
         event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
         
         console.log("drag_start: ",event);
@@ -30,7 +31,8 @@ window.onload = function () {
         return false;
     }
     var dm = document.getElementById('imgviewer');
-    dm.addEventListener('dragstart', drag_start, false);
-    document.body.addEventListener('dragover', drag_over, false);
-    document.body.addEventListener('drop', drop, false);
+    var bottombar = document.getElementById("bottombar");
+    dm.ondragstart = drag_start;
+    bottombar.ondragover = drag_over;
+    bottombar.ondrop = drop;
 };

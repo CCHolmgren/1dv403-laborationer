@@ -8,7 +8,7 @@ main {
 }
 .bottombar {
     position:absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     height: 75px;
     border-top: 10px solid rgb(0,0,0);
@@ -16,12 +16,20 @@ main {
     width: 100%;
 }
 .icon {
+    position:
+        absolute
+        ;
+    background-color: #fff;
+    top: 0;
+    left: 0;
     margin-top: 5px;
     height: 50px;
     width: 50px;
 }
 
 .floatingWindow {
+    display:
+        none;
     background-color: #FFF;
     position: absolute;
     top: 0;

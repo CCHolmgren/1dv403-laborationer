@@ -1,4 +1,4 @@
-/* global window, console */
+/* global window, console, document */
 window.JAWM = {};
 window.JAWM.Window = function(){
     "use strict";
@@ -11,5 +11,10 @@ window.JAWM.Window = function(){
     this.printSize = function(){
         console.log(this._height);
         console.log(this._width);
+    };
+    this.render = function(){
+        var div = document.createElement("div");
+        div.classList.add("floatingWindow");
+        document.getElementById("main").appendChild(div);
     };
 };

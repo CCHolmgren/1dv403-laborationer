@@ -4,4 +4,5 @@ window.onload = function (){
     var testWindow = new window.JAWM.Window();
     testWindow.setSize(100, 100);
     testWindow.printSize();
+    testWindow.render();
 };

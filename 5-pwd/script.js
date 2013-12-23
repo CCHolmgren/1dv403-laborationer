@@ -7,6 +7,7 @@ window.onload = function () {
         var x = WindowHandler.createWindow("Window");
         x.setSize(300, 300);
         x.render();
+        //JAWM.dragDrop.initElement(x.getTopbar());
     }
 
     /*var windows = document.querySelectorAll('.icon');
@@ -50,15 +51,16 @@ window.onload = function () {
 
 
     function drag_start(event) {
-        console.log(event);
-        var target = event.target;
-        target.setAttribute("draggable", "true");
+        //var crt = this.cloneNode(true);
+        //document.body.appendChild(crt);
+        //event.dataTransfer.setDragImage(crt, 0, 0);
+        console.log("drag_start: ", event);
+        var target = event.target.parentNode;
+        //target.setAttribute("draggable", "false");
         var style = window.getComputedStyle(target, null);
         console.log("style: ", style);
-        console.log(style.getPropertyValue("left"));
-        event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + event.target.id);
-
-        console.log("drag_start: ", event);
+        //console.log(style.getPropertyValue("left"));
+        event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + target.id);
         WindowHandler.setzIndex(target.id, WindowHandler.maxzindex + 1);
     }
 
@@ -97,9 +99,9 @@ window.onload = function () {
         event.preventDefault();
         //return false;
     }
-    NodeList.prototype.forEach = Array.prototype.forEach;
+    /*NodeList.prototype.forEach = Array.prototype.forEach;
 
-    var dm = document.getElementsByClassName('icon');
+    var dm = document.getElementsByClassName('topbar');
     var bottombar = document.getElementById("desktop");
 
     dm.forEach(function (element) {
@@ -109,6 +111,6 @@ window.onload = function () {
         };
     });
     bottombar.addEventListener("dragover", dragover, false);
-    bottombar.addEventListener("drop", drop, false);
+    bottombar.addEventListener("drop", drop, false);*/
 
 };

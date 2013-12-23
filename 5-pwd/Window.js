@@ -12,7 +12,8 @@ window.JAWM.Window = function Window() {
         _width,
         _id,
         _window,
-        _zindex;
+        _zindex,
+        _topbar;
     
     this.setSize = function (height, width) {
         _height = height;
@@ -21,6 +22,9 @@ window.JAWM.Window = function Window() {
     };
     this.getWindow = function(){
         return _window;
+    };
+    this.getTopbar = function(){
+        return _topbar;
     };
     this.nextID = function() {
         return Window.nextID;
@@ -36,7 +40,7 @@ window.JAWM.Window = function Window() {
         _window.style.width = _width+"px";
         _window.style.height = _height+"px";
         _window.style.backgroundColor = "#fff";
-        _window.setAttribute("draggable", "true");
+        //_window.setAttribute("draggable", "true");
         _window.setAttribute("id", this.nextID().toString());
         
         var closebutton = document.createElement("button");
@@ -48,8 +52,9 @@ window.JAWM.Window = function Window() {
         
         var topbar = document.createElement("div");
         topbar.classList.add("topbar");
-        //topbar.setAttribute("draggable", "true");
+        topbar.setAttribute("draggable", "true");
         topbar.appendChild(closebutton);
+        _topbar = topbar;
         _window.appendChild(topbar);
         
         document.getElementById("desktop").appendChild(_window);

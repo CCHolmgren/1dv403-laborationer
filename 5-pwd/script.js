@@ -20,10 +20,11 @@ window.onload = function () {
         console.log("drop: ",event);
         var offset = event.dataTransfer.getData("text/plain").split(',');
         console.log(offset);
-        var dm = document.getElementById(offset[2]);
+        var dm = WindowHandler.getWindow(offset[2]);
         console.log(dm);
-        dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-        dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        dm.move(event.clientX + parseInt(offset[0], 10), event.clientY + parseInt(offset[1], 10));
+        //dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        //dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
         event.preventDefault();
         return false;
     }

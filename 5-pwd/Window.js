@@ -11,12 +11,13 @@ window.JAWM.Window = function Window() {
     var _height;
     var _width;
     var id;
+    var div;
     this.setSize = function (height, width) {
         this._height = height;
         this._width = width;
         return this;
     };
-    this.ID = function() {
+    this.nextID = function() {
         return Window.nextID;
     };
     this.printSize = function () {
@@ -24,19 +25,25 @@ window.JAWM.Window = function Window() {
         console.log(this._width);
     };
     this.render = function () {
-        var div = document.createElement("div");
+        div = document.createElement("div");
         div.classList.add("icon");
-        div.style.zIndex = this.ID();
+        div.style.zIndex = this.nextID();
         div.style.width = this._width+"px";
         div.style.height = this._height+"px";
         div.style.backgroundColor = "#fff";
         div.setAttribute("draggable", "true");
-        div.setAttribute("id", this.ID().toString());
+        div.setAttribute("id", this.nextID().toString());
         document.getElementById("bottombar").appendChild(div);
-        this.id = this.ID();
+        this.id = this.nextID();
         return this;
     };
     this.remove = function() {
-        document.getElementById(this.id).parentNode.removeChild(document.getElementById(this.id));
+        var element = document.getElementById(this.id);
+        element.parentNode.removeChild(element);
+    };
+    this.move = function(x, y){
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        return this;
     };
 };

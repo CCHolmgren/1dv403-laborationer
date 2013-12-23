@@ -7,11 +7,14 @@ var WindowHandler = {
     windows: {},
     createWindow: function(windowclass){
         var x = new JAWM[windowclass]();
-        this.windows[x.ID()] = x;
+        this.windows[x.nextID()] = x;
         return x;
     },
     destroyWindow: function(id){
         this.windows[id].remove();
         delete this.windows[id];
+    },
+    getWindow: function(id){
+        return this.windows[id];
     }
 };

@@ -2,7 +2,7 @@
 window.onload = function () {
     "use strict";
     for(var i = 0; i < 10; i++){
-        var x = WindowHandler.createWindow();
+        var x = WindowHandler.createWindow("Window");
         x.setSize(300, 300);
         x.render();
     }

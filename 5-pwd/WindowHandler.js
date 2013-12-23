@@ -5,8 +5,8 @@
 
 var WindowHandler = {
     windows: {},
-    createWindow: function(){
-        var x = new JAWM.Window();
+    createWindow: function(windowclass){
+        var x = new JAWM[windowclass]();
         this.windows[x.ID()] = x;
         return x;
     },

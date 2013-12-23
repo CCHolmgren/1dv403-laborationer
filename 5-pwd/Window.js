@@ -23,6 +23,7 @@ window.JAWM.Window = function Window() {
     this.render = function () {
         var div = document.createElement("div");
         div.classList.add("icon");
+        div.style.zIndex = this.ID();
         div.setAttribute("draggable", "true");
         div.setAttribute("id", this.ID().toString());
         document.getElementById("bottombar").appendChild(div);

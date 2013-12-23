@@ -39,6 +39,9 @@ window.onload = function () {
     
     dm.forEach(function(element){
         element.ondragstart = drag_start;
+        element.onmousedown = function(e){
+            console.log("onmousedown, yeah");
+        };
     });
     bottombar.ondragover = drag_over;
     bottombar.ondrop = drop;

@@ -8,20 +8,15 @@ window.JAWM.Window = function Window() {
     else {
         Window.nextID++;
     }
-    if(Window.windows === undefined){
-        Window.windows = {};
-        Window.windows[Window.nextID] = this;
-    } else {
-        Window.windows[Window.nextID] = this;
-    }
     var _height;
     var _width;
+    var id;
     this.setSize = function (height, width) {
         this._height = height;
         this._width = width;
         return this;
     };
-    this.ID = function () {
+    this.ID = function() {
         return Window.nextID;
     };
     this.printSize = function () {
@@ -38,6 +33,10 @@ window.JAWM.Window = function Window() {
         div.setAttribute("draggable", "true");
         div.setAttribute("id", this.ID().toString());
         document.getElementById("bottombar").appendChild(div);
+        this.id = this.ID();
         return this;
+    };
+    this.remove = function() {
+        document.getElementById(this.id).parentNode.removeChild(document.getElementById(this.id));
     };
 };

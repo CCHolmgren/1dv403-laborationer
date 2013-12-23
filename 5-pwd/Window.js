@@ -11,7 +11,8 @@ window.JAWM.Window = function Window() {
     var _height,
         _width,
         id,
-        window;
+        window,
+        zindex;
     
     this.setSize = function (height, width) {
         this._height = height;
@@ -28,7 +29,7 @@ window.JAWM.Window = function Window() {
     this.render = function () {
         window = document.createElement("div");
         window.classList.add("icon");
-        window.style.zIndex = this.nextID();
+        this.setzIndex(this.nextID());
         window.style.width = this._width+"px";
         window.style.height = this._height+"px";
         window.style.backgroundColor = "#fff";
@@ -46,5 +47,13 @@ window.JAWM.Window = function Window() {
         window.style.left = x + "px";
         window.style.top = y + "px";
         return this;
+    };
+    this.setzIndex = function(zindex){
+        window.style.zIndex = zindex;
+        this.zindex = zindex;
+        return this;
+    };
+    this.getzIndex = function(){
+        return this.zindex;
     };
 };

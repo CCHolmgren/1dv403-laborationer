@@ -15,6 +15,7 @@ window.onload = function () {
         event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + event.target.id);
         
         console.log("drag_start: ", event);
+        WindowHandler.setzIndex(event.target.id, WindowHandler.maxzindex+1);
     }
 
     function drop(event) {

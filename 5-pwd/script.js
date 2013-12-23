@@ -2,8 +2,8 @@
 window.onload = function () {
     "use strict";
     for(var i = 0; i < 10; i++){
-        var x = new JAWM.Window();
-        x.setSize(100, 200);
+        var x = new WindowHandler().createWindow();
+        x.setSize(300, 300);
         x.render();
     }
 

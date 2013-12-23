@@ -10,60 +10,68 @@ window.JAWM.Window = function Window() {
     }
     var _height,
         _width,
-        id,
-        window,
-        zindex;
+        _id,
+        _window,
+        _zindex;
     
     this.setSize = function (height, width) {
-        this._height = height;
-        this._width = width;
+        _height = height;
+        _width = width;
         return this;
+    };
+    this.getWindow = function(){
+        return _window;
     };
     this.nextID = function() {
         return Window.nextID;
     };
     this.printSize = function () {
-        console.log(this._height);
-        console.log(this._width);
+        console.log(_height);
+        console.log(_width);
     };
     this.render = function () {
-        window = document.createElement("div");
-        window.classList.add("icon");
+        _window = document.createElement("div");
+        _window.classList.add("icon");
         this.setzIndex(this.nextID());
-        window.style.width = this._width+"px";
-        window.style.height = this._height+"px";
-        window.style.backgroundColor = "#fff";
-        window.setAttribute("draggable", "true");
-        window.setAttribute("id", this.nextID().toString());
+        _window.style.width = _width+"px";
+        _window.style.height = _height+"px";
+        _window.style.backgroundColor = "#fff";
+        //window.setAttribute("draggable", "true");
+        _window.setAttribute("id", this.nextID().toString());
         
         var closebutton = document.createElement("button");
         closebutton.classList.add("closebutton");
         closebutton.appendChild(document.createTextNode("Hej"));
         closebutton.addEventListener("click", function(e){
-            JAWM.WindowHandler.destroyWindow(this.id);
-        }.bind(this), false);
+            JAWM.WindowHandler.destroyWindow(_id);
+        }.bind(this), false);        
         
-        window.appendChild(closebutton);
+        var topbar = document.createElement("div");
+        topbar.classList.add("topbar");
+        topbar.setAttribute("draggable", "true");
+        topbar.appendChild(closebutton);
+        _window.appendChild(topbar);
         
-        document.getElementById("bottombar").appendChild(window);
-        this.id = this.nextID();
+        document.getElementById("desktop").appendChild(_window);
+        _id = this.nextID();
         return this;
     };
     this.remove = function() {
-        var element = document.getElementById(this.id);
+        var element = document.getElementById(_id);
         element.parentNode.removeChild(element);
     };
     this.move = function(x, y){
-        window.style.left = x + "px";
-        window.style.top = y + "px";
+        _window.style.left = x + "px";
+        _window.style.top = y + "px";
+        console.log("hello from move, ",_window);
         return this;
     };
     this.setzIndex = function(zindex){
-        window.style.zIndex = zindex;
-        this.zindex = zindex;
+        _window.style.zIndex = zindex;
+        _zindex = zindex;
         return this;
     };
     this.getzIndex = function(){
-        return this.zindex;
+        return _zindex;
     };
 };

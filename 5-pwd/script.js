@@ -3,6 +3,7 @@ window.onload = function () {
     "use strict";
     for(var i = 0; i < 10; i++){
         var x = new JAWM.Window();
+        x.setSize(100, 200);
         x.render();
     }
 
@@ -39,8 +40,8 @@ window.onload = function () {
     
     dm.forEach(function(element){
         element.ondragstart = drag_start;
-        element.onmousedown = function(e){
-            console.log("onmousedown, yeah");
+        element.onmouseup = function(e){
+            console.log("onmouseup, yeah");
         };
     });
     bottombar.ondragover = drag_over;

@@ -22,8 +22,6 @@ main {
     top: 0;
     left: 0;
     margin-top: 5px;
-    height: 100px;
-    width: 100px;
 }
 .floatingWindow {
     display: none;

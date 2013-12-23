@@ -8,10 +8,11 @@ window.JAWM.Window = function Window() {
     else {
         Window.nextID++;
     }
-    var _height;
-    var _width;
-    var id;
-    var div;
+    var _height,
+        _width,
+        id,
+        window;
+    
     this.setSize = function (height, width) {
         this._height = height;
         this._width = width;
@@ -25,15 +26,15 @@ window.JAWM.Window = function Window() {
         console.log(this._width);
     };
     this.render = function () {
-        div = document.createElement("div");
-        div.classList.add("icon");
-        div.style.zIndex = this.nextID();
-        div.style.width = this._width+"px";
-        div.style.height = this._height+"px";
-        div.style.backgroundColor = "#fff";
-        div.setAttribute("draggable", "true");
-        div.setAttribute("id", this.nextID().toString());
-        document.getElementById("bottombar").appendChild(div);
+        window = document.createElement("div");
+        window.classList.add("icon");
+        window.style.zIndex = this.nextID();
+        window.style.width = this._width+"px";
+        window.style.height = this._height+"px";
+        window.style.backgroundColor = "#fff";
+        window.setAttribute("draggable", "true");
+        window.setAttribute("id", this.nextID().toString());
+        document.getElementById("bottombar").appendChild(window);
         this.id = this.nextID();
         return this;
     };
@@ -42,8 +43,8 @@ window.JAWM.Window = function Window() {
         element.parentNode.removeChild(element);
     };
     this.move = function(x, y){
-        div.style.left = x + "px";
-        div.style.top = y + "px";
+        window.style.left = x + "px";
+        window.style.top = y + "px";
         return this;
     };
 };

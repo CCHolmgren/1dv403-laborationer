@@ -2,8 +2,8 @@
    Will later probably handle
    Creation and destruction of windows
    And so forth*/
-
-var WindowHandler = {
+/* global JAWM */
+JAWM.WindowHandler = {
     windows: {},
     createWindow: function(windowclass){
         var x = new JAWM[windowclass]();

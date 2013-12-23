@@ -1,6 +1,7 @@
-/* global window, console, document, NodeList, JAWM */
+/* global window, console, document, NodeList, JAWM, WindowHandler */
 window.onload = function () {
     "use strict";
+    var WindowHandler = JAWM.WindowHandler;
     for(var i = 0; i < 10; i++){
         var x = WindowHandler.createWindow("Window");
         x.setSize(300, 300);
@@ -13,7 +14,7 @@ window.onload = function () {
         console.log(style.getPropertyValue("left"));
         event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + event.target.id);
         
-        console.log("drag_start: ",event);
+        console.log("drag_start: ", event);
     }
 
     function drop(event) {
@@ -30,7 +31,7 @@ window.onload = function () {
     }
 
     function drag_over(event) {
-        console.log("drag_over: ",event);
+        console.log("drag_over: ", event);
         event.preventDefault();
         return false;
     }

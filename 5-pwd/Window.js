@@ -35,6 +35,16 @@ window.JAWM.Window = function Window() {
         window.style.backgroundColor = "#fff";
         window.setAttribute("draggable", "true");
         window.setAttribute("id", this.nextID().toString());
+        
+        var closebutton = document.createElement("button");
+        closebutton.classList.add("closebutton");
+        closebutton.appendChild(document.createTextNode("Hej"));
+        closebutton.addEventListener("click", function(e){
+            JAWM.WindowHandler.destroyWindow(this.id);
+        }.bind(this), false);
+        
+        window.appendChild(closebutton);
+        
         document.getElementById("bottombar").appendChild(window);
         this.id = this.nextID();
         return this;

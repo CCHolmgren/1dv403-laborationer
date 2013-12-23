@@ -25,7 +25,7 @@ JAWM.WindowHandler = {
     setzIndex: function(id, zindex){
         if(zindex > this.maxzindex)
             this.maxzindex = zindex;
-        this.windows[id].setzIndex = zindex;
+        this.windows[id].setzIndex(zindex);
         return this;
     }
 };

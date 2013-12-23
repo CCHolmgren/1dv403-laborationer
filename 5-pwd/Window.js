@@ -1,4 +1,4 @@
-/* global window, console, document */
+/* global window, console, document, JAWM */
 window.JAWM = {};
 window.JAWM.Window = function Window() {
     "use strict";
@@ -36,7 +36,7 @@ window.JAWM.Window = function Window() {
         _window.style.width = _width+"px";
         _window.style.height = _height+"px";
         _window.style.backgroundColor = "#fff";
-        //window.setAttribute("draggable", "true");
+        _window.setAttribute("draggable", "true");
         _window.setAttribute("id", this.nextID().toString());
         
         var closebutton = document.createElement("button");
@@ -48,7 +48,7 @@ window.JAWM.Window = function Window() {
         
         var topbar = document.createElement("div");
         topbar.classList.add("topbar");
-        topbar.setAttribute("draggable", "true");
+        //topbar.setAttribute("draggable", "true");
         topbar.appendChild(closebutton);
         _window.appendChild(topbar);
         

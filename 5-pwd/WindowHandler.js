@@ -6,10 +6,12 @@
 JAWM.WindowHandler = {
     windows: {},
     maxzindex: 0,
+    id:0,
     createWindow: function(windowclass){
-        var x = new JAWM[windowclass]();
-        this.windows[x.next()] = x;
+        var x = new JAWM[windowclass](this.id);
+        this.windows[this.id] = x;
         this.maxzindex+=1;
+        this.id+=1;
         return x;
     },
     destroyWindow: function(id){

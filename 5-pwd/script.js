@@ -14,26 +14,24 @@ window.onload = function () {
         //JAWM.dragDrop.initElement(x.getTopbar());
     }
 
-    icons.forEach(function (element) {
+    /*icons.forEach(function (element) {
         console.log("element.dataset.prog", element.dataset.prog);
         var x = WindowHandler.createWindow("ImageViewer");
         x.setSize(300, 300);
         x.render();
-    });
+    });*/
     icons.forEach(function(element){
-        element.addEventListener("click", WindowHandlerHandler(element));
+        element.addEventListener("click", WindowHandlerHandler);
     });
-    /*function WindowHandlerHandler(element){
-        var _element = element;
-        return (function(e){
-            
-        })
-    }*/
+    function WindowHandlerHandler(event){
+        console.log(event.target);
+    }
     
     var closebuttons = document.querySelectorAll(".closebutton");
     closebuttons.forEach(function(element){
         element.addEventListener("click", function(e){
-            JAWM.WindowHandler.destroyWindow(element.parentNode.id);
+            console.log(e.target.parentNode.parentNode);
+            JAWM.WindowHandler.destroyWindow(element.parentNode.parentNode.id);
         });
     });
     /*var windows = document.querySelectorAll('.icon');

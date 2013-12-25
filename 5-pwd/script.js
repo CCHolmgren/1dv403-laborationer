@@ -29,7 +29,7 @@ window.onload = function () {
         element.addEventListener("click", WindowHandlerHandler);
     });
     function WindowHandlerHandler(event){
-        console.log(event.target);
+        WindowHandler.createWindow(event.target.dataset.prog).render().setSize(300, 300);
     }
     
     var closebuttons = document.querySelectorAll(".closebutton");

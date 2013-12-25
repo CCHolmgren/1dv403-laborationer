@@ -1,10 +1,8 @@
-JAWM.ImageViewer = function() {
+JAWM.ImageViewer = function(id, top, left) {
     console.log("Imageviewer");
-    JAWM.Window.call(this);
+    this._id = id;
+    this._top = top;
+    this._left = left;
 };
 
-JAWM.ImageViewer.prototype = Object.create(JAWM.Window.prototype);
-
-JAWM.ImageViewer.prototype.getID = function() {
-    return JAWM.Window.getID().bind(this);
-};
+JAWM.ImageViewer.prototype = new JAWM.Window();

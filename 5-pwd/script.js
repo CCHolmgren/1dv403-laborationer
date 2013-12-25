@@ -13,6 +13,11 @@ window.onload = function () {
         x.setSize(300, 300);
         //JAWM.dragDrop.initElement(x.getTopbar());
     }
+    for(var j = 0; j < 5; j++){
+        var y = WindowHandler.createWindow("ImageViewer");
+        y.render();
+        y.setSize(200, 500);
+    }
 
     /*icons.forEach(function (element) {
         console.log("element.dataset.prog", element.dataset.prog);

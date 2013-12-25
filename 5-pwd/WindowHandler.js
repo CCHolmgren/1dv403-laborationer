@@ -36,10 +36,10 @@ JAWM.WindowHandler = {
         document.getElementById(id).style.height = height;
         this.getWindow(id).setSize(width, height);
     }*/
-    setzIndex: function(id, zindex){
+    /*setzIndex: function(id, zindex){
         if(zindex > this.maxzindex)
             this.maxzindex = zindex;
         this.getWIndow(id).setzIndex(zindex);
         return this;
-    }
+    }*/
 };

@@ -9,7 +9,7 @@ window.onload = function () {
 
     for (var i = 0; i < 10; i++) {
         var x = WindowHandler.createWindow("Window");
-        x.setSize(300, 300);
+        x[1].setSize(300, 300);
         //JAWM.dragDrop.initElement(x.getTopbar());
     }
 

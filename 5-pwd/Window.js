@@ -53,12 +53,14 @@ Window.prototype.render = function () {
 
     var topbar = document.createElement("div");
     topbar.classList.add("topbar");
-    topbar.setAttribute("draggable", "true");
+    topbar.id="topbar" + this.getID();
+    //topbar.setAttribute("draggable", "true");
     topbar.appendChild(closebutton);
-    this._topbar = topbar;
+    //this._topbar = topbar;
     this._window.appendChild(topbar);
 
     document.getElementById("desktop").appendChild(this._window);
+    this._topbar = document.getElementById("topbar"+this.getID());
     return this;
 };
 Window.prototype.remove = function () {

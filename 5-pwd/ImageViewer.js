@@ -1,3 +1,6 @@
+/* global JAWM, console, document, XMLHttpRequest */
+"use strict";
+
 JAWM.ImageViewer = function (id, top, left) {
     console.log("Imageviewer");
     this._id = id;
@@ -41,7 +44,7 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (handle) {
             }
         }
     };
-    xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/', true);
+    xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/?'+this.getID() , true);
     xhr.send(null);
 };
 

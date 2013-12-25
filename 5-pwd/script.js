@@ -14,7 +14,7 @@ window.onload = function () {
         x.setSize(300, 300);
         //JAWM.dragDrop.initElement(x.getTopbar());
     }
-    for(var j = 0; j < 5; j++){
+    for(var j = 0; j < 1; j++){
         var y = WindowHandler.createWindow("ImageViewer");
         y.render();
         y.setSize(500, 500);

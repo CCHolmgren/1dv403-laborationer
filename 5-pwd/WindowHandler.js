@@ -16,6 +16,7 @@ JAWM.WindowHandler = {
         this.maxzindex+=1;
         this.id+=1;
         this.windowcount += 1;
+        x.render();
         return x;
     },
     destroyWindow: function(id){
@@ -28,10 +29,17 @@ JAWM.WindowHandler = {
     getWindowCount: function(){
         return Object.keys(this.windows).length;
     },
+    setSize: function(id, width, height){
+        width = width || 100;
+        height = height || 100;
+        document.getElementById(id).style.width = width;
+        document.getElementById(id).style.height = height;
+        this.getWindow(id).setSize(width, height);
+    },
     setzIndex: function(id, zindex){
         if(zindex > this.maxzindex)
             this.maxzindex = zindex;
-        this.windows[id].setzIndex(zindex);
+        this.getWIndow(id).setzIndex(zindex);
         return this;
     }
 };

@@ -8,28 +8,29 @@ JAWM.ImageViewer = function (id, top, left) {
 
 JAWM.ImageViewer.prototype = new JAWM.Window();
 JAWM.ImageViewer.prototype.content = function () {
-    var images;
-    var sizes;
-    var that = this;
-    
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            images = JSON.parse(xhr.responseText);
-            sizes = that.largestimage(images);
-            console.log(sizes);
-            return document.createElement("div");
-        }
-    };
-    xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/', true);
-    xhr.send(null);
+    var div = document.createElement("div");
+    this.xhrgetimages(div);
+    return div;
 };
 
-JAWM.ImageViewer.prototype.xhrgetimages = function () {
-    var xhr = new XMLHttpRequest();
+JAWM.ImageViewer.prototype.xhrgetimages = function (handle) {
+    var xhr = new XMLHttpRequest(),
+        that = this,
+        handlehello = handle;
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
-            return JSON.parse(xhr.responseText);
+            var response = JSON.parse(xhr.responseText);
+            var largestimages = [200, 200];
+            for(var i = 0; i < response.length; i++){
+                var img = document.createElement("img");
+                img.setAttribute("src", response[i].thumbURL);
+                img.style.width = largestimages[0] + "px";
+                img.style.height = largestimages[1] + "px";
+                img.style.float = "left";
+                handlehello.appendChild(img);
+                handlehello.style.overflow = "scroll";
+                handlehello.style.height = "100%";
+            }
         }
     };
     xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/', true);

@@ -17,7 +17,7 @@ window.onload = function () {
     for(var j = 0; j < 5; j++){
         var y = WindowHandler.createWindow("ImageViewer");
         y.render();
-        y.setSize(200, 500);
+        y.setSize(500, 500);
     }
 
     /*icons.forEach(function (element) {

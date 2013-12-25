@@ -24,9 +24,17 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (handle) {
             for(var i = 0; i < response.length; i++){
                 var img = document.createElement("img");
                 img.setAttribute("src", response[i].thumbURL);
+                img.setAttribute("data-imgvalue", i);
                 img.style.width = largestimages[0] + "px";
                 img.style.height = largestimages[1] + "px";
                 img.style.float = "left";
+                console.log(response);
+                img.addEventListener("click", function(e){
+                    console.log(e);
+                    console.log("Response inside click event", response);
+                    console.log(i);
+                    document.body.style.backgroundImage = 'url(' +  response[e.target.dataset.imgvalue].URL + ')';
+                });
                 handlehello.appendChild(img);
                 handlehello.style.overflow = "scroll";
                 handlehello.style.height = "100%";

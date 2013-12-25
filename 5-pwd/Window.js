@@ -5,6 +5,7 @@ JAWM.Window = function Window(id, top, left) {
     this._height = 0;
     this._width = 0;
     this._id = id;
+    this._dom = null;
     this._window = null;
     this._zindex = 0;
     this._topbar = null;
@@ -16,9 +17,10 @@ JAWM.Window = function Window(id, top, left) {
 };
 var Window = JAWM.Window;
 Window.prototype.setSize = function (width, height) {
-    console.log(this);
-    this._window.style.height = height;
-    this._window.style.width = width;
+    console.log("Inside setSize");
+    this._dom.style.height = height + "px";
+    this._dom.style.width = width + "px";
+    console.log(this._dom);
     this._height = height;
     this._width = width;
     return this;
@@ -61,6 +63,8 @@ Window.prototype.render = function () {
 
     document.getElementById("desktop").appendChild(this._window);
     this._topbar = document.getElementById("topbar"+this.getID());
+    this._dom = document.getElementById(this.getID());
+    console.log(this._dom);
     return this;
 };
 Window.prototype.remove = function () {

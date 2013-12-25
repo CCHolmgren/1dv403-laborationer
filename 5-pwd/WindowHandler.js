@@ -17,7 +17,7 @@ JAWM.WindowHandler = {
         this.id+=1;
         this.windowcount += 1;
         //this.setSize(this.id,width, height);
-        return this.getWindow(this.id);
+        return x;
     },
     destroyWindow: function(id){
         this.windows[id].remove();

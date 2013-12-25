@@ -1,6 +1,6 @@
 /* global window, console, document, JAWM */
 window.JAWM = {};
-window.JAWM.Window = function Window() {
+JAWM.Window = function Window() {
     "use strict";
     if(Window.nextID === undefined){
         Window.nextID = 0;
@@ -14,69 +14,66 @@ window.JAWM.Window = function Window() {
         _window,
         _zindex,
         _topbar;
-    
-    this.setSize = function (height, width) {
-        _height = height;
-        _width = width;
+};
+var Window = JAWM.Window;
+Window.prototype.setSize = function (height, width) {
+        this._height = height;
+        this._width = width;
         return this;
     };
-    this.getWindow = function(){
-        return _window;
+    Window.prototype.getWindow = function(){
+        return this._window;
     };
-    this.getTopbar = function(){
-        return _topbar;
+    Window.prototype.getTopbar = function(){
+        return this._topbar;
     };
-    this.nextID = function() {
+    Window.prototype.next = function() {
         return Window.nextID;
     };
-    this.printSize = function () {
-        console.log(_height);
-        console.log(_width);
+    Window.prototype.printSize = function () {
+        console.log(this._height);
+        console.log(this._width);
     };
-    this.render = function () {
-        _window = document.createElement("div");
-        _window.classList.add("icon");
-        this.setzIndex(this.nextID());
-        _window.style.width = _width+"px";
-        _window.style.height = _height+"px";
-        _window.style.backgroundColor = "#fff";
+    Window.prototype.render = function () {
+        this._window = document.createElement("div");
+        this._window.classList.add("icon");
+        this.setzIndex(this.next());
+        this._window.style.width = this._width+"px";
+        this._window.style.height = this._height+"px";
+        this._window.style.backgroundColor = "#fff";
         //_window.setAttribute("draggable", "true");
-        _window.setAttribute("id", this.nextID().toString());
+        this._window.setAttribute("id", this.next()+"");
         
         var closebutton = document.createElement("button");
         closebutton.classList.add("closebutton");
-        closebutton.appendChild(document.createTextNode("Hej"));
-        closebutton.addEventListener("click", function(e){
-            JAWM.WindowHandler.destroyWindow(_id);
-        }.bind(this), false);        
+        closebutton.appendChild(document.createTextNode("Hej"));       
         
         var topbar = document.createElement("div");
         topbar.classList.add("topbar");
         topbar.setAttribute("draggable", "true");
         topbar.appendChild(closebutton);
-        _topbar = topbar;
-        _window.appendChild(topbar);
+        this._topbar = topbar;
+        this._window.appendChild(topbar);
         
-        document.getElementById("desktop").appendChild(_window);
-        _id = this.nextID();
+        document.getElementById("desktop").appendChild(this._window);
+        this._id = this.next();
         return this;
     };
-    this.remove = function() {
-        var element = document.getElementById(_id);
+    Window.prototype.remove = function() {
+        var element = document.getElementById(this._id);
         element.parentNode.removeChild(element);
     };
-    this.move = function(x, y){
-        _window.style.left = x + "px";
-        _window.style.top = y + "px";
-        console.log("hello from move, ",_window);
+    Window.prototype.move = function(x, y){
+        this._window.style.left = x + "px";
+        this._window.style.top = y + "px";
+        console.log("hello from move, ",this._window);
         return this;
     };
-    this.setzIndex = function(zindex){
-        _window.style.zIndex = zindex;
-        _zindex = zindex;
+    Window.prototype.setzIndex = function(zindex){
+        this._window.style.zIndex = zindex;
+        this._zindex = zindex;
         return this;
     };
-    this.getzIndex = function(){
-        return _zindex;
+    Window.prototype.getzIndex = function(){
+        return this._zindex;
     };
-};

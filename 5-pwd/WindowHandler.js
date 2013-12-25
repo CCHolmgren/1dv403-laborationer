@@ -8,7 +8,7 @@ JAWM.WindowHandler = {
     maxzindex: 0,
     createWindow: function(windowclass){
         var x = new JAWM[windowclass]();
-        this.windows[x.nextID()] = x;
+        this.windows[x.next()] = x;
         this.maxzindex+=1;
         return x;
     },

@@ -1,8 +1,12 @@
 /* global window, console, document, NodeList, JAWM, WindowHandler */
 window.onload = function () {
     "use strict";
+    NodeList.prototype.forEach = Array.prototype.forEach;
+
     var WindowHandler = JAWM.WindowHandler,
-        lastrun = null;
+        lastrun = null,
+        icons = document.querySelectorAll(".launchericon");
+
     for (var i = 0; i < 10; i++) {
         var x = WindowHandler.createWindow("Window");
         x.setSize(300, 300);
@@ -10,8 +14,21 @@ window.onload = function () {
         //JAWM.dragDrop.initElement(x.getTopbar());
     }
 
+    icons.forEach(function (element) {
+        console.log(element.dataset.prog);
+        var x = WindowHandler.createWindow(element.dataset.prog);
+        x.setSize(300, 300);
+        x.render();
+    });
+    
+    var closebuttons = document.querySelectorAll(".closebutton");
+    closebuttons.forEach(function(element){
+        element.addEventListener("click", function(e){
+            JAWM.WindowHandler.destroyWindow(element.parentNode.id);
+        });
+    });
     /*var windows = document.querySelectorAll('.icon');
-[].forEach.call(windows, function (win) {
+    [].forEach.call(windows, function (win) {
 
         // …find the title bar inside it and do something onmousedown
         var title = win.querySelector('.topbar');
@@ -50,7 +67,7 @@ window.onload = function () {
             }, false);*/
 
 
-    function drag_start(event) {
+    /*function drag_start(event) {
         //var crt = this.cloneNode(true);
         //document.body.appendChild(crt);
         //event.dataTransfer.setDragImage(crt, 0, 0);
@@ -62,9 +79,9 @@ window.onload = function () {
         //console.log(style.getPropertyValue("left"));
         event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + target.id);
         WindowHandler.setzIndex(target.id, WindowHandler.maxzindex + 1);
-    }
+    }*/
 
-    function drop(event) {
+    /*function drop(event) {
         console.log("drop: ", event);
         var offset = event.dataTransfer.getData("text/plain").split(',');
         console.log(offset);
@@ -75,16 +92,16 @@ window.onload = function () {
         //dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
         event.preventDefault();
         //return false;
-    }
+    }*/
 
-    function dragover(event) {
+    /*function dragover(event) {
         //console.log("dragover: ", event);
-        /*if(lastrun === null || new Date().getTime() - lastrun > 300){
+        if(lastrun === null || new Date().getTime() - lastrun > 300){
             console.log("executed");
             lastrun = new Date().getTime();
             var dm = WindowHandler.getWindow(event.dataTransfer.getData("text/plain")[2]);
             dm.move(event.clientX+dm.getWindow().style.left, event.clientY+dm.getWindow().style.top);
-        }*/
+        }
         //console.log(event.dataTransfer.getData("text/plain"));
 
         //console.log(dm);
@@ -98,7 +115,7 @@ window.onload = function () {
         //dm.move(event.clientX+dm.window().style.left, event.clientY+dm.window().style.top);
         event.preventDefault();
         //return false;
-    }
+    }*/
     /*NodeList.prototype.forEach = Array.prototype.forEach;
 
     var dm = document.getElementsByClassName('topbar');

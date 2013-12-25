@@ -8,7 +8,7 @@ main {
 }
 .bottombar {
     position: absolute;
-    top: 800px;
+    top: 880px;
     left: 0;
     height: 30px;
     border-top: 10px solid rgb(0, 0, 0);
@@ -49,4 +49,12 @@ main {
 .topbar {
     cursor: move;
     overflow: auto;
+}
+
+.launchericon {
+    margin: 1px;
+    float:left;
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
 }

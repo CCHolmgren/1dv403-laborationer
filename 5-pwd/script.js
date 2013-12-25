@@ -16,7 +16,7 @@ window.onload = function () {
 
     icons.forEach(function (element) {
         console.log(element.dataset.prog);
-        var x = WindowHandler.createWindow(element.dataset.prog);
+        var x = WindowHandler.createWindow("ImageViewer");
         x.setSize(300, 300);
         x.render();
     });

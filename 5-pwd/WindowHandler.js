@@ -8,7 +8,7 @@ JAWM.WindowHandler = {
     maxzindex: 0,
     id:0,
     windowcount: 0,
-    createWindow: function(windowclass, top, left){
+    createWindow: function(windowclass, top, left, width, height){
         top = top || this.windowcount * 20;
         left = left || this.windowcount * 20;
         var x = new JAWM[windowclass](this.id, top, left);
@@ -16,15 +16,15 @@ JAWM.WindowHandler = {
         this.maxzindex+=1;
         this.id+=1;
         this.windowcount += 1;
-        x.render();
-        return x;
+        this.setSize(this.id,width, height);
+        return getWindow(this.id);
     },
     destroyWindow: function(id){
         this.windows[id].remove();
         delete this.windows[id];
     },
     getWindow: function(id){
-        return this.windows[id];
+        return [document.getElementById(id), this.windows[id]];
     },
     getWindowCount: function(){
         return Object.keys(this.windows).length;

@@ -5,7 +5,8 @@ window.onload = function () {
 
     var WindowHandler = JAWM.WindowHandler,
         lastrun = null,
-        icons = document.querySelectorAll(".launchericon");
+        icons = document.querySelectorAll(".launchericon"),
+        toolbars = document.querySelectorAll(".topbar");
 
     for (var i = 0; i < 10; i++) {
         var x = WindowHandler.createWindow("Window");
@@ -31,14 +32,6 @@ window.onload = function () {
     function WindowHandlerHandler(event){
         WindowHandler.createWindow(event.target.dataset.prog).render().setSize(300, 300);
     }
-    
-    var closebuttons = document.querySelectorAll(".closebutton");
-    closebuttons.forEach(function(element){
-        element.addEventListener("click", function(e){
-            console.log(e.target.parentNode.parentNode);
-            JAWM.WindowHandler.destroyWindow(element.parentNode.parentNode.id);
-        });
-    });
     /*var windows = document.querySelectorAll('.icon');
     [].forEach.call(windows, function (win) {
 

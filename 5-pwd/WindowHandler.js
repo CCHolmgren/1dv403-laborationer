@@ -2,12 +2,12 @@
    Will later probably handle
    Creation and destruction of windows
    And so forth*/
-/* global JAWM */
+/* global JAWM, document */
 JAWM.WindowHandler = {
     windows: {},
     maxzindex: 0,
     id:0,
-    windowcount: 0,
+    windowcount: 1,
     createWindow: function(windowclass, top, left){
         top = top || this.windowcount * 20;
         left = left || this.windowcount * 20;
@@ -36,10 +36,10 @@ JAWM.WindowHandler = {
         document.getElementById(id).style.height = height;
         this.getWindow(id).setSize(width, height);
     }*/
-    /*setzIndex: function(id, zindex){
+    setzIndex: function(id, zindex){
         if(zindex > this.maxzindex)
             this.maxzindex = zindex;
         this.getWIndow(id).setzIndex(zindex);
         return this;
-    }*/
+    }
 };

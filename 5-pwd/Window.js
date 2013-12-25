@@ -11,6 +11,7 @@ JAWM.Window = function Window(id, top, left) {
     this._topbar = null;
     this._top = top || 1;
     this._left = left || 1;
+    this._content = null;
 
     console.log("id ", id);
     console.log("_id ", this._id);
@@ -24,6 +25,11 @@ Window.prototype.setSize = function (width, height) {
     this._height = height;
     this._width = width;
     return this;
+};
+Window.prototype.content = function(){
+    var div = document.createElement("div");
+    div.classList.add("content");
+    return div;
 };
 Window.prototype.getWindow = function () {
     return this._window;
@@ -52,6 +58,9 @@ Window.prototype.render = function () {
     var closebutton = document.createElement("button");
     closebutton.classList.add("closebutton");
     closebutton.appendChild(document.createTextNode("Hej"));
+    closebutton.addEventListener("click", function(e){
+        JAWM.WindowHandler.destroyWindow(e.target.parentNode.parentNode.id);
+    });
 
     var topbar = document.createElement("div");
     topbar.classList.add("topbar");
@@ -60,6 +69,7 @@ Window.prototype.render = function () {
     topbar.appendChild(closebutton);
     //this._topbar = topbar;
     this._window.appendChild(topbar);
+    this._window.appendChild(this.content());
 
     document.getElementById("desktop").appendChild(this._window);
     this._topbar = document.getElementById("topbar"+this.getID());

@@ -1,6 +1,6 @@
 /* global window, console, document, JAWM */
 window.JAWM = {};
-JAWM.Window = function Window(id) {
+JAWM.Window = function Window(id, top, left) {
     "use strict";
     this._height = 0;
     this._width = 0;
@@ -8,6 +8,8 @@ JAWM.Window = function Window(id) {
     this._window = null;
     this._zindex = 0;
     this._topbar = null;
+    this._top = top || 1;
+    this._left = left || 1;
     
     console.log("id ", id);
     console.log("_id ", this._id);
@@ -37,6 +39,8 @@ Window.prototype.setSize = function (height, width) {
         this.setzIndex(this.getID());
         this._window.style.width = this._width+"px";
         this._window.style.height = this._height+"px";
+        this._window.style.top = this._top + "px";
+        this._window.style.left = this._left + "px";
         this._window.style.backgroundColor = "#fff";
         //_window.setAttribute("draggable", "true");
         this._window.setAttribute("id", this.getID());

@@ -32,11 +32,11 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle) {
                 div.style.width = largestimages[0] + "px";
                 div.style.height = largestimages[1] + "px";
                 div.style.float = "left";
-                img.addEventListener("click", function (e) {
+                div.addEventListener("click", function (e) {
                     console.log(e);
                     console.log("Response inside click event", response);
                     console.log(i);
-                    document.body.style.backgroundImage = 'url(' + response[e.target.dataset.imgvalue].URL + ')';
+                    document.body.style.backgroundImage = 'url(' + response[(e.toElement.localName == "div" )? e.target.firstChild.dataset.imgvalue: e.target.dataset.imgvalue].URL + ')';
                 });
                 div.appendChild(img);
                 handle.appendChild(div);

@@ -35,7 +35,6 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle) {
                 div.addEventListener("click", function (e) {
                     console.log(e);
                     console.log("Response inside click event", response);
-                    console.log(i);
                     document.body.style.backgroundImage = 'url(' + response[(e.toElement.localName == "div" )? e.target.firstChild.dataset.imgvalue: e.target.dataset.imgvalue].URL + ')';
                 });
                 div.appendChild(img);

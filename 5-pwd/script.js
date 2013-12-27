@@ -8,12 +8,12 @@ window.onload = function () {
         icons = document.querySelectorAll(".launchericon"),
         toolbars = document.querySelectorAll(".topbar");
 
-    for (var i = 0; i < 0; i++) {
+    /*for (var i = 0; i < 0; i++) {
         var x = WindowHandler.createWindow("Window");
         x.render();
         x.setSize(300, 300);
         //JAWM.dragDrop.initElement(x.getTopbar());
-    }
+    }*/
     for(var j = 0; j < 1; j++){
         var y = WindowHandler.createWindow("ImageViewer");
         y.render();

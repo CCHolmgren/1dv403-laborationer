@@ -44,7 +44,7 @@
                     handle.style.top = "0";
                     handle.style.left = "0";
                     handle.style.overflowY = "scroll";
-                    handle.style.height = "calc(100% - 78px)";
+                    handle.classList.add("content");
                     //handle.style.height = "calc(100%-26px)";
                 }
             }

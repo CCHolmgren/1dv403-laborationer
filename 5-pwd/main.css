@@ -19,9 +19,9 @@ main {
 }
 .content {
     width: 100%;
-    height: calc(100% - 26px);
+    height: calc(100% - 78px);
 }
-.desktop{
+.desktop {
     position: absolute;
     top: 0;
     left: 0;
@@ -30,7 +30,7 @@ main {
 }
 .icon {
     box-shadow: 5px 5px 10px 0;
-    border-radius:5px 5px;
+    border-radius: 5px 5px;
     position: absolute;
     background-color: #fff;
     top: 0;
@@ -46,24 +46,38 @@ main {
     width: 100px;
     height: 100px;
 }
-
 .closebutton {
-    float:right;
+    float: right;
 }
-
 .topbar {
     cursor: move;
     overflow: auto;
 }
-
 .bottombar {
     height: 26px;
 }
-
 .launchericon {
     margin: 1px;
-    float:left;
+    float: left;
     background-color: #fff;
     height: 60px;
     width: 60px;
+}
+.gradient {
+    background: #ffffff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(47%, #f6f6f6), color-stop(100%, #ededed));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+    /* W3C */
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+    /* IE6-9 */
 }

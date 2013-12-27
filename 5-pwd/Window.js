@@ -1,8 +1,8 @@
 /* global window, console, document, JAWM */
 (function () {
+    "use strict";
     window.JAWM = {};
     JAWM.Window = function Window(id, top, left) {
-        "use strict";
         this._height = 0;
         this._width = 0;
         this._id = id;
@@ -73,6 +73,7 @@
 
         var topbar = document.createElement("div");
         topbar.classList.add("topbar");
+        topbar.classList.add("gradient");
         topbar.id = "topbar" + this.getID();
         topbar.style.height = "52px";
         topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
@@ -83,6 +84,7 @@
 
         var bottombar = document.createElement("div");
         bottombar.classList.add("bottombar");
+        bottombar.classList.add("gradient");
 
         //this._topbar = topbar;
         this._window.appendChild(topbar);

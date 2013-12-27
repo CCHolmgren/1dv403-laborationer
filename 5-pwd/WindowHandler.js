@@ -2,15 +2,17 @@
    Will later probably handle
    Creation and destruction of windows
    And so forth*/
-/* global JAWM, document */
+/* global JAWM, document, console */
 JAWM.WindowHandler = {
     windows: {},
     maxzindex: 0,
     id:0,
     windowcount: 1,
     createWindow: function(windowclass, top, left){
-        top = top || this.windowcount * 20;
-        left = left || this.windowcount * 20;
+        top = top || this.getWindowCount() * 20+20;
+        left = left || this.getWindowCount() * 20+20;
+        console.log("top", top);
+        console.log("left", left);
         var x = new JAWM[windowclass](this.id, top, left);
         this.windows[this.id] = x;
         this.maxzindex+=1;

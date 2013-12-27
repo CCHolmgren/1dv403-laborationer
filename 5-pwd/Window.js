@@ -15,8 +15,8 @@
         this._content = null;
         this._bottombar = null;
 
-        console.log("id ", id);
-        console.log("_id ", this._id);
+        //console.log("id ", id);
+        //console.log("_id ", this._id);
     };
     var Window = JAWM.Window;
     Window.prototype.setSize = function (width, height) {

@@ -27,7 +27,8 @@
             start = d.getTime();
         //document.getElementById("bottombar" + this.getID());
         loaderimg.setAttribute("src", "ajax-loader.gif");
-        bottombar.appendChild(loaderimg);        
+        bottombar.appendChild(loaderimg);
+        bottombar.appendChild(document.createTextNode("Loading.."));
         
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {

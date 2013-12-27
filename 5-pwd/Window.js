@@ -14,6 +14,7 @@
         this._left = left || 1;
         this._content = null;
         this._bottombar = null;
+        this._name = "Window";
 
         //console.log("id ", id);
         //console.log("_id ", this._id);

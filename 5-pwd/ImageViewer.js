@@ -8,6 +8,7 @@
         this._top = top;
         this._left = left;
         this._loadedimages = null;
+        this._name = "ImageViewer";
     };
 
     JAWM.ImageViewer.prototype = new JAWM.Window();

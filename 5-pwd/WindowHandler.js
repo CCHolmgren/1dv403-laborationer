@@ -28,6 +28,9 @@ JAWM.WindowHandler = {
     getWindow: function(id){
         return [document.getElementById(id), this.windows[id]];
     },
+    getWindowObj: function(){
+        return this.windows;
+    },
     getWindowCount: function(){
         return Object.keys(this.windows).length;
     },

@@ -73,6 +73,7 @@
             imageHeights = keys.map(function (key) {
                 return listofimages[key].thumbHeight;
             });
+        
         imageHeights.forEach(function (element) {
             if (element > maxHeight) {
                 maxHeight = element;

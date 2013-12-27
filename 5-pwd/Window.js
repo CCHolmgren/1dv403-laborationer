@@ -19,15 +19,6 @@
         //console.log("_id ", this._id);
     };
     var Window = JAWM.Window;
-    Window.prototype.setSize = function (width, height) {
-        console.log("Inside setSize");
-        this._dom.style.height = height + "px";
-        this._dom.style.width = width + "px";
-        console.log(this._dom);
-        this._height = height;
-        this._width = width;
-        return this;
-    };
     Window.prototype.content = function (bottombar) {
         var div = document.createElement("div");
         div.classList.add("content");
@@ -47,6 +38,25 @@
     };
     Window.prototype.getSize = function () {
         return [this._width, this._height];
+    };
+    Window.prototype.setSize = function (width, height) {
+        console.log("Inside setSize");
+        this._dom.style.height = height + "px";
+        this._dom.style.width = width + "px";
+        console.log(this._dom);
+        this._height = height;
+        this._width = width;
+        return this;
+    };
+    Window.prototype.setHeight = function(height){
+        this._dom.style.height = height + "px";
+        this._height = height;
+        return this;
+    };
+    Window.prototype.setWidth = function(width){
+        this._dom.style.width = width + "px";
+        this._width = width;
+        return this;
     };
     Window.prototype.render = function () {
         this._window = document.createElement("div");
@@ -101,6 +111,7 @@
         this._topbar = document.getElementById("topbar" + this.getID());
         this._bottombar = document.getElementById("bottombar" + this.getID());
         this._dom = document.getElementById(this.getID());
+        this._window = this._dom;
         console.log(this._dom);
         return this;
     };

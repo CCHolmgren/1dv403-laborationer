@@ -16,31 +16,32 @@ JAWM.ImageViewer.prototype.content = function () {
     return div;
 };
 
-JAWM.ImageViewer.prototype.xhrgetimages = function (handle) {
+JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle) {
     var xhr = new XMLHttpRequest(),
         that = this,
-        handlehello = handle;
+        handle = divhandle;
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             var response = JSON.parse(xhr.responseText);
-            var largestimages = [200, 200];
+            var largestimages = that.largestimage(response);
             for(var i = 0; i < response.length; i++){
                 var img = document.createElement("img");
+                var div = document.createElement("div");
                 img.setAttribute("src", response[i].thumbURL);
                 img.setAttribute("data-imgvalue", i);
-                img.style.width = largestimages[0] + "px";
-                img.style.height = largestimages[1] + "px";
-                img.style.float = "left";
-                console.log(response);
+                div.style.width = largestimages[0] + "px";
+                div.style.height = largestimages[1] + "px";
+                div.style.float = "left";
                 img.addEventListener("click", function(e){
                     console.log(e);
                     console.log("Response inside click event", response);
                     console.log(i);
                     document.body.style.backgroundImage = 'url(' +  response[e.target.dataset.imgvalue].URL + ')';
                 });
-                handlehello.appendChild(img);
-                handlehello.style.overflow = "scroll";
-                handlehello.style.height = "100%";
+                div.appendChild(img);
+                handle.appendChild(div);
+                handle.style.overflow = "scroll";
+                handle.style.height = "100%";
             }
         }
     };
@@ -49,14 +50,25 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (handle) {
 };
 
 JAWM.ImageViewer.prototype.largestimage = function(listofimages){
-    var maxheight = 0;
-    var maxwidth = 0;
-    for(var image in listofimages){
-        if(image.thumbHeight > maxheight)
-            maxheight = image.thumbHeight;
-        if(image.thumbWidth > maxwidth)
-            maxwidth = image.thumbWidth;
-    }
-    
-    return [maxheight, maxwidth];
+    var maxHeight = 0;
+    var maxWidth = 0;
+    var keys = Object.keys(listofimages);
+    var imageWidths = keys.map(function(key){
+        return listofimages[key].thumbWidth;
+    });
+    var imageHeights = keys.map(function(key){
+        return listofimages[key].thumbHeight;
+    });
+    imageHeights.forEach(function(element){
+        if(element>maxHeight){
+            maxHeight = element;
+        }
+    });
+    imageWidths.forEach(function(element){
+        if(element >maxWidth){
+            maxWidth = element;
+        }
+    });
+    console.log(maxHeight, maxWidth);
+    return [maxWidth, maxHeight];
 };

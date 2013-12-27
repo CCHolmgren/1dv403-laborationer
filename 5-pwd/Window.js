@@ -13,6 +13,7 @@
         this._top = top || 1;
         this._left = left || 1;
         this._content = null;
+        this._bottombar = null;
 
         console.log("id ", id);
         console.log("_id ", this._id);
@@ -27,7 +28,7 @@
         this._width = width;
         return this;
     };
-    Window.prototype.content = function () {
+    Window.prototype.content = function (bottombar) {
         var div = document.createElement("div");
         div.classList.add("content");
         return div;
@@ -37,6 +38,9 @@
     };
     Window.prototype.getTopbar = function () {
         return this._topbar;
+    };
+    Window.prototype.getBottombar = function(){
+        return this._bottombar;
     };
     Window.prototype.getID = function () {
         return this._id;
@@ -83,17 +87,19 @@
         topbar.appendChild(closebutton);
 
         var bottombar = document.createElement("div");
+        bottombar.id = "bottombar" + this.getID();
         bottombar.classList.add("bottombar");
         bottombar.classList.add("gradient");
 
         //this._topbar = topbar;
         this._window.appendChild(topbar);
-        this._window.appendChild(this.content());
+        this._window.appendChild(this.content(bottombar));
         this._window.appendChild(bottombar);
 
 
         document.getElementById("desktop").appendChild(this._window);
         this._topbar = document.getElementById("topbar" + this.getID());
+        this._bottombar = document.getElementById("bottombar" + this.getID());
         this._dom = document.getElementById(this.getID());
         console.log(this._dom);
         return this;

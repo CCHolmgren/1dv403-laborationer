@@ -11,16 +11,24 @@
     };
 
     JAWM.ImageViewer.prototype = new JAWM.Window();
-    JAWM.ImageViewer.prototype.content = function () {
+    JAWM.ImageViewer.prototype.content = function (bottombar) {
         var div = document.createElement("div");
-        this.xhrgetimages(div);
+        this.xhrgetimages(div, bottombar);
         return div;
     };
 
-    JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle) {
+    JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle, botbar ) {
         var xhr = new XMLHttpRequest(),
+            loaderimg = document.createElement("img"),
             that = this,
-            handle = divhandle;
+            handle = divhandle,
+            bottombar = botbar,
+            d = new Date(), 
+            start = d.getTime();
+        //document.getElementById("bottombar" + this.getID());
+        loaderimg.setAttribute("src", "ajax-loader.gif");
+        bottombar.appendChild(loaderimg);        
+        
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var response = JSON.parse(xhr.responseText),
@@ -47,6 +55,7 @@
                     handle.classList.add("content");
                     //handle.style.height = "calc(100%-26px)";
                 }
+                bottombar.innerHTML = (new Date().getTime() - start) + "ms";
             }
         };
         xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/?' + this.getID(), true);

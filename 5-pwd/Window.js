@@ -48,6 +48,7 @@ Window.prototype.render = function () {
     this._window = document.createElement("div");
     this._window.classList.add("icon");
     this.setzIndex(this.getID());
+    this._window.style.overflowY = "scroll";
     this._window.style.width = this._width + "px";
     this._window.style.height = this._height + "px";
     this._window.style.top = this._top + "px";

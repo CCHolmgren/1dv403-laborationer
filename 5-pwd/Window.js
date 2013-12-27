@@ -49,7 +49,7 @@ Window.prototype.render = function () {
     this.setzIndex(this.getID());
     //this._window.style.overflowY = "scroll";
     this._window.style.width = this._width + "px";
-    this._window.style.height = this._height + "px";
+    //this._window.style.height = this._height + "px";
     this._window.style.top = this._top + "px";
     this._window.style.left = this._left + "px";
     this._window.style.backgroundColor = "#fff";
@@ -74,16 +74,21 @@ Window.prototype.render = function () {
     topbar.classList.add("topbar");
     topbar.id="topbar" + this.getID();
     topbar.style.height = "52px";
-    topbar.style.background = "-webkit-linear-gradient(top, #feffff 0%,#ddf1f9 35%,#a0d8ef 100%)";
+    topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
     //topbar.setAttribute("draggable", "true");
     
     topbar.appendChild(windowicondiv);
     topbar.appendChild(closebutton);
     
+    var bottombar = document.createElement("div");
+    bottombar.classList.add("bottombar");
+    
     //this._topbar = topbar;
     this._window.appendChild(topbar);
     this._window.appendChild(this.content());
-
+    this._window.appendChild(bottombar);
+    
+    
     document.getElementById("desktop").appendChild(this._window);
     this._topbar = document.getElementById("topbar"+this.getID());
     this._dom = document.getElementById(this.getID());

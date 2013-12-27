@@ -8,7 +8,7 @@ main {
     margin: 0;
     width: 100%;
 }
-.bottombar {
+.launchbar {
     position: absolute;
     top: 880px;
     left: 0;
@@ -54,6 +54,10 @@ main {
 .topbar {
     cursor: move;
     overflow: auto;
+}
+
+.bottombar {
+    height: 26px;
 }
 
 .launchericon {

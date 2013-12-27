@@ -2,9 +2,9 @@
 (function () {
     "use strict";
     window.JAWM = {};
-    JAWM.Window = function Window(id, top, left) {
-        this._height = 0;
-        this._width = 0;
+    JAWM.Window = function Window(id, top, left, width, height) {
+        this._height = height || 1;
+        this._width = width || 1;
         this._id = id;
         this._dom = null;
         this._window = null;

@@ -39,8 +39,9 @@ JAWM.ImageViewer.prototype.xhrgetimages = function (divhandle) {
                 });
                 div.appendChild(img);
                 handle.appendChild(div);
-                //handle.style.overflow = "scroll";
-                handle.style.height = "calc(100%-26px)";
+                handle.style.overflowY = "scroll";
+                handle.style.height = "calc(100% - 52px)";
+                //handle.style.height = "calc(100%-26px)";
             }
         }
     };

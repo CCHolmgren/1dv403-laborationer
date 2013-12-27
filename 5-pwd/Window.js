@@ -40,15 +40,14 @@ Window.prototype.getTopbar = function () {
 Window.prototype.getID = function () {
     return this._id;
 };
-Window.prototype.printSize = function () {
-    console.log(this._height);
-    console.log(this._width);
+Window.prototype.getSize = function () {
+    return [this._width, this._height];
 };
 Window.prototype.render = function () {
     this._window = document.createElement("div");
     this._window.classList.add("icon");
     this.setzIndex(this.getID());
-    this._window.style.overflowY = "scroll";
+    //this._window.style.overflowY = "scroll";
     this._window.style.width = this._width + "px";
     this._window.style.height = this._height + "px";
     this._window.style.top = this._top + "px";
@@ -56,18 +55,31 @@ Window.prototype.render = function () {
     this._window.style.backgroundColor = "#fff";
     //_window.setAttribute("draggable", "true");
     this._window.setAttribute("id", this.getID());
+    
+    
     var closebutton = document.createElement("button");
     closebutton.classList.add("closebutton");
-    closebutton.appendChild(document.createTextNode("Hej"));
+    closebutton.appendChild(document.createTextNode("x"));
     closebutton.addEventListener("click", function(e){
         JAWM.WindowHandler.destroyWindow(e.target.parentNode.parentNode.id);
     });
-
+    var windowicondiv = document.createElement("div"),
+        windowicon = document.createElement("img");
+    windowicondiv.appendChild(windowicon);
+    windowicondiv.style.height = "26px";
+    windowicondiv.style.width = "26px";
+    windowicondiv.style.float = "left";
+    
     var topbar = document.createElement("div");
     topbar.classList.add("topbar");
     topbar.id="topbar" + this.getID();
+    topbar.style.height = "52px";
+    topbar.style.background = "-webkit-linear-gradient(top, #feffff 0%,#ddf1f9 35%,#a0d8ef 100%)";
     //topbar.setAttribute("draggable", "true");
+    
+    topbar.appendChild(windowicondiv);
     topbar.appendChild(closebutton);
+    
     //this._topbar = topbar;
     this._window.appendChild(topbar);
     this._window.appendChild(this.content());

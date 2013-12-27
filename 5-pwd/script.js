@@ -14,11 +14,11 @@ window.onload = function () {
         x.setSize(300, 300);
         //JAWM.dragDrop.initElement(x.getTopbar());
     }*/
-    for(var j = 0; j < 1; j++){
-        var y = WindowHandler.createWindow("ImageViewer");
-        y.render();
-        y.setSize(500, 500);
-    }
+    //for(var j = 0; j < 1; j++){
+    //    var y = WindowHandler.createWindow("ImageViewer");
+    //    y.render();
+    //    y.setSize(500, 500);
+    //}
 
     /*icons.forEach(function (element) {
         console.log("element.dataset.prog", element.dataset.prog);
@@ -30,7 +30,7 @@ window.onload = function () {
         element.addEventListener("click", WindowHandlerHandler);
     });
     function WindowHandlerHandler(event){
-        WindowHandler.createWindow(event.target.dataset.prog).render().setSize(300, 300);
+        WindowHandler.createWindow(event.target.dataset.prog).render().setSize(400, 400);
     }
     /*var windows = document.querySelectorAll('.icon');
     [].forEach.call(windows, function (win) {

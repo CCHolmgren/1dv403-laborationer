@@ -21,13 +21,26 @@
         });
         //console.log("windowlist", windowlist);
         windowlist.forEach(function(element){
-            var divi = document.createElement("div");
-            divi.innerHTML = element._name;
-            windowdiv.appendChild(divi);
+            var elementdiv = document.createElement("div"),
+                elementname = document.createTextNode(element._name),
+                namespan = document.createElement("span"),
+                removebutton = document.createElement("button");
+            removebutton.setAttribute("data-windowid", element._id);
+            removebutton.addEventListener("click", function(e){
+                console.log(e.target);
+                JAWM.WindowHandler.destroyWindow(e.target.dataset.windowid);
+            });
+            removebutton.appendChild(document.createTextNode("x"));
+            
+            namespan.appendChild(elementname);
+            elementdiv.appendChild(namespan);
+            elementdiv.appendChild(removebutton);
+            //divi.innerHTML = element._name;
+            windowdiv.appendChild(elementdiv);
         });
         div.appendChild(windowdiv);
-        div.id = "content"+this._id;
-        setTimeout(JAWM.WindowHandler.getWindow(this._id)[1].updatecontent.bind(this), 2000);
+        div.id = "content" + this._id;
+        //setTimeout(JAWM.WindowHandler.getWindow(this._id)[1].updatecontent.bind(this), 2000);
         console.log(div);
         return div;
     };

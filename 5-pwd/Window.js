@@ -20,27 +20,27 @@
         //console.log("_id ", this._id);
     };
     var Window = JAWM.Window;
-    Window.prototype.content = function (bottombar) {
+    JAWM.Window.prototype.content = function (bottombar) {
         var div = document.createElement("div");
         div.classList.add("content");
         return div;
     };
-    Window.prototype.getWindow = function () {
+    JAWM.Window.prototype.getWindow = function () {
         return this._window;
     };
-    Window.prototype.getTopbar = function () {
+    JAWM.Window.prototype.getTopbar = function () {
         return this._topbar;
     };
-    Window.prototype.getBottombar = function(){
+    JAWM.Window.prototype.getBottombar = function(){
         return this._bottombar;
     };
-    Window.prototype.getID = function () {
+    JAWM.Window.prototype.getID = function () {
         return this._id;
     };
-    Window.prototype.getSize = function () {
+    JAWM.Window.prototype.getSize = function () {
         return [this._width, this._height];
     };
-    Window.prototype.setSize = function (width, height) {
+    JAWM.Window.prototype.setSize = function (width, height) {
         console.log("Inside setSize");
         this._dom.style.height = height + "px";
         this._dom.style.width = width + "px";
@@ -49,17 +49,17 @@
         this._width = width;
         return this;
     };
-    Window.prototype.setHeight = function(height){
+    JAWM.Window.prototype.setHeight = function(height){
         this._dom.style.height = height + "px";
         this._height = height;
         return this;
     };
-    Window.prototype.setWidth = function(width){
+    JAWM.Window.prototype.setWidth = function(width){
         this._dom.style.width = width + "px";
         this._width = width;
         return this;
     };
-    Window.prototype.render = function () {
+    JAWM.Window.prototype.render = function () {
         var that = this;
         
         this._window = document.createElement("div");
@@ -122,23 +122,23 @@
         console.log(this._dom);
         return this;
     };
-    Window.prototype.remove = function () {
+    JAWM.Window.prototype.remove = function () {
         var element = document.getElementById(this.getID());
         element.parentNode.removeChild(element);
     };
-    Window.prototype.move = function (x, y) {
+    JAWM.Window.prototype.move = function (x, y) {
         this._window.style.left = x + "px";
         this._window.style.top = y + "px";
         console.log("hello from move, ", this._window);
         return this;
     };
-    Window.prototype.setzIndex = function (zindex) {
+    JAWM.Window.prototype.setzIndex = function (zindex) {
         console.log("hello", zindex);
         this._window.style.zIndex = zindex;
         this._zindex = zindex;
         return this;
     };
-    Window.prototype.getzIndex = function () {
+    JAWM.Window.prototype.getzIndex = function () {
         return this._zindex;
     };
 }());

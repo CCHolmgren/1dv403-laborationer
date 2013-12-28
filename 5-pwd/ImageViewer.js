@@ -2,11 +2,11 @@
 (function () {
     "use strict";
 
-    JAWM.ImageViewer = function (id, top, left) {
-        console.log("Imageviewer");
-        this._id = id;
-        this._top = top;
-        this._left = left;
+    JAWM.ImageViewer = function (id, top, left, width, height) {
+        JAWM.Window.call(this, id, top, left, width, height);
+        //this._id = id;
+        //this._top = top;
+        //this._left = left;
         this._loadedimages = null;
         this._name = "ImageViewer";
     };

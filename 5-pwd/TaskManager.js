@@ -1,11 +1,12 @@
 /* global JAWM, window, console, document */
 (function () {
     "use strict";
-    JAWM.TaskManager = function (id, top, left) {
-        this._id = id;
-        this._top = top;
-        this._left = left;
-        this._loadedimages = null;
+    JAWM.TaskManager = function (id, top, left, width, height) {
+        JAWM.Window.call(this, id, top, left, width, height);
+        //this._id = id;
+        //this._top = top;
+        //this._left = left;
+        //this._loadedimages = null;
         this._name = "TaskManager";
         //this._intervalid = setInterval(this.updatecontent(), 1000);
     };

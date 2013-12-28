@@ -1,0 +1,18 @@
+a {
+    float: left;
+}
+.gamediv {
+    width: auto;
+    overflow: auto;
+    border: 1px solid black;
+}
+.images {
+    overflow: auto;
+    margin: 0 auto;
+}
+.images img {
+    padding: 5px;
+}
+#win {
+    width: 50%;
+}

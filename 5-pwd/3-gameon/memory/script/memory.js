@@ -122,7 +122,7 @@ function Memory(div, winDiv, inputRows, inputCols) {
                     }
                 }
             }
-        }
+        };
         //Since we want rows we got to do it this way with nested for loops
         for (var i = 0; i < rows; i++) {
             var div = document.createElement("div");

@@ -30,7 +30,7 @@ window.onload = function () {
         element.addEventListener("click", WindowHandlerHandler);
     });
     function WindowHandlerHandler(event){
-        WindowHandler.createWindow(event.target.dataset.prog).render().setSize(400, 400);
+        WindowHandler.createWindow(event.target.dataset.prog, null, null, 400, 400).render();
     }
     /*var windows = document.querySelectorAll('.icon');
     [].forEach.call(windows, function (win) {

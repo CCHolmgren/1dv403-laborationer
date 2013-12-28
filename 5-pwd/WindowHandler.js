@@ -8,13 +8,13 @@ JAWM.WindowHandler = {
     maxzindex: 0,
     id: 0,
     windowcount: 1,
-    createWindow: function (windowclass, top, left) {
+    createWindow: function (windowclass, top, left, width, height) {
         top = top || this.getWindowCount() * 30 + 20;
         left = left || this.getWindowCount() * 20 + 20;
         console.log("top", top);
         console.log("left", left);
         console.log(windowclass);
-        var x = new JAWM[windowclass](this.id, top, left);
+        var x = new JAWM[windowclass](this.id, top, left, width, height);
         this.windows[this.id] = x;
         this.maxzindex += 1;
         this.id += 1;

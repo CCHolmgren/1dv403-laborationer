@@ -5,13 +5,13 @@
     JAWM.Window = function Window(id, top, left, width, height) {
         this._height = height || 1;
         this._width = width || 1;
+        this._top = top || 1;
+        this._left = left || 1;
         this._id = id;
         this._dom = null;
         this._window = null;
         this._zindex = 0;
         this._topbar = null;
-        this._top = top || 1;
-        this._left = left || 1;
         this._content = null;
         this._bottombar = null;
         this._name = "Window";
@@ -67,7 +67,7 @@
         this.setzIndex(this.getID());
         //this._window.style.overflowY = "scroll";
         this._window.style.width = this._width + "px";
-        //this._window.style.height = this._height + "px";
+        this._window.style.height = this._height + "px";
         this._window.style.top = this._top + "px";
         this._window.style.left = this._left + "px";
         this._window.style.backgroundColor = "#fff";

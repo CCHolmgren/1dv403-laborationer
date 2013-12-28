@@ -9,7 +9,7 @@ JAWM.WindowHandler = {
     id: 0,
     windowcount: 1,
     createWindow: function (windowclass, top, left) {
-        top = top || this.getWindowCount() * 20 + 20;
+        top = top || this.getWindowCount() * 30 + 20;
         left = left || this.getWindowCount() * 20 + 20;
         console.log("top", top);
         console.log("left", left);

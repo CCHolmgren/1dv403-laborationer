@@ -73,7 +73,17 @@
         this._window.style.backgroundColor = "#fff";
         //_window.setAttribute("draggable", "true");
         this._window.setAttribute("id", this.getID());
-
+        
+        var topbar = document.createElement("div");
+        topbar.classList.add("topbar");
+        topbar.classList.add("gradient");
+        topbar.id = "topbar" + this.getID();
+        topbar.style.height = "52px";
+        topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
+        //topbar.setAttribute("draggable", "true");
+        topbar.addEventListener("click", function(e){
+            JAWM.WindowHandler.setzIndex(this._id, JAWM.WindowHandler.maxzindex);
+        }.bind(this));
 
         var closebutton = document.createElement("button");
         closebutton.classList.add("closebutton");
@@ -87,20 +97,18 @@
         windowicondiv.style.height = "26px";
         windowicondiv.style.width = "26px";
         windowicondiv.style.float = "left";
-
-        var topbar = document.createElement("div");
-        topbar.classList.add("topbar");
-        topbar.classList.add("gradient");
-        topbar.id = "topbar" + this.getID();
-        topbar.style.height = "52px";
-        topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
-        //topbar.setAttribute("draggable", "true");
-        topbar.addEventListener("click", function(e){
-            JAWM.WindowHandler.setzIndex(this._id, JAWM.WindowHandler.maxzindex);
-        }.bind(this));
         
-
+        var titlespan = document.createElement("span"),
+            title = document.createTextNode(this._name),
+            titlecontainer = document.createElement("div");
+        
+        titlecontainer.style.float = "left";
+        
+        titlespan.appendChild(title);
+        titlecontainer.appendChild(titlespan);
+        
         topbar.appendChild(windowicondiv);
+        topbar.appendChild(titlecontainer);
         topbar.appendChild(closebutton);
 
         var bottombar = document.createElement("div");

@@ -60,6 +60,8 @@
         return this;
     };
     Window.prototype.render = function () {
+        var that = this;
+        
         this._window = document.createElement("div");
         this._window.classList.add("icon");
         this.setzIndex(this.getID());
@@ -93,6 +95,10 @@
         topbar.style.height = "52px";
         topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
         //topbar.setAttribute("draggable", "true");
+        topbar.addEventListener("click", function(e){
+            JAWM.WindowHandler.setzIndex(this._id, JAWM.WindowHandler.maxzindex);
+        }.bind(this));
+        
 
         topbar.appendChild(windowicondiv);
         topbar.appendChild(closebutton);
@@ -127,6 +133,7 @@
         return this;
     };
     Window.prototype.setzIndex = function (zindex) {
+        console.log("hello", zindex);
         this._window.style.zIndex = zindex;
         this._zindex = zindex;
         return this;

@@ -19,24 +19,27 @@
         var windowlist = keys.map(function(key){
             return windows[key];
         });
-        console.log("windowlist", windowlist);
+        //console.log("windowlist", windowlist);
         windowlist.forEach(function(element){
             var divi = document.createElement("div");
             divi.innerHTML = element._name;
             windowdiv.appendChild(divi);
         });
         div.appendChild(windowdiv);
-        div.id = "content";
-        //setTimeout(JAWM.WindowHandler.getWindow(this._id)[1].updatecontent, 500);
+        div.id = "content"+this._id;
+        setTimeout(JAWM.WindowHandler.getWindow(this._id)[1].updatecontent.bind(this), 2000);
         console.log(div);
         return div;
     };
     JAWM.TaskManager.prototype.updatecontent = function() {
-        var contentdiv = document.getElementById("content");
+        var contentdiv = document.getElementById("content"+this._id);
+        //console.log(this);
+        //console.log(this._id);
         var thiswindow = JAWM.WindowHandler.getWindow(this._id)[1];
-        console.log(contentdiv);
-        console.log("thiswindow.content()", thiswindow.content());
-        contentdiv.innerHTML = thiswindow.content()+"";
-        console.log(contentdiv);
+        //console.log(thiswindow);
+        //console.log(contentdiv);
+        //console.log("thiswindow.content()", thiswindow.content());
+        contentdiv.innerHTML = thiswindow.content().innerHTML;
+        //console.log(contentdiv);
     };
 }());

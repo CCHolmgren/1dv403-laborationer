@@ -27,7 +27,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .icon {
     box-shadow: 5px 5px 10px 0;

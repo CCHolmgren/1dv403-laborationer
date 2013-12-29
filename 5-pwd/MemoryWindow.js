@@ -12,7 +12,17 @@
     };
     JAWM.Memory.prototype = new JAWM.Window();
     
-    /*JAWM.Memory.prototype.content = function(){
+    JAWM.Memory.prototype.content = function(){
+        var contentdiv = document.createElement("div"),
+            gamediv = document.createElement("div"),
+            windiv = document.createElement("div");
         
-    };*/
+        gamediv.id = "game"+this._id;
+        windiv = "win"+this._id;
+        
+        contentdiv.appendChild(gamediv);
+        contentdiv.appendChild(windiv);
+        
+        return contentdiv;
+    };
 }());

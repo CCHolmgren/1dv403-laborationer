@@ -11,4 +11,10 @@
     };
     JAWM.Labbymessage.prototype = new JAWM.Window();
     
+    JAWM.Labbymessage.prototype.content = function(){
+        var div = document.createElement("div");
+        
+        return div;
+    };
+    
 }());

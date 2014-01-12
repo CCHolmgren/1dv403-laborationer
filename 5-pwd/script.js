@@ -12,6 +12,6 @@ window.onload = function () {
         element.addEventListener("click", WindowHandlerHandler);
     });
     function WindowHandlerHandler(event){
-        WindowHandler.createWindow(event.target.dataset.prog, null, null, 400, 400).render();
+        WindowHandler.createWindow(event.target.parentNode.dataset.prog, null, null, 400, 400).render();
     }
 };

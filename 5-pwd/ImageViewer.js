@@ -60,6 +60,7 @@
                     
                     img.setAttribute("src", response[i].thumbURL);
                     img.setAttribute("data-imgvalue", i);
+                    img.setAttribute("alt", "");
                     
                     div.style.width = largestdimensions[0] + "px";
                     div.style.height = largestdimensions[1] + "px";

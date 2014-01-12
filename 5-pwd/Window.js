@@ -117,7 +117,7 @@
         });
         windowicondiv = document.createElement("div");
         windowicon = document.createElement("img");
-        windowicondiv.appendChild(windowicon);
+        //windowicondiv.appendChild(windowicon);
         windowicondiv.style.height = "26px";
         windowicondiv.style.width = "26px";
         windowicondiv.style.float = "left";

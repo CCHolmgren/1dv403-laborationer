@@ -61,8 +61,8 @@ function Memory(div, winDiv, inputRows, inputCols) {
                         //If the game isn't won yet, flip the images after 1 second
                         if (!won && turnedImages.indexOf(lastClickedImage) === -1 && turnedImages.indexOf(e.target) === -1) {
                             setTimeout(function () {
-                                lastClickedImage.setAttribute("src", "pics/0.png");
-                                e.target.setAttribute("src", "pics/0.png");
+                                lastClickedImage.setAttribute("src", "3-gameon/memory/pics/0.png");
+                                e.target.setAttribute("src", "3-gameon/memory/pics/0.png");
                                 stopFlipping = false;
                                 imagesFlipped = 0;
                             }, 1000);
@@ -113,9 +113,9 @@ function Memory(div, winDiv, inputRows, inputCols) {
                     //If the game isn't won yet, flip the images after 1 second
                     if (!won && turnedImages.indexOf(lastClickedImage) === -1 && turnedImages.indexOf(e.target) === -1) {
                         setTimeout(function () {
-                            lastClickedImage.setAttribute("src", "pics/0.png");
+                            lastClickedImage.setAttribute("src", "3-gameon/memory/pics/0.png");
                             console.log(e);
-                            e.target.childNodes[0].setAttribute("src", "pics/0.png");
+                            e.target.childNodes[0].setAttribute("src", "3-gameon/memory/pics/0.png");
                             stopFlipping = false;
                             imagesFlipped = 0;
                         }, 1000);
@@ -133,9 +133,9 @@ function Memory(div, winDiv, inputRows, inputCols) {
                 var that = this;
 
                 //We use the data-src to hold the src to the image until the image is clicked
-                image.setAttribute("data-src", "pics/" + ((memory[index] % numOfImages) + 1) + ".png");
+                image.setAttribute("data-src", "3-gameon/memory/pics/" + ((memory[index] % numOfImages) + 1) + ".png");
                 //pics/0.png is the default image
-                image.setAttribute("src", "pics/0.png");
+                image.setAttribute("src", "3-gameon/memory/pics/0.png");
                 //This is to avoid w3c validator to complain
                 image.setAttribute("alt", "");
 
@@ -152,57 +152,5 @@ function Memory(div, winDiv, inputRows, inputCols) {
             }
             selecteddiv.appendChild(div);
         }
-
-        /*memory.forEach(function (element) {
-            var div = document.createElement("div");
-            var a = document.createElement("a");
-            var image = document.createElement("img");
-            var that = this;
-
-            image.setAttribute("data-src", "pics/" + element + ".png");
-            image.setAttribute("src", "pics/" + 0 + ".png");
-
-            a.appendChild(image);
-            a.setAttribute("href", "#");
-            a.addEventListener("click", function (e) {
-                if (!won) {
-                    if (imagesFlipped === 0 && !stopFlipping) {
-                        lastClickedImage = e.target;
-                        imagesFlipped += 1;
-                        guesses += 1;
-                    }
-                    if (imagesFlipped < 2 && !stopFlipping) {
-                        e.target.setAttribute("src", e.target.dataset.src);
-                        if (lastClickedImage != e.target) {
-                            imagesFlipped += 1;
-                            guesses += 1;
-                        }
-                    }
-                    if (imagesFlipped == 2 && !stopFlipping) {
-                        stopFlipping = true;
-                        if (lastClickedImage != e.target && lastClickedImage.getAttribute("src") == e.target.getAttribute("src")) {
-                            var win = document.getElementById("win");
-                            var text = document.createTextNode("Du vann. Det krävdes " + guesses + " gissningar för dig att hitta de matchande bilderna!");
-                            win.appendChild(text);
-                            won = true;
-                            var images = document.querySelectorAll("a img");
-                            for (var i = 0; i < images.length; i++) {
-                                images[i].setAttribute("src", images[i].dataset.src);
-                            }
-                        }
-                        if (!won) {
-                            setTimeout(function () {
-                                lastClickedImage.setAttribute("src", "pics/0.png");
-                                e.target.setAttribute("src", "pics/0.png");
-                                stopFlipping = false;
-                                imagesFlipped = 0;
-                            }, 1000);
-                        }
-                    }
-                }
-            });
-            div.appendChild(a);
-            selecteddiv.appendChild(div);
-        });*/
     };
 }

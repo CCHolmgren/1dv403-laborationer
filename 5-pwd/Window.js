@@ -8,59 +8,83 @@
         this._top = top || 1;
         this._left = left || 1;
         this._id = id;
-        this._dom = null;
-        this._window = null;
+        
+        //these both refer to the same object
+        this._dom = null; //represents the DOM element
+        this._window = null; //Represnts the DOM element
+        
         this._zindex = 0;
-        this._topbar = null;
-        this._content = null;
-        this._bottombar = null;
+        this._topbar = null; //Represnts the DOM element
+        this._content = null; //Represnts the DOM element
+        this._bottombar = null; //Represnts the DOM element
         this._name = "Window";
 
         //console.log("id ", id);
         //console.log("_id ", this._id);
     };
     var Window = JAWM.Window;
+    
+    //Use a function so we can override it in the children
     JAWM.Window.prototype.content = function (bottombar) {
         var div = document.createElement("div");
         div.classList.add("content");
         return div;
     };
+    
     JAWM.Window.prototype.getWindow = function () {
         return this._window;
     };
+    
     JAWM.Window.prototype.getTopbar = function () {
         return this._topbar;
     };
+    
     JAWM.Window.prototype.getBottombar = function(){
         return this._bottombar;
     };
+    
     JAWM.Window.prototype.getID = function () {
         return this._id;
     };
+    
     JAWM.Window.prototype.getSize = function () {
         return [this._width, this._height];
     };
+    
     JAWM.Window.prototype.setSize = function (width, height) {
         console.log("Inside setSize");
         this._dom.style.height = height + "px";
         this._dom.style.width = width + "px";
-        console.log(this._dom);
         this._height = height;
         this._width = width;
         return this;
     };
+    
     JAWM.Window.prototype.setHeight = function(height){
         this._dom.style.height = height + "px";
         this._height = height;
         return this;
     };
+    
     JAWM.Window.prototype.setWidth = function(width){
         this._dom.style.width = width + "px";
         this._width = width;
         return this;
     };
+    
+    //Our large function to set up and create the whole window
+    //Should maybe change to several smaller functions
     JAWM.Window.prototype.render = function () {
-        var that = this;
+        //Might as well avoid hoisting
+        var that = this,
+            topbar,
+            closebutton,
+            windowicondiv,
+            windowicon,
+            titlespan,
+            title,
+            titlecontainer,
+            bottombar;
         
         this._window = document.createElement("div");
         this._window.classList.add("icon");
@@ -74,7 +98,7 @@
         //_window.setAttribute("draggable", "true");
         this._window.setAttribute("id", this.getID());
         
-        var topbar = document.createElement("div");
+        topbar = document.createElement("div");
         topbar.classList.add("topbar");
         topbar.classList.add("gradient");
         topbar.id = "topbar" + this.getID();
@@ -85,22 +109,22 @@
             JAWM.WindowHandler.setzIndex(this._id, JAWM.WindowHandler.maxzindex);
         }.bind(this));
 
-        var closebutton = document.createElement("button");
+        closebutton = document.createElement("button");
         closebutton.classList.add("closebutton");
         closebutton.appendChild(document.createTextNode("x"));
         closebutton.addEventListener("click", function (e) {
             JAWM.WindowHandler.destroyWindow(e.target.parentNode.parentNode.id);
         });
-        var windowicondiv = document.createElement("div"),
-            windowicon = document.createElement("img");
+        windowicondiv = document.createElement("div");
+        windowicon = document.createElement("img");
         windowicondiv.appendChild(windowicon);
         windowicondiv.style.height = "26px";
         windowicondiv.style.width = "26px";
         windowicondiv.style.float = "left";
         
-        var titlespan = document.createElement("span"),
-            title = document.createTextNode(this._name),
-            titlecontainer = document.createElement("div");
+        titlespan = document.createElement("span");
+        title = document.createTextNode(this._name);
+        titlecontainer = document.createElement("div");
         
         titlecontainer.style.float = "left";
         
@@ -111,7 +135,7 @@
         topbar.appendChild(titlecontainer);
         topbar.appendChild(closebutton);
 
-        var bottombar = document.createElement("div");
+        bottombar = document.createElement("div");
         bottombar.id = "bottombar" + this.getID();
         bottombar.classList.add("bottombar");
         bottombar.classList.add("gradient");
@@ -121,13 +145,13 @@
         this._window.appendChild(this.content(bottombar));
         this._window.appendChild(bottombar);
 
-
         document.getElementById("desktop").appendChild(this._window);
+        
         this._topbar = document.getElementById("topbar" + this.getID());
         this._bottombar = document.getElementById("bottombar" + this.getID());
         this._dom = document.getElementById(this.getID());
         this._window = this._dom;
-        console.log(this._dom);
+        
         return this;
     };
     JAWM.Window.prototype.remove = function () {

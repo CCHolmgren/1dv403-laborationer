@@ -106,5 +106,16 @@
         memory.start();
 
         return this;
+        var contentdiv = document.createElement("div"),
+            gamediv = document.createElement("div"),
+            windiv = document.createElement("div");
+        
+        gamediv.id = "game"+this._id;
+        windiv = "win"+this._id;
+        
+        contentdiv.appendChild(gamediv);
+        contentdiv.appendChild(windiv);
+        
+        return contentdiv;
     };
 }());

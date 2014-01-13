@@ -61,7 +61,7 @@ main {
 .topbar {
     height: 32px;
     background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
-    /*cursor: move;*/
+    cursor: pointer;
     overflow: auto;
 }
 .timecontainer {

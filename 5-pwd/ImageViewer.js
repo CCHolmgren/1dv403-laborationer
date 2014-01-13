@@ -70,10 +70,15 @@
                     img.setAttribute("src", response[i].thumbURL);
                     img.setAttribute("data-imgvalue", i);
                     img.setAttribute("alt", "");
+                    img.style.width = largestdimensions[0] + "px";
+                    img.style.height = largestdimensions[1] + "px";
                     
-                    div.style.width = largestdimensions[0] + "px";
-                    div.style.height = largestdimensions[1] + "px";
+                    //div.style.width = largestdimensions[0] + "px";
+                    //div.style.height = largestdimensions[1] + "px";
+                    div.style.padding = "2px";
+                    div.style.margin = "1px";
                     div.style.float = "left";
+                    div.style.backgroundColor = "#efefef";
                     
                     div.addEventListener("click", function (e) {
                         console.log(e);

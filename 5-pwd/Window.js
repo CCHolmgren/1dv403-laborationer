@@ -120,12 +120,13 @@
         //windowicondiv.appendChild(windowicon);
         windowicondiv.style.height = "26px";
         windowicondiv.style.width = "26px";
-        windowicondiv.style.float = "left";
+        windowicondiv.style.float = "left"
         
         titlespan = document.createElement("span");
         title = document.createTextNode(this._name);
         titlecontainer = document.createElement("div");
-        
+                titlecontainer.style.marginTop = "5px";
+
         titlecontainer.style.float = "left";
         
         titlespan.appendChild(title);

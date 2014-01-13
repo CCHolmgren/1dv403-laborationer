@@ -43,12 +43,21 @@
         
         //Set the src to the spinner
         loaderimg.setAttribute("src", "ajax-loader.gif");
+        loaderimg.style.marginLeft = "5px";
         bottombar.appendChild(loaderimg);
         bottombar.appendChild(document.createTextNode("Loading.."));
         
         //Our eventhandler that does everything for us
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
+                var loadTime = document.createTextNode((new Date().getTime() - start)  + "ms");
+                var timeContainer = document.createElement("div");
+                
+                timeContainer.appendChild(loadTime);
+                timeContainer.style.marginLeft = "5px";
+                
+                bottombar.innerHTML = "";
+                bottombar.appendChild(timeContainer);
                 //JSON.parse instead of evaling or something like that
                 //Doesn't bring the objects into global scope, just local
                 var response = JSON.parse(xhr.responseText),
@@ -92,7 +101,7 @@
                 //You could cound differently if the browser is slow, 
                 //Set this code on the first row of onreadystatechange
                 //so it doesn't depend on DOM appending and just the ajax call
-                bottombar.innerHTML = (new Date().getTime() - start) + "ms";
+                
             }
         };
         xhr.open('GET', 'http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/?' + this.getID(), true);

@@ -29,41 +29,43 @@
         //XMLHttpRequest object for our ajax call
         var xhr = new XMLHttpRequest(),
             //spinner
-            loaderimg = document.createElement("img"),
+            loaderImg = document.createElement("img"),
             //For evenhandler
             //could have binded it, but for some reason i didnt do that here
             that = this,
             //handle for us to add content to
             handle = divhandle,
             //bottombar for spinner
-            bottombar = botbar,
+            bottomBar = botbar,
             //To get loading time
             d = new Date(), 
             start = d.getTime();
         
         //Set the src to the spinner
-        loaderimg.setAttribute("src", "ajax-loader.gif");
-        loaderimg.classList.add("timecontainer");
-        //loaderimg.style.marginLeft = "5px";
-        bottombar.appendChild(loaderimg);
-        bottombar.appendChild(document.createTextNode("Loading.."));
+        loaderImg.setAttribute("src", "ajax-loader.gif");
+        loaderImg.classList.add("timecontainer");
+        //loaderImg.style.marginLeft = "5px";
+        bottomBar.appendChild(loaderImg);
+        bottomBar.appendChild(document.createTextNode("Loading.."));
         
         //Our eventhandler that does everything for us
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                var loadTime = document.createTextNode((new Date().getTime() - start)  + "ms");
-                var timeContainer = document.createElement("div");
+                var loadTime = document.createTextNode((new Date().getTime() - start)  + "ms"),
+                    timeContainer = document.createElement("div"),
+                    response,
+                    largestdimensions;
                 
                 timeContainer.appendChild(loadTime);
                 timeContainer.classList.add("timecontainer");
                 //timeContainer.style.marginLeft = "5px";
                 
-                bottombar.innerHTML = "";
-                bottombar.appendChild(timeContainer);
+                bottomBar.innerHTML = "";
+                bottomBar.appendChild(timeContainer);
                 //JSON.parse instead of evaling or something like that
                 //Doesn't bring the objects into global scope, just local
-                var response = JSON.parse(xhr.responseText),
-                    largestdimensions = that.largestimage(response);
+                response = JSON.parse(xhr.responseText);
+                largestdimensions = that.largestimage(response);
                 
                 for (var i = 0; i < response.length; i++) {
                     var img = document.createElement("img"),

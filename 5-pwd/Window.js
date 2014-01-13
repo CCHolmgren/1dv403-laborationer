@@ -77,14 +77,14 @@
     JAWM.Window.prototype.render = function () {
         //Might as well avoid hoisting
         var that = this,
-            topbar,
-            closebutton,
-            windowicondiv,
-            windowicon,
-            titlespan,
+            topBar,
+            closeButton,
+            windowIconDiv,
+            windowIcon,
+            titleSpan,
             title,
-            titlecontainer,
-            bottombar;
+            titleContainer,
+            bottomBar;
         
         this._window = document.createElement("div");
         this._window.classList.add("icon");
@@ -98,53 +98,51 @@
         //_window.setAttribute("draggable", "true");
         this._window.setAttribute("id", this.getID());
         
-        topbar = document.createElement("div");
-        topbar.classList.add("topbar");
-        topbar.classList.add("gradient");
-        topbar.id = "topbar" + this.getID();
-        topbar.style.height = "52px";
-        topbar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
-        //topbar.setAttribute("draggable", "true");
-        topbar.addEventListener("click", function(e){
+        topBar = document.createElement("div");
+        topBar.classList.add("topbar");
+        topBar.classList.add("gradient");
+        topBar.id = "topbar" + this.getID();
+        //topBar.style.height = "52px";
+        //topBar.style.background = "-webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%)";
+        //topBar.setAttribute("draggable", "true");
+        topBar.addEventListener("click", function(e){
             JAWM.WindowHandler.setzIndex(this._id, JAWM.WindowHandler.maxzindex);
         }.bind(this));
 
-        closebutton = document.createElement("button");
-        closebutton.classList.add("closebutton");
-        closebutton.appendChild(document.createTextNode("x"));
-        closebutton.addEventListener("click", function (e) {
+        closeButton = document.createElement("button");
+        closeButton.classList.add("closebutton");
+        closeButton.appendChild(document.createTextNode("x"));
+        closeButton.addEventListener("click", function (e) {
             JAWM.WindowHandler.destroyWindow(e.target.parentNode.parentNode.id);
         });
-        windowicondiv = document.createElement("div");
-        windowicon = document.createElement("img");
-        //windowicondiv.appendChild(windowicon);
-        windowicondiv.style.height = "26px";
-        windowicondiv.style.width = "26px";
-        windowicondiv.style.float = "left"
+        windowIconDiv = document.createElement("div");
+        windowIcon = document.createElement("img");
+        //windowIconDiv.appendChild(windowIcon);
+        windowIconDiv.style.height = "26px";
+        windowIconDiv.style.width = "26px";
+        windowIconDiv.style.float = "left"
         
-        titlespan = document.createElement("span");
+        titleSpan = document.createElement("span");
         title = document.createTextNode(this._name);
-        titlecontainer = document.createElement("div");
-                titlecontainer.style.marginTop = "5px";
-
-        titlecontainer.style.float = "left";
+        titleContainer = document.createElement("div");
+        titleContainer.classList.add("titlecontainer");
         
-        titlespan.appendChild(title);
-        titlecontainer.appendChild(titlespan);
+        titleSpan.appendChild(title);
+        titleContainer.appendChild(titleSpan);
         
-        topbar.appendChild(windowicondiv);
-        topbar.appendChild(titlecontainer);
-        topbar.appendChild(closebutton);
+        topBar.appendChild(windowIconDiv);
+        topBar.appendChild(titleContainer);
+        topBar.appendChild(closeButton);
 
-        bottombar = document.createElement("div");
-        bottombar.id = "bottombar" + this.getID();
-        bottombar.classList.add("bottombar");
-        bottombar.classList.add("gradient");
+        bottomBar = document.createElement("div");
+        bottomBar.id = "bottombar" + this.getID();
+        bottomBar.classList.add("bottombar");
+        bottomBar.classList.add("gradient");
 
-        //this._topbar = topbar;
-        this._window.appendChild(topbar);
-        this._window.appendChild(this.content(bottombar));
-        this._window.appendChild(bottombar);
+        //this._topbar = topBar;
+        this._window.appendChild(topBar);
+        this._window.appendChild(this.content(bottomBar));
+        this._window.appendChild(bottomBar);
 
         document.getElementById("desktop").appendChild(this._window);
         

@@ -43,7 +43,8 @@
         
         //Set the src to the spinner
         loaderimg.setAttribute("src", "ajax-loader.gif");
-        loaderimg.style.marginLeft = "5px";
+        loaderimg.classList.add("timecontainer");
+        //loaderimg.style.marginLeft = "5px";
         bottombar.appendChild(loaderimg);
         bottombar.appendChild(document.createTextNode("Loading.."));
         
@@ -54,7 +55,8 @@
                 var timeContainer = document.createElement("div");
                 
                 timeContainer.appendChild(loadTime);
-                timeContainer.style.marginLeft = "5px";
+                timeContainer.classList.add("timecontainer");
+                //timeContainer.style.marginLeft = "5px";
                 
                 bottombar.innerHTML = "";
                 bottombar.appendChild(timeContainer);
@@ -75,10 +77,11 @@
                     
                     //div.style.width = largestdimensions[0] + "px";
                     //div.style.height = largestdimensions[1] + "px";
-                    div.style.padding = "2px";
+                    /*div.style.padding = "2px";
                     div.style.margin = "1px";
                     div.style.float = "left";
-                    div.style.backgroundColor = "#efefef";
+                    div.style.backgroundColor = "#efefef";*/
+                    div.classList.add("imageviewerimage");
                     
                     div.addEventListener("click", function (e) {
                         console.log(e);
@@ -96,10 +99,10 @@
                     div.appendChild(img);
                     handle.appendChild(div);
                     
-                    handle.style.position = "relative";
-                    handle.style.top = "0";
-                    handle.style.left = "0";
-                    handle.style.overflowY = "scroll";
+                    //handle.style.position = "relative";
+                    //handle.style.top = "0";
+                    //handle.style.left = "0";
+                    //handle.style.overflowY = "scroll";
                     handle.classList.add("content");
                 }
                 //Write out the loading time in ms from start till we are fully done

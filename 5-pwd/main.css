@@ -18,8 +18,12 @@ main {
     width: 100%;
 }
 .content {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
     width: 100%;
-    height: calc(100% - 78px);
+    height: calc(100% - 58px);
 }
 .desktop {
     position: absolute;
@@ -50,9 +54,18 @@ main {
 .closebutton {
     float: right;
 }
+.titlecontainer {
+    margin-top: 5px;
+    float: left;
+}
 .topbar {
-    cursor: move;
+    height: 32px;
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+    /*cursor: move;*/
     overflow: auto;
+}
+.timecontainer {
+    margin-left: 5px;
 }
 .bottombar {
     height: 26px;
@@ -73,6 +86,12 @@ main {
     width: 60px;
     height: 55px;
     margin-bottom: -5px;
+}
+.imageviewerimage {
+    padding: 2px;
+    margin: 4px;
+    float: left;
+    background-color: #eee;
 }
 .gradient {
     background: #ffffff;

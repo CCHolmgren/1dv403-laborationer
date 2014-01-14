@@ -18,6 +18,7 @@
         this._content = null; //Represnts the DOM element
         this._bottombar = null; //Represnts the DOM element
         this._name = "Window";
+        this._topbarimage = "http://files.softicons.com/download/toolbar-icons/dropline-neu-icons-by-silvestre-herrera/png/128x128/apps/graphics-image-viewer.png";
 
         //console.log("id ", id);
         //console.log("_id ", this._id);
@@ -117,9 +118,12 @@
         });
         windowIconDiv = document.createElement("div");
         windowIcon = document.createElement("img");
-        //windowIconDiv.appendChild(windowIcon);
-        windowIconDiv.style.height = "26px";
-        windowIconDiv.style.width = "26px";
+        windowIcon.style.width = "26px";
+        windowIcon.style.height = "26px";
+        windowIcon.setAttribute("src", this._topbarimage);
+        windowIconDiv.appendChild(windowIcon);
+        //windowIconDiv.style.height = "26px";
+        //windowIconDiv.style.width = "26px";
         windowIconDiv.style.float = "left"
         
         titleSpan = document.createElement("span");

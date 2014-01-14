@@ -10,6 +10,7 @@
         this._loadedimages = null;
         //Used for the title
         this._name = "ImageViewer";
+        this._tobarimage = "background.jpg";
     };
 
     //Inherits from Window

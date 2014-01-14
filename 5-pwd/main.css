@@ -1,6 +1,6 @@
 body {
     /*background-color: #789;*/
-    background: url(background.jpg) no-repeat;
+    background: url(background.jpg);
     /*background-size: cover;*/
     margin: 0;
     max-height: 100%;
